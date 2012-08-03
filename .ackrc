@@ -1,0 +1,2 @@
+--type-set=haml=.haml
+--type-set=sass=.sass

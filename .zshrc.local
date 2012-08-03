@@ -1,0 +1,136 @@
+### Aliases
+
+## get rid of some grml aliases
+
+unalias \
+    0 CH CO GREP calc cmplayer da default dir fblinks fbmplayer hide huge \
+    insecscp insecssh large lssmall mdstat medium new semifont small \
+    smartfont tiny 2>/dev/null
+
+## taken from oh-my-zsh
+
+# directory stuff
+alias 1='cd -'
+alias 2='cd +2'
+alias 3='cd +3'
+alias 4='cd +4'
+alias 5='cd +5'
+alias 6='cd +6'
+alias 7='cd +7'
+alias 8='cd +8'
+alias 9='cd +9'
+alias d='dirs -v'
+
+# ruby/rails
+alias be='bundle exec'
+alias sc='ruby script/console'
+alias sg='ruby script/generate'
+alias rdbm='rake db:migrate'
+alias devlog='tail -f log/development.log'
+
+## my aliases
+
+alias be="bundle exec"
+alias bu="bundle update"
+alias e="emacsclient -n"
+alias exterminate="mpg123 -q ~/Music/exterminate.mp3"
+alias g=git
+alias ql="qlmanage -p &> /dev/null"
+
+## global aliases
+
+alias -g C='|wc -l'
+alias -g G='|grep'
+alias -g H='|head'
+alias -g L='|less'
+alias -g SL='| sort | less'
+alias -g S='| sort'
+alias -g T='|tail'
+
+### Functions
+
+function new_branch {
+  grb new $1_`date +"%Y%m%d"`
+}
+
+function nmap_ports_sorted {
+  if [ -z $1 ] ; then
+    echo "Need an nmap file"
+    return 1
+  fi
+  grep " open " $1 | sed -r 's/ +/ /g' | sort | uniq -c\
+  |  sort -rn | less
+}
+
+function site_speed {
+  time curl -Is $1 | grep X-Runtime
+}
+
+function rl_copy {
+  echo "[code ruby]$(sed 's/</\&lt;/g' $1)[/code]" | pbcopy
+}
+
+## taken from oh-my-zsh
+# mkdir & cd to it
+function mcd() {
+  mkdir -p "$1" && cd "$1";
+}
+
+### Misc
+export PATH=$PATH:$HOME/bin:/usr/local/texlive/2010/bin/universal-darwin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin
+
+export RUBYOPT=rubygems
+eval "$(rbenv init -)"
+function rbenv-install {
+    CONFIGURE_OPTS="--with-readline-dir=/usr/local/Cellar/readline/6.2.2" rbenv install $1
+}
+alias rbenv-update="(cd ~/.rbenv/plugins/ruby-build && git pull)"
+
+
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=64M -XX:MaxPermSize=256M"
+### Options
+
+setopt NO_clobber
+
+### Prompt
+zstyle ':vcs_info:*' stagedstr '%F{green}●%F{yellow}'
+zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%F'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' enable git cvs svn darcs hg
+zstyle ':vcs_info:*' actionformats ' [%u%c%s:%b|%a]'
+
+precmd () {
+    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+            zstyle ':vcs_info:*' formats ' [%u%c%s:%b]' ''
+    } else {
+            zstyle ':vcs_info:*' formats " [%F{red}●%u%c%F{yellow}%s:%b]" ''
+    }
+    vcs_info
+}
+
+local user_host='%{$fg_bold[green]%}%n@%m%{$reset_color%}'
+local directory=' %{$fg_bold[blue]%}[${PWD/#$HOME/~}]%{$reset_color%}'
+local ruby=' %{$fg[red]%}[$(rbenv version|cut -d"-" -f1)]%{$reset_color%}'
+local git_branch='%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}'
+
+PS1="${user_host}${directory}${git_branch}${ruby}%B
+%{$reset_color%}→%b "
+
+### ZLE
+
+bindkey "\e[3~" delete-char # Del
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+### Completions
+source ~/.rbenv/completions/rbenv.zsh
+
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+export EDITOR="emacsclient -n"
