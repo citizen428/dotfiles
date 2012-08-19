@@ -77,7 +77,13 @@ function mcd() {
 }
 
 ### Misc
-export PATH=$PATH:$HOME/bin:/usr/local/texlive/2010/bin/universal-darwin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin
+PATH=$PATH:$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin
+
+if [ `uname` == "Darwin" ] ; then
+    PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
+fi
+
+export PATH
 
 export RUBYOPT=rubygems
 eval "$(rbenv init -)"
