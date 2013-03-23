@@ -30,7 +30,6 @@ alias devlog='tail -f log/development.log'
 
 ## my aliases
 
-alias be="bundle exec"
 alias bu="bundle update"
 alias e="emacsclient -n"
 alias g=git
