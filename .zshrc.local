@@ -30,10 +30,8 @@ alias devlog='tail -f log/development.log'
 
 ## my aliases
 
-alias be="bundle exec"
 alias bu="bundle update"
 alias e="emacsclient -n"
-alias exterminate="mpg123 -q ~/Music/exterminate.mp3"
 alias g=git
 alias ql="qlmanage -p &> /dev/null"
 
@@ -77,10 +75,10 @@ function mcd() {
 }
 
 ### Misc
-PATH=$PATH:$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin
+PATH=$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$PATH
 
 if [ `uname` == "Darwin" ] ; then
-    PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
+    PATH=/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core:$PATH
 fi
 
 export PATH
