@@ -10,6 +10,8 @@
 [alias]
 	# http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	# update submodules
+	subup = !"git pull --recurse-submodules && git submodule update"
 	#  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
   	# I like using the interactive mode to make complex commits
 	ai = add --interactive
