@@ -7,9 +7,7 @@ unalias \
     insecscp insecssh large lssmall mdstat medium new semifont small \
     smartfont tiny 2>/dev/null
 
-## taken from oh-my-zsh
-
-# directory stuff
+# directory stuff from oh-my-zsh
 alias 1='cd -'
 alias 2='cd +2'
 alias 3='cd +3'
@@ -23,17 +21,19 @@ alias d='dirs -v'
 
 # ruby/rails
 alias be='bundle exec'
-alias sc='ruby script/console'
-alias sg='ruby script/generate'
+alias bu="bundle update"
+alias buc='bundle console'
+alias rc='rails console'
+alias rg='rails generate'
 alias rdbm='rake db:migrate'
 alias devlog='tail -f log/development.log'
 
 ## my aliases
-
-alias bu="bundle update"
 alias e="emacsclient -n"
 alias g=git
-alias ql="qlmanage -p &> /dev/null"
+if [ `uname` == "Darwin" ] ; then
+    alias ql="qlmanage -p &> /dev/null"
+fi
 
 ## global aliases
 
@@ -46,9 +46,8 @@ alias -g S='| sort'
 alias -g T='|tail'
 
 ### Functions
-
 function new_branch {
-  grb new $1_`date +"%Y%m%d"`
+    grb new $1_`date +"%Y%m%d"`
 }
 
 function nmap_ports_sorted {
@@ -64,10 +63,6 @@ function site_speed {
   time curl -Is $1 | grep X-Runtime
 }
 
-function rl_copy {
-  echo "[code ruby]$(sed 's/</\&lt;/g' $1)[/code]" | pbcopy
-}
-
 ## taken from oh-my-zsh
 # mkdir & cd to it
 function mcd() {
@@ -78,19 +73,21 @@ function mcd() {
 PATH=$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$PATH
 
 if [ `uname` == "Darwin" ] ; then
-    PATH=/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core:$PATH
+    PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
 fi
 
 export PATH
 
 export RUBYOPT=rubygems
 eval "$(rbenv init -)"
-function rbenv-install {
-    CONFIGURE_OPTS="--with-readline-dir=/usr/local/Cellar/readline/6.2.2" rbenv install $1
-}
-alias rbenv-update="(cd ~/.rbenv/plugins/ruby-build && git pull)"
 
-export NODE_PATH=/usr/local/lib/node_modules
+if [ `uname` == "Darwin" ] ; then
+  function rbenv-install {
+      CONFIGURE_OPTS="--with-readline-dir=/usr/local/Cellar/readline/6.2.2" rbenv install $1
+  }
+fi
+
+alias rbenv-update="(cd ~/.rbenv/plugins/ruby-build && git pull)"
 
 ### Options
 
@@ -114,10 +111,10 @@ precmd () {
 
 local user_host='%{$fg_bold[green]%}%n@%m%{$reset_color%}'
 local directory=' %{$fg_bold[blue]%}[${PWD/#$HOME/~}]%{$reset_color%}'
-local ruby=' %{$fg[red]%}[$(rbenv version|cut -d"-" -f1)]%{$reset_color%}'
+local ruby=' %{$fg[red]%}[$(ruby -v|cut -d" " -f2)]%{$reset_color%}'
 local git_branch='%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}'
 
-PS1="${user_host}${directory}${git_branch}${ruby}%B
+PS1="${user_host}${directory}${ruby}${git_branch}%B
 %{$reset_color%}→%b "
 
 ### ZLE
@@ -133,8 +130,13 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 ### Completions
-source ~/.rbenv/completions/rbenv.zsh
+RBENV_COMPLETIONS=.'rbenv/completions/rbenv.zsh'
+if [ -s $RBENV_COMPLETIONS ] ; then
+    source $RBENV_COMPLETIONS
+fi
 
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+if [ -s $HOME/.tmuxinator/scripts/tmuxinator ] ; then
+    source $HOME/.tmuxinator/scripts/tmuxinator
+fi
 
 export EDITOR="emacsclient -n"
