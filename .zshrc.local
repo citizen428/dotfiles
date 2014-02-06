@@ -28,7 +28,6 @@ alias rg='rails generate'
 alias rdbm='rake db:migrate'
 alias devlog='tail -f log/development.log'
 
-## my aliases
 alias e="emacsclient -n"
 alias g=git
 if [ `uname` == "Darwin" ] ; then
@@ -41,30 +40,30 @@ alias -g C='|wc -l'
 alias -g G='|grep'
 alias -g H='|head'
 alias -g L='|less'
-alias -g SL='| sort | less'
-alias -g S='| sort'
+alias -g SL='|sort|less'
+alias -g S='|sort'
 alias -g T='|tail'
 
 ### Functions
-function new_branch {
+function new-branch {
     grb new $1_`date +"%Y%m%d"`
 }
 
-function nmap_ports_sorted {
-  if [ -z $1 ] ; then
-    echo "Need an nmap file"
-    return 1
-  fi
-  grep " open " $1 | sed -r 's/ +/ /g' | sort | uniq -c\
-  |  sort -rn | less
+function octopress-update {
+  cd "${1:-~/Projects/blog}"
+  git pull octopress master
+  bundle install
+  bundle exec rake update_source
+  bundle exec rake update_style
 }
 
-function site_speed {
-  time curl -Is $1 | grep X-Runtime
+function rbenv-update {
+  cd ~/.rbenv && git pull
+  cd ~/.rbenv/plugins/ruby-build && git pull
+  cd -
 }
 
 ## taken from oh-my-zsh
-# mkdir & cd to it
 function mcd() {
   mkdir -p "$1" && cd "$1";
 }
@@ -73,21 +72,13 @@ function mcd() {
 PATH=$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$PATH
 
 if [ `uname` == "Darwin" ] ; then
-    PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
+  CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`" # Homebrew
+  PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
 fi
 
-export PATH
+export PATH CONFIGURE_OPTS RUBYOPT=rubygems EDITOR="emacsclient -n"
 
-export RUBYOPT=rubygems
 eval "$(rbenv init -)"
-
-if [ `uname` == "Darwin" ] ; then
-  function rbenv-install {
-      CONFIGURE_OPTS="--with-readline-dir=/usr/local/Cellar/readline/6.2.2" rbenv install $1
-  }
-fi
-
-alias rbenv-update="(cd ~/.rbenv/plugins/ruby-build && git pull)"
 
 ### Options
 
@@ -130,7 +121,7 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 ### Completions
-RBENV_COMPLETIONS=.'rbenv/completions/rbenv.zsh'
+RBENV_COMPLETIONS='.rbenv/completions/rbenv.zsh'
 if [ -s $RBENV_COMPLETIONS ] ; then
     source $RBENV_COMPLETIONS
 fi
@@ -139,4 +130,7 @@ if [ -s $HOME/.tmuxinator/scripts/tmuxinator ] ; then
     source $HOME/.tmuxinator/scripts/tmuxinator
 fi
 
-export EDITOR="emacsclient -n"
+ source /usr/local/share/zsh/site-functions/git-flow-completion.zsh
+
+# OPAM configuration
+. /Users/michi/.opam/opam-init/init.zsh &> /dev/null || true
