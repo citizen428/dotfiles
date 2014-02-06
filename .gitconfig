@@ -14,7 +14,8 @@
 	subup = !"git pull --recurse-submodules && git submodule update"
 	#  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
   	# I like using the interactive mode to make complex commits
-	ai = add --interactive
+        a = add --all
+        ai = add --interactive
 
   	# All the aliases relate to commits. Note that
  	# they are grouped by common prefixes, so I don't
@@ -41,7 +42,6 @@
 	s = status -sb
 	st = status
 	d = diff
-	a = add
 	co = checkout
 	b = branch
 	l = log
