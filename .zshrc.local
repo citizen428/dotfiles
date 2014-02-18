@@ -69,11 +69,11 @@ function mcd() {
 }
 
 ### Misc
-PATH=$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$PATH
+PATH=$HOME/bin:/usr$HOME/.rbenv/bin:$HOME/.cabal/bin:$PATH
 
 if [ `uname` == "Darwin" ] ; then
   CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`" # Homebrew
-  PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
+#  PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin:/usr/local/Cellar/git/1.7.11.5/libexec/git-core
 fi
 
 export PATH CONFIGURE_OPTS RUBYOPT=rubygems EDITOR="emacsclient -n"
@@ -105,8 +105,11 @@ local directory=' %{$fg_bold[blue]%}[${PWD/#$HOME/~}]%{$reset_color%}'
 local ruby=' %{$fg[red]%}[$(ruby -v|cut -d" " -f2)]%{$reset_color%}'
 local git_branch='%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}'
 
-PS1="${user_host}${directory}${ruby}${git_branch}%B
-%{$reset_color%}→%b "
+# Deactive grml prompt
+prompt off
+
+PS1="${user_host}${directory}${ruby}${git_branch}%B%{$reset_color%}
+→%b "
 
 ### ZLE
 
@@ -130,7 +133,5 @@ if [ -s $HOME/.tmuxinator/scripts/tmuxinator ] ; then
     source $HOME/.tmuxinator/scripts/tmuxinator
 fi
 
- source /usr/local/share/zsh/site-functions/git-flow-completion.zsh
-
 # OPAM configuration
-. /Users/michi/.opam/opam-init/init.zsh &> /dev/null || true
+source /Users/michi/.opam/opam-init/init.zsh &> /dev/null || true
