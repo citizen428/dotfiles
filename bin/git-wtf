@@ -1,7 +1,4 @@
 #!/usr/bin/env ruby
-# 
-# Taken from
-# https://github.com/cypher/dotfiles/raw/master/bin/git-wtf
 
 HELP = <<EOS
 git-wtf displays the state of your repository in a readable, easy-to-scan

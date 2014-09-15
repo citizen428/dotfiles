@@ -1,6 +1,6 @@
 ## Pry settings
 Pry.config.prompt = Pry::NAV_PROMPT
-Pry.config.editor = "emacsclient -n"
+Pry.config.editor = "atom"
 
 ## Custom methods
 def require_safely(*gems)
@@ -19,7 +19,7 @@ def ruby_info
 end
 
 ## Additional gems
-require_safely 'awesome_print', 'methodfinder', 'shenanigans'
+require_safely 'awesome_print', 'methodfinder', 'shenanigans', 'try_it'
 
 # Blacklist a method that makes methodfinder hang
 if Kernel.methods.include?(:prompt) && defined?(MethodFinder)
