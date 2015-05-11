@@ -20,7 +20,7 @@ alias d='dirs -v'
 
 # ruby/rails
 alias be='bundle exec'
-alias bu="bundle update"
+alias bi='bundle install'
 alias buc='bundle console'
 alias rc='rails console'
 alias r='bundle exec rake'
@@ -39,17 +39,11 @@ alias -g S='|sort'
 alias -g T='|tail'
 
 function octopress-update {
-  cd "${1:-~/Projects/blog}"
+  cd "${1:-~/Projects/citizen428-blog}"
   git pull octopress master
   bundle install
   bundle exec rake update_source
   bundle exec rake update_style
-}
-
-function rbenv-update {
-  cd ~/.rbenv && git pull
-  cd ~/.rbenv/plugins/ruby-build && git pull
-  cd -
 }
 
 ## taken from oh-my-zsh
@@ -58,14 +52,16 @@ function mcd() {
 }
 
 ### Misc
-PATH=/usr/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/.cabal/bin:$PATH
+export GOPATH=$HOME/Projects/go
+
+PATH=/usr/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/Library/Haskell/bin:$GOPATH/bin:$PATH
 
 if [ `uname` == "Darwin" ] ; then
   CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`" # Homebrew
   #  PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin
 fi
 
-export PATH CONFIGURE_OPTS RUBYOPT=rubygems EDITOR="atom"
+export PATH GOPATH CONFIGURE_OPTS RUBYOPT=rubygems EDITOR="atom"
 
 eval "$(rbenv init -)"
 
@@ -125,5 +121,8 @@ fi
 
 # OPAM configuration
 source /Users/michi/.opam/opam-init/init.zsh &> /dev/null || true
+
+# dnvm
+source /usr/local/Cellar/dnvm/1.0.0-dev/libexec/dnvm.sh
 
 # /Applications/Android\ Studio.app/sdk/
