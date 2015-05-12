@@ -1,35 +1,24 @@
 ### Aliases
 
-## get rid of some grml aliases
-unalias \
-    0 CH CO GREP calc cmplayer da default dir fblinks fbmplayer hide huge \
-    insecscp insecssh large lssmall mdstat medium new semifont small \
-    smartfont tiny 2>/dev/null
-
-# directory stuff from oh-my-zsh
-alias 1='cd -'
-alias 2='cd +2'
-alias 3='cd +3'
-alias 4='cd +4'
-alias 5='cd +5'
-alias 6='cd +6'
-alias 7='cd +7'
-alias 8='cd +8'
-alias 9='cd +9'
-alias d='dirs -v'
+# remove Prezto aliases
+unalias _ b e ebuild gist p run-help sl
 
 # ruby/rails
+alias bc='bundle console'
 alias be='bundle exec'
 alias bi='bundle install'
-alias buc='bundle console'
-alias rc='rails console'
-alias r='bundle exec rake'
-alias rg='rails generate'
-alias rdbm='bundle exec rake db:migrate'
+alias bu='bundle update'
 alias devlog='tail -f log/development.log'
-alias g=git
+alias r='bundle exec rake'
+alias rc='rails console'
+alias rdbm='bundle exec rake db:migrate'
+alias rg='rails generate'
 
-## global aliases
+# general
+alias g=git
+alias rm='nocorrect rm'
+
+# global aliases
 alias -g C='|wc -l'
 alias -g G='|grep'
 alias -g H='|head'
@@ -37,6 +26,8 @@ alias -g L='|less'
 alias -g SL='|sort|less'
 alias -g S='|sort'
 alias -g T='|tail'
+
+### Functions
 
 function octopress-update {
   cd "${1:-~/Projects/citizen428-blog}"
@@ -46,83 +37,46 @@ function octopress-update {
   bundle exec rake update_style
 }
 
-## taken from oh-my-zsh
+# taken from oh-my-zsh
 function mcd() {
   mkdir -p "$1" && cd "$1";
 }
 
 ### Misc
-export GOPATH=$HOME/Projects/go
 
-PATH=/usr/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/Library/Haskell/bin:$GOPATH/bin:$PATH
+# editor
+export EDITOR="atom"
 
-if [ `uname` == "Darwin" ] ; then
-  CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`" # Homebrew
-  #  PATH=$PATH:/usr/local/texlive/2010/bin/universal-darwin
+# Homebrew
+if [[ `uname` == "Darwin" ]] ; then
+  export CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`"
 fi
 
-export PATH GOPATH CONFIGURE_OPTS RUBYOPT=rubygems EDITOR="atom"
+# Path
+GOPATH=$HOME/Projects/go
+PATH=/usr/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/Library/Haskell/bin:$GOPATH/bin:$PATH
 
+export PATH GOPATH
+
+# ruby
 eval "$(rbenv init -)"
 
-### Options
-
-setopt NO_clobber
-
-### Prompt
-zstyle ':vcs_info:*' stagedstr '%F{green}●%F{yellow}'
-zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%F'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' enable git cvs svn darcs hg
-zstyle ':vcs_info:*' actionformats ' [%u%c%s:%b|%a]'
-
-precmd () {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-      zstyle ':vcs_info:*' formats ' [%u%c%s:%b]' ''
-    } else {
-      zstyle ':vcs_info:*' formats " [%F{red}●%u%c%F{yellow}%s:%b]" ''
-    }
-    vcs_info
-}
-
-local user_host='%{$fg_bold[green]%}%n@%m%{$reset_color%}'
-local directory=' %{$fg_bold[blue]%}[${PWD/#$HOME/~}]%{$reset_color%}'
-local ruby=' %{$fg[red]%}[$(ruby -v|cut -d" " -f2)]%{$reset_color%}'
-local git_branch='%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}'
-
-# Deactive grml prompt
-prompt off
-setopt prompt_subst
-
-PS1="${user_host}${directory}${ruby}${git_branch}%B%{$reset_color%}
-→%b "
-
-### ZLE
-
-bindkey "\e[3~" delete-char # Del
-bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
-bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-
-### Completions
 RBENV_COMPLETIONS='.rbenv/completions/rbenv.zsh'
 if [ -s $RBENV_COMPLETIONS ] ; then
   source $RBENV_COMPLETIONS
 fi
 
+export RUBYOPT=rubygems
+
+# tmuxinator
 if [ -s $HOME/.tmuxinator/scripts/tmuxinator ] ; then
   source $HOME/.tmuxinator/scripts/tmuxinator
 fi
 
-# OPAM configuration
-source /Users/michi/.opam/opam-init/init.zsh &> /dev/null || true
-
 # dnvm
 source /usr/local/Cellar/dnvm/1.0.0-dev/libexec/dnvm.sh
 
-# /Applications/Android\ Studio.app/sdk/
+# Docker
+export DOCKER_CERT_PATH=/Users/michi/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
