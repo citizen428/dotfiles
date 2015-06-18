@@ -18,11 +18,11 @@
 	#  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
 	# I like using the interactive mode to make complex commits
 	a  = add --all
-  ai = add --interactive
+	ai = add --interactive
 
-  # All the aliases relate to commits. Note that
+	# All the aliases relate to commits. Note that
 	# they are grouped by common prefixes, so I don't
-  # confuse what I want done by accident.
+	# confuse what I want done by accident.
 	c   = commit
 	# commit with a message
 	cm  = commit -m
