@@ -52,6 +52,12 @@ if [[ `uname` == "Darwin" ]] ; then
   export CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline`"
 fi
 
+function brew-deps() {
+  brew list | while read cask; do
+    echo -n "\e[1;34m$cask ->\e[0m"; brew deps $cask | awk '{printf(" %s ", $0)}'; echo "";
+  done
+}
+
 # Path
 GOPATH=$HOME/Projects/go
 PATH=/usr/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/Library/Haskell/bin:$GOPATH/bin:$PATH
@@ -76,7 +82,10 @@ fi
 # dnvm
 source /usr/local/Cellar/dnvm/1.0.0-dev/libexec/dnvm.sh
 
-# Docker
-export DOCKER_CERT_PATH=/Users/michi/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
+### Docker
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/michi/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+
+alias stitched='docker run  --env DOCKER_HOST=$DOCKER_HOST --env DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY --env DOCKER_CERT_PATH=/docker/cert -v $DOCKER_CERT_PATH:/docker/cert -ti  mrmattwright/docker-environment-dev up -d'
