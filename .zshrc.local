@@ -4,7 +4,6 @@
 unalias _ b e ebuild gist p run-help sl
 
 # ruby/rails
-alias bc='bundle console'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
@@ -13,6 +12,7 @@ alias r='bundle exec rake'
 alias rc='rails console'
 alias rdbm='bundle exec rake db:migrate'
 alias rg='rails generate'
+alias rs='rails server'
 
 # general
 alias g=git
@@ -30,7 +30,6 @@ alias -g T='|tail'
 ### Functions
 
 function octopress-update {
-  cd "${1:-~/Projects/citizen428-blog}"
   git pull octopress master
   bundle install
   bundle exec rake update_source
@@ -40,6 +39,10 @@ function octopress-update {
 # taken from oh-my-zsh
 function mcd() {
   mkdir -p "$1" && cd "$1";
+}
+
+function ratom-setup() {
+  ssh -R 52698:localhost:52698 $1
 }
 
 ### Misc
@@ -79,9 +82,6 @@ if [ -s $HOME/.tmuxinator/scripts/tmuxinator ] ; then
   source $HOME/.tmuxinator/scripts/tmuxinator
 fi
 
-# dnvm
-source /usr/local/Cellar/dnvm/1.0.0-dev/libexec/dnvm.sh
-
 ### Docker
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
@@ -89,3 +89,6 @@ export DOCKER_CERT_PATH="/Users/michi/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
 
 alias stitched='docker run  --env DOCKER_HOST=$DOCKER_HOST --env DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY --env DOCKER_CERT_PATH=/docker/cert -v $DOCKER_CERT_PATH:/docker/cert -ti  mrmattwright/docker-environment-dev up -d'
+
+# OPAM configuration
+. /Users/michi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
