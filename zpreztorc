@@ -35,7 +35,6 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'git' \
   'homebrew' \
-  'ocaml' \
   'ruby' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -92,7 +91,7 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'citizen428'
+zstyle ':prezto:module:prompt' theme 'skwp'
 # Git
 zstyle ':prezto:module:git:info' verbose 'yes'
 # Ruby
