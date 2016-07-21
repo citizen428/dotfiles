@@ -1,16 +1,15 @@
 "-------------------------------------------------------
 " .vimrc from Michael Kohl <citizen428@gmail.com>
 "
-" Last update: Mon 2011-11-21 13:25
+" Last update: Thu 2016-07-21 21:07
 " 
 "-------------------------------------------------------
 
 "-------------------------------------------------------
 " TERMINAL ENCODING
 " ------------------------------------------------------
-if ($TERM == "rxvt-unicode") && (&termencoding == "")
-    set termencoding=utf-8
-endif
+
+set termencoding=utf-8
 
 "-------------------------------------------------------
 " GENERAL SETTINGS
@@ -58,7 +57,7 @@ set history=50
 " Show cursor position
 set ruler
 
-" Show line numbersn
+" Show line numbers
 set nu
 
 " Folding
@@ -80,33 +79,20 @@ set softtabstop=2
 set smartindent
 set autoindent
 
-" Only uses modeliens for secure Vim versions
-if (v:version == 603 && has("patch045")) || (v:version > 603)
-    set modeline
-else
-    set nomodeline
-endif
+set modeline
 
 "-------------------------------------------------------
 " USER INTERFACE
 "------------------------------------------------------- 
-colorscheme elflord
 
-" Syntax highlighting in terminals with color support 
-" and GVim
-if has("syntax") && (&t_Co > 2) || has("gui_running")
-  syntax on
-endif
+colorscheme solarized
+
+" Syntax highlighting
+syntax on
 
 " No menu und toolbar in GVim
 set guioptions-=m
 set guioptions-=T
-
-" Size of new GVim window
-if has("gui_running")
-  set lines=40
-  set columns=80
-endif
 
 "-------------------------------------------------------
 " Keys
@@ -171,7 +157,6 @@ augroup citizen428
     
      " Automatically update headers of vimrc and bashrc 
      autocmd BufWritePre *vimrc  :call <SID>UpdateRcHeader()
-     autocmd BufWritePre *bashrc :call <SID>UpdateRcHeader()
 augroup END
 
 "-------------------------------------------------------
