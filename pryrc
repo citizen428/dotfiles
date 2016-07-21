@@ -1,5 +1,6 @@
 ## Pry settings
 Pry.config.prompt = Pry::NAV_PROMPT
+Pry.config.prompt_name = File.basename(Dir.pwd)
 Pry.config.editor = "atom"
 
 ## Custom methods
@@ -8,7 +9,6 @@ def require_safely(*gems)
     begin
       require gem
     rescue LoadError => e
-      puts "Missing library: %s" % e.message.split(/ -- /).last
       next
     end
   end
@@ -19,10 +19,4 @@ def ruby_info
 end
 
 ## Additional gems
-require_safely 'awesome_print', 'methodfinder', 'shenanigans', 'try_it'
-
-# Blacklist a method that makes methodfinder hang
-if Kernel.methods.include?(:prompt) && defined?(MethodFinder)
-  MethodFinder::INSTANCE_METHOD_BLACKLIST[:Object] << :prompt
-  MethodFinder::CLASS_METHOD_BLACKLIST[:Object] << :prompt
-end
+require_safely 'awesome_print', 'methodfinder'

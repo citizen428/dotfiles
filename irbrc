@@ -11,18 +11,21 @@ IRB.conf[:PROMPT][:CUSTOM] = {
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 IRB.conf[:AUTO_INDENT] = true
 
-## awesome_print
-require 'awesome_print'
+begin
+  ## awesome_print
+  require 'awesome_print'
 
-## Looksee
-require 'looksee'
+  ## Looksee
+  require 'looksee'
 
-## Wirble
-require 'wirble'
-Wirble.init
-Wirble.colorize
+  ## Wirble
+  require 'wirble'
+  Wirble.init
+  Wirble.colorize
 
-require 'methodfinder'
+  require 'methodfinder'
+rescue LoadError
+end
 
 ## Aliases
 alias q exit
