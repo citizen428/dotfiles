@@ -69,8 +69,6 @@
 	compactionHeuristic = true
 [rerere]
 	enabled      = true
-[init]
-	templatedir  = ~/.git_template
 [pull]
 	rebase = true
 [filter "lfs"]
