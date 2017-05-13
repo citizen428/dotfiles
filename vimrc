@@ -1,7 +1,7 @@
 "-------------------------------------------------------
 " .vimrc from Michael Kohl <citizen428@gmail.com>
 "
-" Last update: Thu 2016-07-21 21:07
+" Last update: Thu 2017-05-11 23:04
 " 
 "-------------------------------------------------------
 
@@ -85,7 +85,7 @@ set modeline
 " USER INTERFACE
 "------------------------------------------------------- 
 
-colorscheme solarized
+colorscheme monokai
 
 " Syntax highlighting
 syntax on
