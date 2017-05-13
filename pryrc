@@ -1,7 +1,7 @@
 ## Pry settings
 Pry.config.prompt = Pry::NAV_PROMPT
 Pry.config.prompt_name = File.basename(Dir.pwd)
-Pry.config.editor = "atom"
+Pry.config.editor = "vim"
 
 ## Custom methods
 def require_safely(*gems)
