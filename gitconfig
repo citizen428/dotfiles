@@ -3,6 +3,7 @@
 [user]
 	email  = citizen428@gmail.com
 	name   = Michael Kohl
+	signingkey = E183E826AAA271D9A25EB8E9EF16E5E687B2A218
 [alias]
 	# http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
 	pu           = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
