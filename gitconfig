@@ -33,6 +33,8 @@
 	ca  = commit --amend
 	caa = commit -a --amend -C HEAD
 
+	deleted = log --diff-filter=D --summary
+
 	# reset
 	## soft resets
 	r   = reset
