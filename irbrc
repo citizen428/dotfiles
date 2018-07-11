@@ -1,5 +1,3 @@
-require 'rubygems'
-
 ## Prompt
 IRB.conf[:PROMPT][:CUSTOM] = {
   :PROMPT_I => ">> ",
