@@ -51,7 +51,7 @@
 	d   = diff
 	f   = fetch
 	l   = log
-	lg  = log --oneline --decorate --all --graph
+	lg  = log --graph --oneline --decorate --date=relative --all
 	m   = merge
 	mt  = mergetool
 	p   = pull
