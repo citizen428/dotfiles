@@ -1,22 +1,59 @@
-## Pry settings
+# Optional extra gems
+%w[awesome_print interesting_methods methodfinder].each do |gem|
+  require gem if Gem::Specification.find_all_by_name(gem).any?
+end
+
+if defined?(AwesomePrint)
+  AwesomePrint.pry!
+  AwesomePrint.defaults = {
+    indent: 2,
+    ruby19_syntax: true,
+    sort_keys: true,
+    string_limit: 80
+  }
+else
+  # Make sure we always have an 'ap' command available
+  alias ap pp
+end
+
+Pry.config.editor = 'vim'
+
+# UI
 Pry.config.prompt = Pry::NAV_PROMPT
 Pry.config.prompt_name = File.basename(Dir.pwd)
-Pry.config.editor = "vim"
+Pry.config.theme = 'monokai'
+Pry.config.ls.heading_color = :magenta
+Pry.config.ls.public_method_color = :green
+Pry.config.ls.protected_method_color = :yellow
+Pry.config.ls.private_method_color = :bright_black
 
-## Custom methods
-def require_safely(*gems)
-  gems.each do |gem|
-    begin
-      require gem
-    rescue LoadError => e
-      next
-    end
+# History
+Pry.config.history.should_save = true
+Pry::Commands.command /^$/, 'repeat last command' do
+  _pry_.run_command Pry.history.to_a.last
+end
+
+# Custom commands
+# See: https://jacopretorius.net/2017/11/customizing-pry.html
+Pry.config.commands.command 'pbcopy', 'Copy input to clipboard' do |input|
+  input = input ? target.eval(input) : _pry_.last_result
+  IO.popen('pbcopy', 'w') { |io| io << input }
+end
+
+Pry.config.commands.command 'ruby-info', 'Output Ruby info' do
+  constants = Object.constants.grep(/RUBY/) - [:RUBYGEMS_ACTIVATION_MONITOR]
+  ap constants.map { |c| [c, Object.const_get(c)] }.to_h
+end
+
+# Command aliases
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+Pry.commands.alias_command 'f', 'finish'
+Pry.commands.alias_command 'w', 'whereami'
+
+if defined?(Rails)
+  module Rails::ConsoleMethods
+    alias rr reload!
   end
 end
-
-def ruby_info
-  puts Object.constants.grep(/RUBY/).map{ |c| "%-23s: %s" % [c, Object.const_get(c)] }
-end
-
-## Additional gems
-require_safely 'awesome_print', 'methodfinder'

@@ -1,5 +1,10 @@
-bundler
 awesome_print
+bundler
+interesting_methods
 methodfinder
 pry
+pry-byebug
 pry-doc
+interesting_methods
+rubocop
+
