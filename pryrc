@@ -57,3 +57,10 @@ if defined?(Rails)
     alias rr reload!
   end
 end
+
+# Monkey-patches
+class Object
+  def d
+    tap { |s| puts s }
+  end
+end
