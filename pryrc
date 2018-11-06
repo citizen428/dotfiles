@@ -52,7 +52,7 @@ Pry.commands.alias_command 'n', 'next'
 Pry.commands.alias_command 'f', 'finish'
 Pry.commands.alias_command 'w', 'whereami'
 
-if defined?(Rails)
+if defined?(Rails::ConsoleMethods)
   module Rails::ConsoleMethods
     alias rr reload!
   end
