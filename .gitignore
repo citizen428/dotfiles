@@ -1,2 +1,5 @@
-vim/.netrwhist
+.DS_Store
+.idea/
+.projectile
+.vscode/
 

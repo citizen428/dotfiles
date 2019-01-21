@@ -19,7 +19,6 @@ end
 Pry.config.editor = 'vim'
 
 # UI
-Pry.config.prompt = Pry::NAV_PROMPT
 Pry.config.prompt_name = File.basename(Dir.pwd)
 Pry.config.theme = 'monokai'
 Pry.config.ls.heading_color = :magenta
@@ -46,11 +45,11 @@ Pry.config.commands.command 'ruby-info', 'Output Ruby info' do
 end
 
 # Command aliases
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
-Pry.commands.alias_command 'w', 'whereami'
+# Pry.commands.alias_command 'c', 'continue'
+# Pry.commands.alias_command 's', 'step'
+# Pry.commands.alias_command 'n', 'next'
+# Pry.commands.alias_command 'f', 'finish'
+# Pry.commands.alias_command 'w', 'whereami'
 
 if defined?(Rails::ConsoleMethods)
   module Rails::ConsoleMethods
