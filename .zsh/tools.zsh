@@ -13,3 +13,5 @@ export CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 source /usr/local/etc/profile.d/z.sh
 
 export EDITOR=vim
+
+test -d ~/.nix-profile && source ~/.nix-profile/etc/profile.d/nix.sh
