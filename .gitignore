@@ -3,3 +3,4 @@
 .projectile
 .vscode/
 *.zwc
+.ionide/
