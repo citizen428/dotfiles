@@ -1,0 +1,26 @@
+# Settings
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- clean: ['~', '~/.config']
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
+- link:
+    ~/.asdfrc:
+    # ~/Brewfile:
+    ~/.bin:
+    ~/.config/kitty/kitty.conf:
+    ~/.default-gems:
+    # ~/.ghci:
+    ~/.gitconfig:
+    ~/.gitignore:
+    ~/.pryrc:
+    # ~/.spacemacs:
+    ~/.tmux.conf:
+    ~/.zshrc:
+    ~/.zsh:
