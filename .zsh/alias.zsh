@@ -20,7 +20,7 @@ alias lt='exa -lT --git'
 alias g='git'
 
 # Homebrew
-alias brewu='brew update'
+alias brewu='brew update && brew upgrade'
 alias brewc='brew cleanup'
 alias bservl='brew services list'
 alias bservr='brew services restart'
