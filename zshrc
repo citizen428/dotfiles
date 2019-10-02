@@ -9,5 +9,3 @@ source ~/.zsh/tools.zsh
 source ~/.zsh/ui.zsh
 
 source ~/.zsh/plugins.zsh
-# Setup prompt after plugins are loaded
-source ~/.zsh/prompt.zsh

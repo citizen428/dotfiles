@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/cask'
@@ -27,6 +29,7 @@ brew 'openssl@1.1'
 # brew 'redis'
 brew 'ripgrep'
 # brew 'sqlite'
+brew 'starship'
 brew 'telnet'
 # brew 'tig'
 # brew 'tmux'
