@@ -1,5 +1,5 @@
 [github]
-	user                = citizen428
+  user                = citizen428
 [user]
   email               = citizen428@gmail.com
   name                = Michael Kohl
@@ -62,38 +62,37 @@
   conflicts           = diff --name-only --diff-filter=U
 [core]
   excludesfile        = ~/.gitignore
-	editor              = vim
-	autocrlf            = input
+  editor              = vim
+  autocrlf            = input
 [push]
-	default             = current
+  default             = current
 [merge]
-	tool                = diffmerge
-	stat                = true
+  tool                = diffmerge
+  stat                = true
 [rerere]
-	enabled             = true
+  enabled             = true
 [pull]
-	rebase              = true
+  rebase              = true
 [filter "lfs"]
-	clean               = git-lfs clean -- %f
-	smudge              = git-lfs smudge -- %f
-	required            = true
-	process             = git-lfs filter-process
+  clean               = git-lfs clean -- %f
+  smudge              = git-lfs smudge -- %f
+  required            = true
+  process             = git-lfs filter-process
 [credential]
-	helper              = osxkeychain
+  helper              = osxkeychain
 [rebase]
-	autosquash          = true
+  autosquash          = true
 [diff]
   tool                = kitty
 [difftool]
-    prompt = false
-    trustExitCode = true
+  prompt = false
+  trustExitCode = true
 [difftool "kitty"]
-    cmd = kitty +kitten diff $LOCAL $REMOTE
+  cmd                 = kitty +kitten diff $LOCAL $REMOTE
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd                 = opendiff \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode       = true
 [hub]
-	protocol            = ssh
+  protocol            = ssh
