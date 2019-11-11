@@ -20,7 +20,7 @@ alias lt='exa -lT --git'
 alias g='git'
 
 # Homebrew
-alias brewu='brew update && brew upgrade'
+alias brewu='brew update && brew upgrade && brew cask upgrade'
 alias brewc='brew cleanup'
 alias bservl='brew services list'
 alias bservr='brew services restart'
@@ -42,5 +42,8 @@ alias r='bundle exec rake'
 
 # Start webserver for current directory
 alias serve='python -m http.server'
+
+# Download with HTTPie
+alias down='http --download'
 
 alias vim='nvim'
