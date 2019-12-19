@@ -8,9 +8,8 @@ source ~/.asdf/completions/asdf.bash
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
-# n - Node version management
-export N_PREFIX=$HOME/.n
-path=($N_PREFIX/bin $path)
+# fnm
+eval "$(fnm env --multi)"
 
 # opam configuration
 test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
