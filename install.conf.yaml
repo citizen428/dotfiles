@@ -24,3 +24,4 @@
     ~/.tmux.conf:
     ~/.zshrc:
     ~/.zsh:
+    /usr/local/bin/imgcat: bin/imgcat
