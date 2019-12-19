@@ -1,6 +1,6 @@
 :m - Prelude
 :m + GOA
-setLambdabotHome "/Users/michi/.cabal/bin"
+setLambdabotHome "~/.cabal/bin"
 :def pl        lambdabot "pl"
 :def unpl      lambdabot "unpl"
 :def redo      lambdabot "redo"
