@@ -5,16 +5,16 @@
       relink: true
       force: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config", "/usr/local/bin"]
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
     ~/.asdfrc:
-    # ~/Brewfile:
-    ~/.bin:
-    ~/.config/kitty/kitty.conf:
+    ~/Brewfile:
+    #~/bin:
+    #~/.config/kitty/kitty.conf:
     ~/.default-gems:
     # ~/.ghci:
     ~/.gitconfig:
@@ -24,4 +24,5 @@
     ~/.tmux.conf:
     ~/.zshrc:
     ~/.zsh:
+    /usr/local/bin/git-wtf: bin/git-wtf
     /usr/local/bin/imgcat: bin/imgcat
