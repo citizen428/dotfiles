@@ -7,7 +7,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GPG_TTY=$(tty)
 
 # Homebrew
-export CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
+# export CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 
 # z
 source /usr/local/etc/profile.d/z.sh

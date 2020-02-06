@@ -6,7 +6,7 @@ source ~/.asdf/completions/asdf.bash
 
 # Go
 export GOPATH=$HOME/go
-path=($GOPATH/bin $path)
+path=($path $GOPATH/bin)
 
 # fnm
 eval "$(fnm env --multi)"
@@ -16,4 +16,4 @@ test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2
 
 # .NET Core
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
-path=($HOME/.dotnet/tools $path)
+# path=($path $HOME/.dotnet/tools)

@@ -1,3 +1,7 @@
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
+
 source ~/.zsh/alias.zsh
 source ~/.zsh/bindings.zsh
 source ~/.zsh/completion.zsh
