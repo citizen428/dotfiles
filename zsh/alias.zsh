@@ -18,6 +18,9 @@ alias la='ls -a'
 alias lt='exa -lT --git'
 
 alias g='git'
+alias be='bundle exec'
+alias mux='tmuxinator'
+alias ducks='du -cks * | sort -rn | head'
 
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cask upgrade'
