@@ -1,15 +1,14 @@
 # Optional extra gems
-%w[awesome_print interesting_methods methodfinder].each do |gem|
+%w[amazing_print interesting_methods methodfinder].each do |gem|
   require gem if Gem::Specification.find_all_by_name(gem).any?
 end
 
 if defined?(AwesomePrint)
-  AwesomePrint.pry!
+  AmazingPrint.pry!
   AwesomePrint.defaults = {
     indent: 2,
     ruby19_syntax: true,
     sort_keys: true,
-    string_limit: 80
   }
 else
   # Make sure we always have an 'ap' command available
@@ -27,7 +26,6 @@ Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
 # History
-Pry.config.history.should_save = true
 Pry::Commands.command /^$/, 'repeat last command' do
   _pry_.run_command Pry.history.to_a.last
 end
