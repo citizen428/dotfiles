@@ -34,12 +34,6 @@ alias bservx='brew services stop'
 alias icat='kitty +kitten icat'
 alias kdiff="kitty +kitten diff"
 
-# Nix
-alias nixc="nix-collect-garbage -d"
-alias nixq="nix-env -qaP"
-alias nixU="nix-channel --update && nix-env -iA nixpkgs.nix"
-alias nixu="nix-env -u"
-
 # Ruby/Rails
 alias r='bundle exec rake'
 

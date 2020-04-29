@@ -14,4 +14,3 @@ source /usr/local/etc/profile.d/z.sh
 
 export EDITOR=vim
 
-test -d ~/.nix-profile && source ~/.nix-profile/etc/profile.d/nix.sh
