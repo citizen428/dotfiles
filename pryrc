@@ -3,9 +3,9 @@
   require gem if Gem::Specification.find_all_by_name(gem).any?
 end
 
-if defined?(AwesomePrint)
+if defined?(AmazingPrint)
   AmazingPrint.pry!
-  AwesomePrint.defaults = {
+  AmazingPrint.defaults = {
     indent: 2,
     ruby19_syntax: true,
     sort_keys: true,
