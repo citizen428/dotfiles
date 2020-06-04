@@ -15,7 +15,7 @@
   # delete branches that have already been merged into the current branch
   rmmerged            = !"git branch --merged | grep -v '*' | grep -v \"master\" | xargs -n 1 git branch -d && git remote prune origin"
   count               = shortlog -sn
-  changedfiles        = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD ${1:-development})' -
+  changedfiles        = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD master)' -
   change-commits      = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
   #  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
@@ -82,18 +82,12 @@
   helper              = osxkeychain
 [rebase]
   autosquash          = true
-[diff]
-  tool                = kitty
 [difftool]
   prompt = false
   trustExitCode = true
-[difftool "kitty"]
-  cmd                 = kitty +kitten diff $LOCAL $REMOTE
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [hub]
   protocol            = ssh
+[core]
+  pager = delta --plus-color="#012800" --minus-color="#340001"
+[interactive]
+  diffFilter = delta --color-only

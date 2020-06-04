@@ -1,7 +1,10 @@
 .DS_Store
+dump.rdb
 .idea/
 .projectile
 .vscode/
 *.zwc
 .ionide/
 .vscode
+Gemfile.dev
+
