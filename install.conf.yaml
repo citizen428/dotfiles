@@ -17,6 +17,7 @@
     #~/.config/kitty/kitty.conf:
     ~/.default-gems:
     # ~/.ghci:
+    ~/.gitattributes:
     ~/.gitconfig:
     ~/.gitignore:
     ~/.pryrc:

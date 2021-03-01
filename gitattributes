@@ -1,0 +1,12 @@
+*.ex      diff=elixir
+*.exs     diff=elixir
+*.go      diff=golang
+*.md      diff=markdown
+*.py      diff=python
+*.rb      diff=ruby
+*.rs      diff=rust
+*.css     diff=css
+*.exs     diff=elixir
+*.html    diff=html
+*.rake    diff=ruby
+*.gemspec diff=ruby

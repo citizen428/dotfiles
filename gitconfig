@@ -1,7 +1,7 @@
 [github]
   user                = citizen428
 [user]
-  email               = citizen428@gmail.com
+  email               = me@citizen428.net
   name                = Michael Kohl
   signingkey          = E183E826AAA271D9A25EB8E9EF16E5E687B2A218
 [alias]
@@ -52,6 +52,7 @@
   d                   = diff
   f                   = fetch
   l                   = log
+  l1                  = log --oneline
   lg                  = log --graph --oneline --decorate --date=relative --all
   m                   = merge
   mt                  = mergetool
@@ -59,6 +60,7 @@
   rp                  = git remote prune origin
   s                   = status -sb
   st                  = status
+  sw                  = switch
   conflicts           = diff --name-only --diff-filter=U
 [core]
   excludesfile        = ~/.gitignore
@@ -89,5 +91,8 @@
   protocol            = ssh
 [core]
   pager = delta --plus-color="#012800" --minus-color="#340001"
+  attributesfile = ~/.gitattributes
 [interactive]
   diffFilter = delta --color-only
+[init]
+  defaultBranch = main

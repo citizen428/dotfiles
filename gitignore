@@ -7,4 +7,5 @@ dump.rdb
 .ionide/
 .vscode
 Gemfile.dev
+Gemfile.dev.lock
 
