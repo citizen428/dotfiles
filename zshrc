@@ -13,3 +13,5 @@ source ~/.zsh/tools.zsh
 source ~/.zsh/ui.zsh
 
 source ~/.zsh/plugins.zsh
+
+source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
