@@ -13,17 +13,13 @@
 - link:
     ~/.asdfrc:
     ~/Brewfile:
-    #~/bin:
-    #~/.config/kitty/kitty.conf:
     ~/.default-gems:
-    # ~/.ghci:
     ~/.gitattributes:
     ~/.gitconfig:
     ~/.gitignore:
+    ~/.neomutt/colorschemes: neomutt/colorschemes
+    ~/.neomuttrc:
     ~/.pryrc:
-    # ~/.spacemacs:
     ~/.tmux.conf:
-    ~/.zshrc:
-    ~/.zsh:
     /usr/local/bin/git-wtf: bin/git-wtf
     /usr/local/bin/imgcat: bin/imgcat
