@@ -20,6 +20,7 @@
     ~/.neomutt/colorschemes: neomutt/colorschemes
     ~/.neomuttrc:
     ~/.pryrc:
+    ~/.psqlrc:
     ~/.tmux.conf:
     /usr/local/bin/git-wtf: bin/git-wtf
     /usr/local/bin/imgcat: bin/imgcat
