@@ -8,4 +8,4 @@ dump.rdb
 .vscode
 Gemfile.dev
 Gemfile.dev.lock
-
+config/definitions.rb

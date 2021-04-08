@@ -3,7 +3,7 @@
   require gem if Gem::Specification.find_all_by_name(gem).any?
 end
 
-if defined?(AmazingPrint)
+if defined?(AmazingPrint) && ENV["SKIP_AP"] != "true"
   AmazingPrint.pry!
   AmazingPrint.defaults = {
     indent: 2,
@@ -26,18 +26,18 @@ Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
 # History
-Pry::Commands.command /^$/, 'repeat last command' do
+Pry::Commands.command(/^$/, 'repeat last command') do
   pry_instance.run_command Pry.history.to_a.last
 end
 
 # Custom commands
 # See: https://jacopretorius.net/2017/11/customizing-pry.html
-Pry.config.commands.command 'pbcopy', 'Copy input to clipboard' do |input|
+Pry.config.commands.command('pbcopy', 'Copy input to clipboard') do |input|
   input = input ? target.eval(input) : pry_instance.last_result
   IO.popen('pbcopy', 'w') { |io| io << input }
 end
 
-Pry.config.commands.command 'ruby-info', 'Output Ruby info' do
+Pry.config.commands.command('ruby-info', 'Output Ruby info') do
   constants = Object.constants.grep(/RUBY/) - [:RUBYGEMS_ACTIVATION_MONITOR]
   ap constants.map { |c| [c, Object.const_get(c)] }.to_h
 end
