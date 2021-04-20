@@ -13,6 +13,8 @@
 - link:
     ~/.asdfrc:
     ~/Brewfile:
+    ~/.config/i3/config: i3/config
+    ~/.config/i3statusconfig: i3status/config
     ~/.default-gems:
     ~/.gitattributes:
     ~/.gitconfig:
