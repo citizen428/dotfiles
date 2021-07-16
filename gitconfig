@@ -25,8 +25,6 @@
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
-[credential]
-  helper = osxkeychain
 [difftool]
   prompt = false
   trustExitCode = true
@@ -96,3 +94,5 @@
   st = status
   sw = switch
   conflicts = diff --name-only --diff-filter=U
+[help]
+	autocorrect = 10
