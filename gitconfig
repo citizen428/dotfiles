@@ -20,6 +20,7 @@
   autosquash = true
 [rerere]
   enabled = true
+  autoupdate = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -36,6 +37,13 @@
   defaultBranch = main
 [branch]
   sort = -committerdate # sort branches by last commit descending
+[delta]
+  features = line-numbers decorations
+  line-numbers = true
+[help]
+  autocorrect = 10
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [alias]
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
@@ -49,6 +57,7 @@
   count = shortlog -sn
   changedfiles = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD master)' -
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  track = !"git fetch origin && git branch $1 origin/$1 && git switch $1"
 
   #  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
   # I like using the interactive mode to make complex commits
@@ -94,5 +103,3 @@
   st = status
   sw = switch
   conflicts = diff --name-only --diff-filter=U
-[help]
-	autocorrect = 10
