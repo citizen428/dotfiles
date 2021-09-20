@@ -8,13 +8,13 @@
   autocrlf = input
   editor = vim
   excludesfile = ~/.gitignore
-  pager = delta --plus-color="#012800" --minus-color="#340001"
+  pager = delta
 [push]
   default = current
 [pull]
+  default = current
   rebase = true
 [merge]
-  tool = diffmerge
   stat = true
 [rebase]
   autosquash = true

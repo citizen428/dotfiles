@@ -1,11 +1,24 @@
+# OS-specific files
 .DS_Store
-dump.rdb
+
+# Editors/IDEs
 .idea/
-.projectile
-.vscode/
-*.zwc
 .ionide/
+.projectile
 .vscode
+.vscode/
+
+# Redis dumps
+dump.rdb
+
+### Rails
+
+# Project-specific pryrc
+.pryrc
+
+# Secondary Gemfile
 Gemfile.dev
 Gemfile.dev.lock
+
+# Better Solargraph support for Rails
 config/definitions.rb
