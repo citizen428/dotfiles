@@ -46,16 +46,16 @@
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [alias]
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
-  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   # update submodules
   subup = !"git pull --recurse-submodules && git submodule update"
   # reset rails schema.db to commit we branched off
   schemareset = !sh -c 'git checkout $(git merge-base ${1:-development} $(git symbolic-ref HEAD)) -- db/schema.rb' -
   sqlreset = !sh -c 'git checkout $(git merge-base ${1:-development} $(git symbolic-ref HEAD)) -- db/structure.sql' -
   # delete branches that have already been merged into the current branch
-  rmmerged = !"git branch --merged | grep -v '*' | grep -v \"master\" | xargs -n 1 git branch -d && git remote prune origin"
+  rmmerged = !"git branch --merged | grep -v '*' | grep -v \"main\" | xargs -n 1 git branch -d && git remote prune origin"
   count = shortlog -sn
-  changedfiles = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD master)' -
+  changedfiles = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD main)' -
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
   track = !"git fetch origin && git branch $1 origin/$1 && git switch $1"
 
