@@ -50,8 +50,8 @@
   # update submodules
   subup = !"git pull --recurse-submodules && git submodule update"
   # reset rails schema.db to commit we branched off
-  schemareset = !sh -c 'git checkout $(git merge-base ${1:-development} $(git symbolic-ref HEAD)) -- db/schema.rb' -
-  sqlreset = !sh -c 'git checkout $(git merge-base ${1:-development} $(git symbolic-ref HEAD)) -- db/structure.sql' -
+  schemareset = !sh -c 'git checkout $(git merge-base ${1:-main} $(git symbolic-ref HEAD)) -- db/schema.rb' -
+  sqlreset = !sh -c 'git checkout $(git merge-base ${1:-main} $(git symbolic-ref HEAD)) -- db/structure.sql' -
   # delete branches that have already been merged into the current branch
   rmmerged = !"git branch --merged | grep -v '*' | grep -v \"main\" | xargs -n 1 git branch -d && git remote prune origin"
   count = shortlog -sn
