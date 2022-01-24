@@ -24,5 +24,6 @@
     ~/.pryrc:
     ~/.psqlrc:
     ~/.tmux.conf:
+    ~/.vimrc:
     /usr/local/bin/git-wtf: bin/git-wtf
     /usr/local/bin/imgcat: bin/imgcat
