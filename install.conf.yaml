@@ -19,9 +19,9 @@
     ~/.gitattributes:
     ~/.gitconfig:
     ~/.gitignore:
+    ~/.irbrc:
     ~/.neomutt/colorschemes: neomutt/colorschemes
     ~/.neomuttrc:
-    ~/.pryrc:
     ~/.psqlrc:
     ~/.tmux.conf:
     ~/.vimrc:
