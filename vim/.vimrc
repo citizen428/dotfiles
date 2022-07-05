@@ -60,7 +60,6 @@ nnoremap \ :Lexplore<cr>
 " USER INTERFACE
 "-------------------------------------------------------
 
-colorscheme desert
 filetype plugin indent on
 syntax on
 set modeline
