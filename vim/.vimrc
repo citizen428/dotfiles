@@ -5,6 +5,7 @@
 " <BckSpc> can delete everything in insert mode
 set backspace=eol,indent,start
 
+" Show (partial) command in last line of screen
 set showcmd
 
 " Show matching parentheses
@@ -31,23 +32,28 @@ set history=50
 " Show cursor position
 set ruler
 
-" Show line numbers
-set number
+" Show relative line numbers
+set relativenumber
 
 " Folding
 set foldenable
 set foldmethod=indent
 set foldlevel=1
+set foldlevelstart=99
 set foldcolumn=1
 
-" Indent of 2
-set shiftwidth=2
-set softtabstop=2
+" Indentation etc.
+set tabstop=2
+set listchars=trail:␣,tab:»\ 
+set list
 set smartindent
 set autoindent
 
+" Enable terminal mouse support
 set mouse=a
- 
+
+cabbrev Wq wq
+
 " Netrw
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30
