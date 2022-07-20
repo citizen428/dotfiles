@@ -32,7 +32,8 @@ set history=50
 " Show cursor position
 set ruler
 
-" Show relative line numbers
+" Show line number and relative line numbers
+set number
 set relativenumber
 
 " Folding
