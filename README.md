@@ -1,6 +1,6 @@
 ## Dotfiles, because my \$HOME is my castle
 
-Hi I’m actor Troy McClure. You might remember me from such dotfile repositories as [citizen428/nvim-config](https://github.com/citizen428/nvim-config).
+Hi I’m actor Troy McClure. You might remember me from such dotfile repositories as [citizen428/nvim-config](https://git.sr.ht/~citizen428/nvim-config).
 
 ## Installation
 
