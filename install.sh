@@ -23,6 +23,7 @@ typeset -A configs=(
 	[kitty]=~/.config
 	[neomutt]=~
 	[postgres]=~
+	[rofi]=~/.config
 	[ruby]=~
 	[tmux]=~
 	[vim]=~
