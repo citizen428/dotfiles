@@ -29,8 +29,6 @@
 [difftool]
   prompt = false
   trustExitCode = true
-[hub]
-  protocol = ssh
 [interactive]
   diffFilter = delta --color-only
 [init]
@@ -38,12 +36,18 @@
 [branch]
   sort = -committerdate # sort branches by last commit descending
 [delta]
-  features = line-numbers decorations
+  features = unobstrusive-line-numbers decorations
   line-numbers = true
+  navigate = true
+  syntax-theme = Nord
 [help]
   autocorrect = 10
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [alias]
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
