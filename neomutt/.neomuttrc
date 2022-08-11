@@ -4,7 +4,7 @@ set realname = "Michael Kohl"
 
 # Fastmail
 set my_user = "me@citizen428.net"
-set my_pass = "`pass fastmail`"
+set my_pass = "`op item get fastmail-neomutt --fields label=password`"
 
 set smtp_url = "smtp://$my_user:$my_pass@smtp.fastmail.com:587"
 set smtp_pass = $my_pass
