@@ -9,7 +9,7 @@ if [[ ! $(command -v stow &> /dev/null) ]]; then
 fi
 
 function stow_config {
-	echo "Linking ${config} in ${directory}"
+	echo "Linking $2 in $1"
 	stow -t $1 $2
 }
 
