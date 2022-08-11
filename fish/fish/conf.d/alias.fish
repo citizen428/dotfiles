@@ -6,12 +6,12 @@ abbr -a m 'git switch main'
 abbr -a mux tmuxinator
 abbr -a serve 'python -m http.server'
 
-if type -p bat &> /dev/null
+if command -q bat
   alias cat 'bat --paging=never --style=plain --theme=Nord'
   alias catn 'cat -n'
 end
 
-if type -p exa &> /dev/null
+if command -q exa
   alias l 'exa -1a'
   alias la 'exa -a'
   alias ll 'exa -lh --git'
@@ -19,12 +19,12 @@ if type -p exa &> /dev/null
   alias lt 'exa -lT --git'
 end
 
-if type -p kitty &> /dev/null
+if command -q kitty
   abbr -a icat 'kitty +kitten icat'
   abbr -a kdiff 'kitty +kitten diff'
 end
 
-if type -p rails &> /dev/null
+if command -q rails
   abbr -a be 'bundle exec'
   abbr -a by 'bundle && yarn'
   abbr -a r 'bundle exec rails'

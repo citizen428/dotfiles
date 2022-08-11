@@ -1,5 +1,5 @@
 # asdf version manager
-if type -p asdf &> /dev/null
+if command -q asdf
   if set -q HOMEBREW_PREFIX
     source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.fish
   else
@@ -8,20 +8,20 @@ if type -p asdf &> /dev/null
 end
 
 # pnpm
-if type -q pnmp &> /dev/null
+if type -q pnmp
   set -gx PNPM_HOME (pnpm store path|string replace "/store/v3" "")
   set -gx PATH "$PNPM_HOME" $PATH
 end
 
 # Go
-if type -q go &> /dev/null
+if type -q go
   set -x GOPATH $HOME/go
   set -xp PATH $GOPATH/bin
   set -x GOPROXY direct
 end
 
 # .NET Core
-if type -q dotnet &> /dev/null
+if type -q dotnet
   set -x DOTNET_CLI_TELEMETRY_OPTOUT true
   set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
   set -xp PATH $HOME/.dotnet/tools
@@ -38,7 +38,7 @@ if [ -d $HOME/.rakubrew ]
 end
 
 # Ruby
-if type -p ruby &> /dev/null
+if command -q ruby
   set -x RUBY_CONFIGURE_OPTS --with-jemalloc
   set -x DISABLE_SPRING true
 end
