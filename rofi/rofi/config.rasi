@@ -1,6 +1,6 @@
 configuration {
 	combi {
-		display-name: "";
+		display-name: "";
 	}
 	combi-hide-mode-prefix: true;
 	combi-modi: [window,drun,ssh];
@@ -13,5 +13,11 @@ configuration {
 }
 @theme "Arc-Dark"
 element-icon {
-	size: 2.4ch;
+	size: 2.6ch;
+}
+listview {
+	scrollbar: false;
+}
+textbox-prompt-colon {
+	str: "";
 }
