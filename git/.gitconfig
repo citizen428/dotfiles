@@ -10,6 +10,7 @@
   excludesfile = ~/.gitignore
   pager = delta
 [push]
+  autoSetupRemote = true
   default = current
 [pull]
   default = current
@@ -49,6 +50,7 @@
 [diff]
   colorMoved = default
 [alias]
+  pushall = !"git remote|xargs -L 1 git push"
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   # update submodules
