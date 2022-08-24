@@ -30,13 +30,14 @@ function forgit::previous_commit
     end
 end
 
-# extract the first git sha occuring in the input and strip trailing newline
+# extract the first git sha occurring in the input and strip trailing newline
 set -g forgit_extract_sha  "grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]'"
 
 set -g forgit_pager        "$FORGIT_PAGER"
 set -g forgit_show_pager   "$FORGIT_SHOW_PAGER"
 set -g forgit_diff_pager   "$FORGIT_DIFF_PAGER"
 set -g forgit_ignore_pager "$FORGIT_IGNORE_PAGER"
+set -g forgit_enter_pager  "$FORGIT_ENTER_PAGER"
 set -g forgit_log_format   "$FORGIT_LOG_FORMAT"
 
 set -x FORGIT_INSTALL_DIR (dirname (dirname (status -f)))
@@ -45,6 +46,7 @@ test -z "$forgit_pager";              and set -g forgit_pager        (git config
 test -z "$forgit_show_pager";         and set -g forgit_show_pager   (git config pager.show || echo "$forgit_pager")
 test -z "$forgit_diff_pager";         and set -g forgit_diff_pager   (git config pager.diff || echo "$forgit_pager")
 test -z "$forgit_ignore_pager";       and set -g forgit_ignore_pager (type -q bat >/dev/null 2>&1 && echo 'bat -l gitignore --color=always' || echo 'cat')
+test -z "$forgit_enter_pager";        and set -g forgit_enter_pager  "env LESS='-r' less"
 test -z "$forgit_log_format";         and set -g forgit_log_format   "-%C(auto)%h%d %s %C(black)%C(bold)%cr%Creset"
 test -z "$forgit_fullscreen_context"; and set -g forgit_fullscreen_context "10"
 test -z "$forgit_preview_context";    and set -g forgit_preview_context "3"
@@ -69,7 +71,7 @@ function forgit::log -d "git commit viewer"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m --tiebreak=index
-        --bind=\"enter:execute($enter_cmd |env LESS='-r' less)\"
+        --bind=\"enter:execute($enter_cmd | $forgit_enter_pager)\"
         --bind=\"ctrl-y:execute-silent(echo {} | $forgit_extract_sha | $copy_cmd)\"
         --preview=\"$preview_cmd\"
         $FORGIT_LOG_FZF_OPTS
@@ -117,12 +119,18 @@ function forgit::diff -d "git diff viewer" --argument-names arg1 arg2
         end
     end
 
-    set preview_cmd "forgit::extract_file {} | xargs -I% git diff --color=always -U$forgit_preview_context $commits -- % | $forgit_diff_pager"
-    set enter_cmd "forgit::extract_file {} | xargs -I% git diff --color=always -U$forgit_fullscreen_context $commits -- % | $forgit_diff_pager"
+    # Git stashes are named "stash@{x}", which contains the fzf placeholder "{x}".
+    # In order to support passing stashes as arguments to forgit::diff, we have to
+    # prevent fzf from interpreting this substring by escaping the opening bracket.
+    # The string is evaluated a few subsequent times, so we need multiple escapes.
+    set escaped_commits (echo $commits | sed 's/{/\\\\\\\\{/g')
+
+    set preview_cmd "forgit::extract_file {} | xargs -I% git diff --color=always -U$forgit_preview_context $escaped_commits -- % | $forgit_diff_pager"
+    set enter_cmd "forgit::extract_file {} | xargs -I% git diff --color=always -U$forgit_fullscreen_context $escaped_commits -- % | $forgit_diff_pager"
 
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
-        +m -0 --bind=\"enter:execute($enter_cmd | env LESS='-r' less)\"
+        +m -0 --bind=\"enter:execute($enter_cmd | $forgit_enter_pager)\"
         --preview=\"$preview_cmd\"
         $FORGIT_DIFF_FZF_OPTS
         --prompt=\"$commits > \"
@@ -137,7 +145,7 @@ function forgit::diff -d "git diff viewer" --argument-names arg1 arg2
 end
 
 # git add selector
-function forgit::add -d "git add selector"
+function forgit::add -d "git add selector" --wraps "git add"
     forgit::inside_work_tree || return 1
     # Add files if passed as arguments
     count $argv >/dev/null && git add "$argv" && git status --short && return
@@ -200,7 +208,7 @@ function forgit::reset::head -d "git reset HEAD (unstage) selector"
 end
 
 # git checkout-restore selector
-function forgit::checkout::file -d "git checkout-file selector" --argument-names 'file_name'
+function forgit::checkout::file -d "git checkout-file selector" --argument-names 'file_name' --wraps "git checkout --"
     forgit::inside_work_tree || return 1
 
     if test -n "$file_name"
@@ -231,7 +239,7 @@ function forgit::checkout::file -d "git checkout-file selector" --argument-names
     echo 'Nothing to restore.'
 end
 
-function forgit::checkout::commit -d "git checkout commit selector" --argument-names 'commit_id'
+function forgit::checkout::commit -d "git checkout commit selector" --argument-names 'commit_id' --wraps "git checkout"
     forgit::inside_work_tree || return 1
 
     if test -n "$commit_id"
@@ -267,7 +275,7 @@ function forgit::checkout::commit -d "git checkout commit selector" --argument-n
         FZF_DEFAULT_OPTS="$opts" fzf | eval "$forgit_extract_sha" | xargs -I% git checkout % --
 end
 
-function forgit::branch::delete -d "git checkout branch deleter"
+function forgit::branch::delete -d "git checkout branch deleter" --wraps "git branch --delete"
     forgit::inside_work_tree || return 1
 
     set preview "git log {1} --graph --pretty=format:'$forgit_log_format' --color=always --abbrev-commit --date=relative"
@@ -292,12 +300,15 @@ function forgit::branch::delete -d "git checkout branch deleter"
 end
 
 
-
-function forgit::checkout::branch -d "git checkout branch selector" --argument-names 'input_branch_name'
+function forgit::checkout::branch -d "git checkout branch selector" --argument-names 'input_branch_name' --wraps "git branch"
     forgit::inside_work_tree || return 1
 
     if test -n "$input_branch_name"
-        git checkout -b "$input_branch_name"
+        if git branch --list | grep "$input_branch_name" > /dev/null
+            git switch "$input_branch_name"
+        else
+            git switch -c "$input_branch_name"
+        end
         set checkout_status $status
         git status --short
         return $checkout_status
@@ -329,7 +340,7 @@ function forgit::stash::show -d "git stash viewer"
     set preview "echo {} |cut -d: -f1 |xargs -I% git stash show --color=always --ext-diff % |$forgit_diff_pager"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
-        +s +m -0 --tiebreak=index --bind=\"enter:execute($preview |env LESS='-r' less)\"
+        +s +m -0 --tiebreak=index --bind=\"enter:execute($preview | $forgit_enter_pager)\"
         --preview=\"$preview\"
         $FORGIT_STASH_FZF_OPTS
     "
@@ -358,7 +369,7 @@ function forgit::clean -d "git clean selector"
     echo 'Nothing to clean.'
 end
 
-function forgit::cherry::pick -d "git cherry-picking" --argument-names 'target'
+function forgit::cherry::pick -d "git cherry-picking" --argument-names 'target' --wraps "git cherry-pick"
     forgit::inside_work_tree || return 1
     set base (git branch --show-current)
     if test -z "$target"
@@ -495,7 +506,7 @@ function forgit::ignore -d "git ignore generator"
      forgit::ignore::get $args
 end
 
-function forgit::revert::commit --argument-names 'commit_hash'
+function forgit::revert::commit --argument-names 'commit_hash' --wraps "git revert --"
     if test -n "$commit_hash"
         git revert -- "$commit_hash"
         set revert_status $status
