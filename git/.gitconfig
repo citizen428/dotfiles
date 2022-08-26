@@ -2,13 +2,15 @@
 [user]
   name = Michael Kohl
   email = me@citizen428.net
-  signingkey = E183E826AAA271D9A25EB8E9EF16E5E687B2A218
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyJI+7JXGQORxEo1dso9sy1epesfERLGzCBWN1p2I7j
 [core]
   attributesfile = ~/.gitattributes
   autocrlf = input
   editor = vim
   excludesfile = ~/.gitignore
   pager = delta
+[commit]
+  gpgsign = true
 [push]
   autoSetupRemote = true
   default = current
@@ -109,3 +111,5 @@
   st = status
   sw = switch
   conflicts = diff --name-only --diff-filter=U
+[gpg]
+  format = ssh
