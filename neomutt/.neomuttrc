@@ -31,7 +31,7 @@ unignore From Message-ID Date To Cc Bcc Subject
 set pager_stop
 unset markers
 
-source ~/.neomutt/colorschemes/zenburn
+source ~/.neomutt/colorschemes/nord
 
 # Prefer plain text to html.
 # However, for brain dead clients that bundle attachments inside a
