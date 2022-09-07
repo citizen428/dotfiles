@@ -19,6 +19,7 @@ typeset -A configs=(
 	[fish]=~/.config
 	[git]=~
 	[haskell]=~
+	[helix]=~/.config
 	[homebrew]=~
 	[i3]=~/.config
 	[kitty]=~/.config
