@@ -19,6 +19,10 @@ if command -q exa
   alias lt 'exa -lT --git'
 end
 
+if command -q helix && not command -q hx
+  alias hx helix
+end
+
 if command -q kitty
   abbr -a icat 'kitty +kitten icat'
   abbr -a kdiff 'kitty +kitten diff'
