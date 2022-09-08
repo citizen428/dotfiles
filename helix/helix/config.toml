@@ -6,6 +6,7 @@ completion-trigger-len = 1
 idle-timeout = 30 # ms
 line-number = "relative"
 rulers = [100]
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
