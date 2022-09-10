@@ -37,6 +37,11 @@ if command -q rails
     abbr -a sp 'bundle exec rspec'
 end
 
+if command -q xclip
+    alias pbcopy 'xclip -i'
+    alias pbpaste 'xclip -o'
+end
+
 if [ $OSTYPE = Darwin ]
     abbr -a brewc 'brew cleanup'
     abbr -a brewu 'brew update && brew upgrade'
