@@ -1,5 +1,5 @@
 set -x EDITOR vim
 
 if command -q nvim
-    set -x MANPAGER 'nvim -c "colorscheme nord" -c "set mouse=a" +Man!'
+    set -x MANPAGER 'nvim +Man! -c "set winbar="'
 end
