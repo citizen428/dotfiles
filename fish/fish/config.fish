@@ -1,4 +1,3 @@
-set -x EDITOR vim
 set fish_greeting # disable
 
 ### UI
