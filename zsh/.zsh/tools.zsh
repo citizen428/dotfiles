@@ -9,8 +9,5 @@ export GPG_TTY=$(tty)
 # Homebrew
 # export CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 
-# z
-source /usr/local/etc/profile.d/z.sh
-
 export EDITOR=vim
 

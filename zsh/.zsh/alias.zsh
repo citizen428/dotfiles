@@ -52,3 +52,4 @@ if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   fi
 fi
 
+alias zmv='noglob zmv -W'
