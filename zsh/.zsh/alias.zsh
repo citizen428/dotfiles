@@ -8,7 +8,7 @@ alias -g S='|sort'
 alias -g T='|tail'
 
 # Use bat instead of cat
-alias cat='bat --paging=never --style=plain'
+alias cat='bat --paging=never --style=plain --theme=Nord'
 
 # Use exa instead of ls
 alias l='exa -1a'
