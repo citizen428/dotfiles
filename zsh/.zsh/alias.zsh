@@ -3,7 +3,7 @@ alias ducks='du -cks * | sort -rn | head'
 alias g='git'
 alias m='git switch main'
 alias mux='tmuxinator'
-alias reload='exec zsh'
+alias reload='znap restart'
 alias serve='python -m http.server'
 
 # utility
