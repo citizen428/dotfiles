@@ -1,5 +1,12 @@
 autoload -U compinit && compinit
 
+# Only regenerate completions once per day
+if [[ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]]; then
+    compinit
+else
+    compinit -C
+fi
+
 # Allow completion from within a word/phrase
 setopt COMPLETE_IN_WORD
 
@@ -12,5 +19,5 @@ zstyle ':completion:*' menu yes select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
-  source ~/.config/exercism/exercism_completion.zsh
+    source ~/.config/exercism/exercism_completion.zsh
 fi

@@ -1,4 +1,12 @@
-# global
+alias down='http --download'
+alias ducks='du -cks * | sort -rn | head'
+alias g='git'
+alias m='git switch main'
+alias mux='tmuxinator'
+alias reload='exec zsh'
+alias serve='python -m http.server'
+
+# utility
 alias -g C='|wc -l'
 alias -g G='|grep'
 alias -g H='|head'
@@ -7,49 +15,49 @@ alias -g SL='|sort|less'
 alias -g S='|sort'
 alias -g T='|tail'
 
-# Use bat instead of cat
-alias cat='bat --paging=never --style=plain --theme=Nord'
+if (( $+commands[bat] )); then
+    alias cat='bat --paging=never --style=plain'
+fi
 
-# Use exa instead of ls
-alias l='exa -1a'
-alias ll='exa -lh --git'
-alias ls='exa'
-alias la='ls -a'
-alias lt='exa -lT --git'
+if (( $+commands[exa] )); then
+    alias l='exa -1a'
+    alias la='ls -a'
+    alias ll='exa -lh --git'
+    alias ls='exa'
+    alias lt='exa -lT --git'
+fi
 
-alias g='git'
-alias be='bundle exec'
-alias mux='tmuxinator'
-alias ducks='du -cks * | sort -rn | head'
+if (( $+commands[kitty] )); then
+    alias icat='kitty +kitten icat'
+    alias kdiff="kitty +kitten diff"
+fi
 
-# Homebrew
-alias brewu='brew update && brew upgrade && brew cask upgrade'
-alias brewc='brew cleanup'
-alias bservl='brew services list'
-alias bservr='brew services restart'
-alias bservs='brew services start'
-alias bservx='brew services stop'
+if (( $+commands[rails] )); then
+    alias be='bundle exec'
+    alias by='bundle && yarn'
+    alias  r='bundle exec rails'
+    alias rdbm='rails db:migrate'
+    alias s='overmind start -f Procfile.dev'
+    alias sp='bundle exec rspec'
+fi
 
-# Kitty
-alias icat='kitty +kitten icat'
-alias kdiff="kitty +kitten diff"
-
-# Ruby/Rails
-alias r='bundle exec rake'
-
-# Start webserver for current directory
-alias serve='python -m http.server'
-
-# Download with HTTPie
-alias down='http --download'
+if [[ $OS = "Darwin" ]]; then
+    alias brewu='brew update && brew upgrade'
+    alias brewc='brew cleanup'
+    alias bservl='brew services list'
+    alias bservr='brew services restart'
+    alias bservs='brew services start'
+    alias bservx='brew services stop'
+    alias obs='fm --start-dir=$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Private/'
+fi
 
 # Don't nest nvim session
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-  if [ -x "$(command -v nvr)" ]; then
-    alias nvim=nvr
-  else
-    alias nvim='echo "No nesting!"'
-  fi
+if [[ -n "$NVIM_LISTEN_ADDRESS" ]]; then
+    if [[ -x "$(command -v nvr)" ]]; then
+        alias nvim=nvr
+    else
+        alias nvim='echo "No nesting!"'
+    fi
 fi
 
 alias zmv='noglob zmv -W'

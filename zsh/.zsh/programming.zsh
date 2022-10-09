@@ -1,19 +1,43 @@
-export RUBY_CONFIGURE_OPTS=--with-jemalloc
-
 # asdf version manager
-source ~/.asdf/asdf.sh
-# source ~/.asdf/completions/asdf.bash
+if (( $+commands[asdf] )); then
+    if if [[ -v HOMEBREW_PREFIX ]]; then
+        source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
+    else
+        source $HOME/.asdf/asdf.sh
+    fi
+fi
+
+# pnpm
+if (( $+commands[pnpm] )); then
+    export PNPM_HOME=$(pnpm store path|sed 's#/store/v3##')
+    path=($PNPM_HOME $path)
+fi
 
 # Go
-export GOPATH=$HOME/go
-path=($path $GOPATH/bin)
-
-# opam configuration
-test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+if (( $+commands[go] )); then
+    export GOPATH="$HOME/go"
+    path=($GOPATH/bin $path)
+    export GOPROXY="direct"
+fi
 
 # .NET Core
-export DOTNET_CLI_TELEMETRY_OPTOUT=true
-# path=($path $HOME/.dotnet/tools)
+if (( $+commands[dotnet] )); then
+    export DOTNET_CLI_TELEMETRY_OPTOUT=true
+    export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=true
+fi
 
 # Python
-path=($path $HOME/.poetry/bin $HOME/.local/bin)
+if [[ -d $HOME/.poetry ]]; then
+    path=($HOME/.poetry/bin $HOME/.local/bin $PATH)
+fi
+
+# Ruby
+if (( $+commands[ruby] )); then
+    export RUBY_CONFIGURE_OPTS="--with-jemalloc"
+    export DISABLE_SPRING="true"
+fi
+
+# Rust
+if [[ -d $HOME/.cargo ]]; then
+    path=($HOME/.cargo/bin $path)
+fi

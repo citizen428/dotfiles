@@ -1,3 +1,6 @@
+# Emacs keybindings
+bindkey -e
+
 # ESC-. inserts last word from previous command
 bindkey '\e.' insert-last-word
 
