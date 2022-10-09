@@ -1,0 +1,4 @@
+# vim: ft=zsh
+function prof() {
+    ZPROF=1 zsh -i -c exit
+}
