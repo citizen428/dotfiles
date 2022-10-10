@@ -2,6 +2,7 @@ alias down='http --download'
 alias ducks='du -cks * | sort -rn | head'
 alias g='git'
 alias m='git switch main'
+alias mmv='noglob zmv -W'
 alias mux='tmuxinator'
 alias reload='znap restart'
 alias serve='python -m http.server'
@@ -59,5 +60,3 @@ if [[ -n "$NVIM_LISTEN_ADDRESS" ]]; then
         alias nvim='echo "No nesting!"'
     fi
 fi
-
-alias zmv='noglob zmv -W'
