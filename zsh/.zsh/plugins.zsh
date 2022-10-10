@@ -1,12 +1,8 @@
-znap_dir=~/.zsh-snap
-znap_init="${znap_dir}/znap.zsh"
-
-[[ -f $znap_init ]] ||
+[[ -f ~/.znap/zsh-snap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git $znap_dir
+        https://github.com/marlonrichert/zsh-snap.git ~/.znap/zsh-snap
 
-source $znap_init
-unset znap_dir znap_init
+source ~/.znap/zsh-snap/znap.zsh
 
 znap source agkozak/zsh-z
 znap source wfxr/forgit

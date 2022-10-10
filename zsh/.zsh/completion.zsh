@@ -1,3 +1,7 @@
+if [[ $OS = "Darwin" ]]; then
+    fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
+fi
+
 autoload -U compinit && compinit
 
 # Only regenerate completions once per day

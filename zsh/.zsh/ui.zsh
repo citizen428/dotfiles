@@ -9,4 +9,6 @@ if [[ -r ~/.dir_colors ]]; then
     znap eval dircolors "$(whence -a dircolors gdircolors ) ~/.dir_colors"
 fi
 
-eval "$(starship init zsh)"
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt starship
+
