@@ -10,5 +10,4 @@ if [[ -r ~/.dir_colors ]]; then
 fi
 
 znap eval starship 'starship init zsh --print-full-init'
-znap prompt starship
-
+znap prompt

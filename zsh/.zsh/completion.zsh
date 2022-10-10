@@ -5,7 +5,7 @@ fi
 autoload -U compinit
 
 # Only regenerate completions once per day
-if [[ $(date +'%j') != $(/usr/bin/date -r ${ZDOTDIR:-$HOME}/.zcompdump +'%j') ]]; then
+if [[ $(date +'%j') != $(date -r ${ZDOTDIR:-$HOME}/.zcompdump +'%j') ]]; then
     compinit
 else
     compinit -C
