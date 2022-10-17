@@ -16,3 +16,7 @@ bindkey '^x^e' edit-command-line
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+
+# Alt/option + left/right arrow for word-wise navigation
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
