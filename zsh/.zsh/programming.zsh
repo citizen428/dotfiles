@@ -1,10 +1,8 @@
 # asdf version manager
-if (( $+commands[asdf] )); then
-    if if [[ -v HOMEBREW_PREFIX ]]; then
-        source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-    else
-        source $HOME/.asdf/asdf.sh
-    fi
+if [[ -v HOMEBREW_PREFIX ]]; then
+    source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
+else
+    source $HOME/.asdf/asdf.sh
 fi
 
 # pnpm
