@@ -25,3 +25,7 @@ unsetopt CLOBBER
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+if [[ $OS = "WSL" ]]; then
+    hash -d wind=/mnt/c/Users/me/Downloads
+fi
