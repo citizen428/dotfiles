@@ -12,8 +12,6 @@ if [ $OSTYPE = "Darwin" ]
 end
 
 if [ $OSTYPE = "WSL" ]
-  eval (keychain --noask --quiet --eval --agents ssh)
-
   set -xp PATH /snap/bin
   set -xp PATH '/mnt/c/Users/me/AppData/Local/Programs/Microsoft VS Code/bin/'
 
