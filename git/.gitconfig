@@ -99,6 +99,7 @@
   b = branch
   co = checkout
   d = diff
+  ds = !"git -c delta.side-by-side=true diff"
   f = fetch
   l = log
   l1 = log --oneline
