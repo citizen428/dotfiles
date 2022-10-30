@@ -39,3 +39,6 @@ fi
 if [[ -d $HOME/.cargo ]]; then
     path=($HOME/.cargo/bin $path)
 fi
+
+# Elixir/Erlang
+export ERL_AFLAGS="-kernel shell_history enabled"
