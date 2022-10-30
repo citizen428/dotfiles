@@ -20,3 +20,7 @@ OP_AGENT_SOCK=~/.config/1password/agent.sock
 if [[ -r $OP_AGENT_SOCK ]]; then
     export SSH_AUTH_SOCK=$OP_AGENT_SOCK
 fi
+
+if (( $+commands[direnv] )); then
+    znap eval direnv "direnv hook zsh"
+fi
