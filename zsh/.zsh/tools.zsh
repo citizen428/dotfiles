@@ -24,3 +24,9 @@ fi
 if (( $+commands[direnv] )); then
     znap eval direnv "direnv hook zsh"
 fi
+
+private flyctl_install="${HOME}/.fly"
+if [[ -d $flyctl_install ]]; then
+    export FLYCTL_INSTALL=$flyctl_install
+    path=("${FLYCTL_INSTALL}/bin" $path)
+fi
