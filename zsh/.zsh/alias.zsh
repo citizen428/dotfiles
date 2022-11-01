@@ -36,10 +36,20 @@ fi
 if (( $+commands[rails] )); then
     alias be='bundle exec'
     alias by='bundle && yarn'
-    alias  r='bundle exec rails'
+    alias r='bundle exec rails'
     alias rdbm='rails db:migrate'
     alias s='overmind start -f Procfile.dev'
     alias sp='bundle exec rspec'
+fi
+
+if (( $+commands[elixir] )); then
+    alias i='iex'
+    alias ism='iex -S mix'
+    alias ips='iex -S mix phx.server'
+    alias ips='iex -S mix phx.server'
+    alias mem='mix ecto.migrate'
+    alias mdgc='mix deps.get deps.compile'
+    alias mr='mix run'
 fi
 
 if [[ $OS = "Darwin" ]]; then
