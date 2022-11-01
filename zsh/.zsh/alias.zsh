@@ -46,7 +46,6 @@ if (( $+commands[elixir] )); then
     alias i='iex'
     alias ism='iex -S mix'
     alias ips='iex -S mix phx.server'
-    alias ips='iex -S mix phx.server'
     alias mem='mix ecto.migrate'
     alias mdgc='mix deps.get deps.compile'
     alias mr='mix run'
