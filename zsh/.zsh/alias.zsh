@@ -61,6 +61,11 @@ if [[ $OS = "Darwin" ]]; then
     alias obs='fm --start-dir=$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Private/'
 fi
 
+if [[ $OS = "WSL" ]]; then
+    alias pbcopy="w32yank.exe -o"
+    alias pbpaste='w32yank.exe -i'
+fi
+
 # Don't nest nvim session
 if [[ -n "$NVIM_LISTEN_ADDRESS" ]]; then
     if [[ -x "$(command -v nvr)" ]]; then
@@ -69,3 +74,4 @@ if [[ -n "$NVIM_LISTEN_ADDRESS" ]]; then
         alias nvim='echo "No nesting!"'
     fi
 fi
+
