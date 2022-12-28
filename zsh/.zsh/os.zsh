@@ -5,7 +5,7 @@ fi
 
 if [[ $OS = "Darwin" ]]; then
     # Use the macoS path_helper for initial path setup
-    znap eval path_helper "${path_helper} -s"
+    znap eval path_helper "/usr/libexec/path_helper -s"
 
     export HOMEBREW_PREFIX=/opt/homebrew
     export HOMEBREW_NO_ENV_HINTS=true
