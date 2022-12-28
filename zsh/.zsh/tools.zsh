@@ -10,9 +10,9 @@ if [[ $OS = "Darwin" ]]; then
     export CONFIGURE_OPTS="--with-readline-dir=${HOMEBREW_PREFIX}/opt/readline"
 fi
 
-# Use nvim as man pager
-if (( $+commands[nvim] )); then
-    export MANPAGER='nvim +Man! -c "set winbar="'
+# Use bat as man pager
+if (( $+commands[bat] )); then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
 # !Password SSH agent

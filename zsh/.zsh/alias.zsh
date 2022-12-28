@@ -53,6 +53,10 @@ if (( $+commands[elixir] )); then
     alias mr='mix run'
 fi
 
+if [[ -d ~/.config/doom ]]; then
+    alias dooms='doom sync && brew services restart emacs-plus@29'
+fi
+
 if [[ $OS = "Darwin" ]]; then
     alias brewu='brew update && brew upgrade'
     alias brewc='brew cleanup'
@@ -67,13 +71,3 @@ if [[ $OS = "WSL" ]]; then
     alias pbcopy="w32yank.exe -o"
     alias pbpaste='w32yank.exe -i'
 fi
-
-# Don't nest nvim session
-if [[ -n "$NVIM_LISTEN_ADDRESS" ]]; then
-    if [[ -x "$(command -v nvr)" ]]; then
-        alias nvim=nvr
-    else
-        alias nvim='echo "No nesting!"'
-    fi
-fi
-

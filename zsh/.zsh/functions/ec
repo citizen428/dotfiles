@@ -1,0 +1,5 @@
+# vim: ft=zsh
+function ec() {
+  /opt/homebrew/bin/emacsclient -a emacs -n $@ && 
+    osascript -e 'tell application "Emacs" to activate'
+}

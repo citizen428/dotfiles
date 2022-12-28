@@ -5,6 +5,11 @@ else
     source $HOME/.asdf/asdf.sh
 fi
 
+# emacs
+if (( $+commands[emacs] )); then
+    path=("$HOME/.config/emacs/bin" $path)
+fi
+
 # pnpm
 if (( $+commands[pnpm] )); then
     export PNPM_HOME=$(pnpm store path|sed 's#/store/v3##')
