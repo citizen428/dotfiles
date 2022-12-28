@@ -1,6 +1,7 @@
 "-------------------------------------------------------
 " GENERAL SETTINGS
 "-------------------------------------------------------
+colorscheme nord
 
 " <BckSpc> can delete everything in insert mode
 set backspace=eol,indent,start
