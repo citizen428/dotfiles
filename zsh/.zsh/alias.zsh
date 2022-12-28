@@ -57,6 +57,10 @@ if [[ -d ~/.config/doom ]]; then
     alias dooms='doom sync && brew services restart emacs-plus@29'
 fi
 
+if (( $+commands[emacs] )); then
+    alias ec='emacsclient -n'
+fi
+
 if [[ $OS = "Darwin" ]]; then
     alias brewu='brew update && brew upgrade'
     alias brewc='brew cleanup'
