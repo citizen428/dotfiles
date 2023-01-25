@@ -5,7 +5,7 @@ alias m='git switch main'
 alias mmv='noglob zmv -W'
 alias mux='tmuxinator'
 alias reload='znap restart'
-alias serve='python -m http.server'
+alias serve='ruby -run -e httpd .'
 
 # utility
 alias -g C='|wc -l'
