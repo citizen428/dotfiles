@@ -5,11 +5,6 @@ export EDITOR=vim
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Homebrew
-if [[ $OS = "Darwin" ]]; then
-    export CONFIGURE_OPTS="--with-readline-dir=${HOMEBREW_PREFIX}/opt/readline"
-fi
-
 # Use bat as man pager
 if (( $+commands[bat] )); then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
