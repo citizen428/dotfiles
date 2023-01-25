@@ -28,3 +28,6 @@ fi
 
 private op_plugins=$HOME/.config/op/plugins.sh
 [[ -f $op_plugins ]] && source $op_plugins
+
+private fzf_config=$HOME/.fzf.zsh
+[[ -f $fzf_config ]] && source $fzf_config
