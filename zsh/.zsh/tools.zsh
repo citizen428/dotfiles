@@ -10,7 +10,7 @@ if (( $+commands[bat] )); then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
-# !Password SSH agent
+# 1Password SSH agent
 OP_AGENT_SOCK=~/.config/1password/agent.sock
 if [[ -r $OP_AGENT_SOCK ]]; then
     export SSH_AUTH_SOCK=$OP_AGENT_SOCK
