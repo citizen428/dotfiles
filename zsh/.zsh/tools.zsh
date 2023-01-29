@@ -31,3 +31,10 @@ private op_plugins=$HOME/.config/op/plugins.sh
 
 private fzf_config=$HOME/.fzf.zsh
 [[ -f $fzf_config ]] && source $fzf_config
+
+if [[ $OS = "Darwin" ]]; then
+    private latex_dir=/Library/TeX/texbin
+    if [[ -d $latex_dir ]]; then
+        path=($latex_dir $path)
+    fi
+fi
