@@ -5,6 +5,7 @@
 *.html     diff=html
 *.go       diff=golang
 *.md       diff=markdown
+*.org      diff=org
 *.py       diff=python
 *_spec.rb  diff=rspec
 *.gemspec  diff=ruby

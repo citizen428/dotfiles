@@ -1,4 +1,3 @@
-# vim: ft=config
 [user]
   name = Michael Kohl
   email = me@citizen428.net
@@ -114,3 +113,5 @@
   conflicts = diff --name-only --diff-filter=U
 [gpg]
   format = ssh
+[diff "org"]
+  xfuncname="^\\*+ +(.*)$"
