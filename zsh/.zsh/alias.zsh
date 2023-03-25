@@ -7,7 +7,6 @@ alias mux='tmuxinator'
 alias reload='znap restart'
 alias serve='ruby -run -e httpd .'
 
-# utility
 alias -g C='|wc -l'
 alias -g G='|grep'
 alias -g H='|head'
