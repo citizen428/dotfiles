@@ -38,3 +38,5 @@ if [[ $OS = "Darwin" ]]; then
         path=($latex_dir $path)
     fi
 fi
+
+export HOMEBREW_NO_ANALYTICS=1
