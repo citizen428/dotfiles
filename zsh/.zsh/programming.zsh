@@ -34,7 +34,6 @@ fi
 
 # Ruby
 if (( $+commands[ruby] )); then
-    export RUBY_CONFIGURE_OPTS="--with-jemalloc"
     export DISABLE_SPRING="true"
 fi
 
