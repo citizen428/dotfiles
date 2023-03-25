@@ -25,6 +25,7 @@ fi
 if (( $+commands[dotnet] )); then
     export DOTNET_CLI_TELEMETRY_OPTOUT=true
     export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=true
+    path=($HOME/.dotnet/tools $path)
 fi
 
 # Python
