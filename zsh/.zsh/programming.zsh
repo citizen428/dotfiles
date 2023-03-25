@@ -1,8 +1,6 @@
-# asdf version manager
-if [[ -v HOMEBREW_PREFIX ]]; then
-    source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-else
-    source $HOME/.asdf/asdf.sh
+# rtx runtime executor
+if (( $+commands[rtx] )); then
+    znap eval rtx "rtx activate zsh"
 fi
 
 # emacs
