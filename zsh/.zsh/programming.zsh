@@ -45,3 +45,6 @@ fi
 
 # Elixir/Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Bun completions
+[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/share/zsh/site-functions/_bun"
