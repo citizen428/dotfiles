@@ -24,6 +24,7 @@ typeset -A configs=(
 	[i3]=~/.config
 	[kitty]=~/.config
 	[neomutt]=~
+	[python]=~
 	[postgres]=~
 	[rofi]=~/.config
 	[ruby]=~

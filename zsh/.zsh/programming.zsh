@@ -29,6 +29,7 @@ if (( $+commands[dotnet] )); then
 fi
 
 # Python
+export PYTHONSTARTUP="$HOME/.pythonstartup.py"
 if [[ -d $HOME/.poetry ]]; then
     path=($HOME/.poetry/bin $HOME/.local/bin $PATH)
 fi
