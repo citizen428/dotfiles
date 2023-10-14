@@ -1,6 +1,7 @@
 alias down='http --download'
 alias ducks='du -cks * | sort -rn | head'
 alias g='git'
+alias lg='lazygit'
 alias m='git switch main'
 alias mmv='noglob zmv -W'
 alias mux='tmuxinator'
