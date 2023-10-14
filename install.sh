@@ -14,7 +14,6 @@ function stow_config {
 }
 
 typeset -A configs=(
-	[asdf]=~ 
 	[bin]=/usr/local/bin
 	[fish]=~/.config
 	[git]=~
