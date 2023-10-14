@@ -10,7 +10,7 @@ fi
 
 # pnpm
 if (( $+commands[pnpm] )); then
-    export PNPM_HOME=$(pnpm store path|sed 's#/store/v3##')
+    export PNPM_HOME="${HOME}/.local/share/pnpm"
     path=($PNPM_HOME $path)
 fi
 
@@ -48,4 +48,12 @@ fi
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Bun completions
-[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/share/zsh/site-functions/_bun"
+if [[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ]]; then
+    source "/opt/homebrew/share/zsh/site-functions/_bun"
+fi
+
+
+# Dart
+if (( $+commands[dart] )); then
+    path=($HOME/.pub-cache/bin $path)
+fi
