@@ -19,12 +19,12 @@ if (( $+commands[bat] )); then
     alias cat='bat --paging=never --style=plain'
 fi
 
-if (( $+commands[exa] )); then
-    alias l='exa -1a'
+if (( $+commands[eza] )); then
+    alias l='eza -1a'
     alias la='ls -a'
-    alias ll='exa -lh --git'
-    alias ls='exa'
-    alias lt='exa -lT --git'
+    alias ll='eza -lh --git'
+    alias ls='eza'
+    alias lt='eza -lT --git'
 fi
 
 if (( $+commands[kitty] )); then
