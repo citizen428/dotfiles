@@ -13,6 +13,10 @@ dump.rdb
 
 ### Rails
 
+# Project-specific irbrc
+.irbrc.local
+.irbrc.local_history
+
 # Project-specific pryrc
 .pryrc
 
