@@ -44,16 +44,19 @@ if [[ -d $HOME/.cargo ]]; then
     path=($HOME/.cargo/bin $path)
 fi
 
-# Elixir/Erlang
-export ERL_AFLAGS="-kernel shell_history enabled"
-
-# Bun completions
-if [[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ]]; then
-    source "/opt/homebrew/share/zsh/site-functions/_bun"
-fi
-
-
 # Dart
 if (( $+commands[dart] )); then
     path=($HOME/.pub-cache/bin $path)
+fi
+
+# Haskell
+[ -f "/Users/me/.ghcup/env" ] && source "/Users/me/.ghcup/env"
+
+# Google Cloud
+if [ -f '/Users/me/google-cloud-sdk/path.zsh.inc' ]; then
+    source '/Users/me/google-cloud-sdk/path.zsh.inc'
+fi
+
+if [ -f '/Users/me/google-cloud-sdk/completion.zsh.inc' ]; then
+    source '/Users/me/google-cloud-sdk/completion.zsh.inc'
 fi

@@ -1,5 +1,10 @@
 export EDITOR=vim
 
+if (( $+commands[nix] )); then
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+    path=($HOME/.nix-profile/bin $path)
+fi
+
 # fzf
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -37,6 +42,10 @@ if [[ $OS = "Darwin" ]]; then
     if [[ -d $latex_dir ]]; then
         path=($latex_dir $path)
     fi
+fi
+
+if (( $+commands[broot] )); then
+source /Users/me/.config/broot/launcher/bash/br
 fi
 
 export HOMEBREW_NO_ANALYTICS=1
