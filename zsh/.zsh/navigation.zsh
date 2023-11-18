@@ -26,6 +26,8 @@ unsetopt CLOBBER
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+hash -d hm="$HOME/.config/home-manager"
+
 if [[ $OS = "Darwin" ]]; then
     hash -d dropb="$HOME/Library/CloudStorage/Dropbox"
 fi
