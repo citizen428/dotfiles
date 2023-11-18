@@ -1,16 +1,1 @@
-:m - Prelude
-:m + GOA
-setLambdabotHome "~/.cabal/bin"
-:def pl        lambdabot "pl"
-:def unpl      lambdabot "unpl"
-:def redo      lambdabot "redo"
-:def undo      lambdabot "undo"
-:def index     lambdabot "index"
-:def docs      lambdabot "docs"
-:def instances lambdabot "instances"
-:def hoogle    lambdabot "hoogle"
-:def source    lambdabot "fptools"
-:def where     lambdabot "where"
-:def version   lambdabot "version"
-:def src       lambdabot "src"
 :set prompt "λ> "
