@@ -45,6 +45,7 @@ set foldlevelstart=99
 set foldcolumn=1
 
 " Indentation etc.
+set expandtab
 set tabstop=2
 set listchars=trail:␣,tab:»\ 
 set list
