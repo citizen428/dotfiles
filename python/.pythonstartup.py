@@ -1,17 +1,17 @@
-# Set ipython prompt to ">>> " for easier copying
-try:
-    from IPython import get_ipython
+# ruff: noqa: F401, F403
+import json
+import sys
+from typing import *
 
-    get_ipython().run_line_magic("doctest_mode", "")
-    get_ipython().run_line_magic("load_ext", "ipython_autoimport")
-except:
-    pass
-
-
-# Aliases to allow copying JSON and get Python objects
+# Aliases to allow copying JSON into the REPL
 null = None
 true = True
 false = False
 
+
 def perc(n):
-    return format(n, '.2%')
+    return format(n, ".2%")
+
+
+def mro(cls):
+    print(", ".join(c.__name__ for c in cls.__mro__))
