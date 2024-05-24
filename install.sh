@@ -29,6 +29,7 @@ typeset -A configs=(
 	[ruby]=~
 	[tmux]=~
 	[vim]=~
+	[wezterm]=~
 	[zsh]=~
 )
 
