@@ -100,6 +100,7 @@
   d = diff
   ds = !"git -c delta.side-by-side=true diff"
   dnp = !"git --no-pager diff"
+  dt = !"GIT_EXTERNAL_DIFF=difft git diff"
   f = fetch
   l = log
   l1 = log --oneline
@@ -107,11 +108,12 @@
   m = merge
   mt = mergetool
   p = pull
-  rp = git remote prune origin
+  rp = remote prune origin
   s = status -sb
   st = status
   sw = switch
   conflicts = diff --name-only --diff-filter=U
+  recent = !"GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 [gpg]
   format = ssh
 [diff "org"]
