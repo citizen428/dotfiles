@@ -21,3 +21,5 @@ setopt HIST_REDUCE_BLANKS
 # Don't store history commands
 setopt HIST_NO_STORE
 
+# Do not record an event starting with a space.
+setopt HIST_IGNORE_SPACE
