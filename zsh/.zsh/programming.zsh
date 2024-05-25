@@ -1,17 +1,6 @@
-# rtx runtime executor
-if (( $+commands[rtx] )); then
-    znap eval rtx "rtx activate zsh"
-fi
-
 # emacs
 if (( $+commands[emacs] )); then
     path=("$HOME/.config/emacs/bin" $path)
-fi
-
-# pnpm
-if (( $+commands[pnpm] )); then
-    export PNPM_HOME="${HOME}/.local/share/pnpm"
-    path=($PNPM_HOME $path)
 fi
 
 # Go
@@ -29,7 +18,6 @@ if (( $+commands[dotnet] )); then
 fi
 
 # Python
-export PYTHONSTARTUP="$HOME/.pythonstartup.py"
 if [[ -d $HOME/.poetry ]]; then
     path=($HOME/.poetry/bin $HOME/.local/bin $PATH)
 fi
@@ -41,6 +29,7 @@ fi
 
 # Rust
 if [[ -d $HOME/.cargo ]]; then
+    source "$HOME/.cargo/env"
     path=($HOME/.cargo/bin $path)
 fi
 
@@ -59,4 +48,9 @@ fi
 
 if [ -f '/Users/me/google-cloud-sdk/completion.zsh.inc' ]; then
     source '/Users/me/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# Node (Nix)
+if [[ -d $HOME/.npm-global ]]; then
+        path=($HOME/.npm-global $path)
 fi
