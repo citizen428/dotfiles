@@ -57,3 +57,5 @@ set message_cachedir = "~/.neomutt/cache/bodies"
 set edit_headers
 set editor = vim
 
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
