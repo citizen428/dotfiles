@@ -19,7 +19,6 @@ typeset -A configs=(
 	[git]=~
 	[haskell]=~
 	[helix]=~/.config
-	[homebrew]=~
 	[i3]=~/.config
 	[kitty]=~/.config
 	[neomutt]=~
