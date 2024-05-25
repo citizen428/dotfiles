@@ -8,6 +8,7 @@ alias mmv='noglob zmv -W'
 alias mux='tmuxinator'
 alias reload='znap restart'
 alias serve='ruby -run -e httpd .'
+alias weather='curl wttr.in/samui'
 
 alias -g C='|wc -l'
 alias -g G='|grep'
