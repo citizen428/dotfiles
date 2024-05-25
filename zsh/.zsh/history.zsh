@@ -1,6 +1,7 @@
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zhistory
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
 
 # Allow multiple terminal sessions to all append to one zsh command history
 setopt APPEND_HISTORY
