@@ -14,4 +14,6 @@ source ~/.zsh/programming.zsh
 source ~/.zsh/tools.zsh
 source ~/.zsh/ui.zsh
 
+eval "$(zoxide init zsh)"
+
 [[ -z $ZPROF ]] || zprof
