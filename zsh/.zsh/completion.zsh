@@ -2,14 +2,13 @@ if [[ $OS = "Darwin" ]]; then
     fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 fi
 
-autoload -U compinit
+autoload -Uz compinit
 
 # Only regenerate completions once per day
-if [[ $(date +'%j') != $(date -r ${ZDOTDIR:-$HOME}/.zcompdump +'%j') ]]; then
-    compinit
-else
-    compinit -C
-fi
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 # Allow completion from within a word/phrase
 setopt COMPLETE_IN_WORD
