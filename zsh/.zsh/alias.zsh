@@ -26,7 +26,7 @@ if (( $+commands[eza] )); then
     alias la='ls -a'
     alias ll='eza -lh --git'
     alias ls='eza'
-    alias lt='eza -lT --git'
+    alias tree='exa -T'
 fi
 
 if (( $+commands[kitty] )); then
