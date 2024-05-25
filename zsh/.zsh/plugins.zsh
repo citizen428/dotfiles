@@ -4,8 +4,6 @@
 
 source ~/.znap/zsh-snap/znap.zsh
 
-znap source agkozak/zsh-z
 znap source wfxr/forgit
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
-
