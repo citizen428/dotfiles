@@ -1,8 +1,7 @@
 export EDITOR=vim
 
 if (( $+commands[nix] )); then
-    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-    path=($HOME/.nix-profile/bin $path)
+    source /etc/profiles/per-user/me/etc/profile.d/hm-session-vars.sh
 fi
 
 # fzf
