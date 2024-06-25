@@ -29,6 +29,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 if [[ $OS = "Darwin" ]]; then
     hash -d dropb="$HOME/Library/CloudStorage/Dropbox"
     hash -d nix="$HOME/.config/nix"
+    hash -d nvim="$HOME/.config/nvim"
 fi
 
 if [[ $OS = "WSL" ]]; then
