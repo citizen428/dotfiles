@@ -4,10 +4,16 @@ if (( $+commands[nix] )); then
     source /etc/profiles/per-user/me/etc/profile.d/hm-session-vars.sh
 fi
 
+if (( $+commands[mise] )); then
+    eval "$(mise activate zsh)"
+fi
+
 # fzf
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if (( $+commands[fzf] )); then
+    eval "$(fzf --zsh)"
+    export FZF_DEFAULT_COMMAND='fd --type f'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 # Use bat as man pager
 if (( $+commands[bat] )); then
@@ -38,7 +44,11 @@ if [[ $OS = "Darwin" ]]; then
 fi
 
 if (( $+commands[broot] )); then
-source /Users/me/.config/broot/launcher/bash/br
+    source /Users/me/.config/broot/launcher/bash/br
+fi
+
+if [[ ${TERM} = "wezterm" && ${OS} = "Darwin" ]]; then
+    path=(/Applications/WezTerm.app/Contents/MacOS/ $path)
 fi
 
 export HOMEBREW_NO_ANALYTICS=1
