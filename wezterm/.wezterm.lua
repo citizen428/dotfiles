@@ -22,7 +22,7 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 config.audible_bell = "Disabled"
 
-config.leader = { key = 'a', mods = 'CTRL' }
+config.leader = { key = 'b', mods = 'CTRL' }
 config.keys = {
   -- Make Option-Left equivalent to Alt-b; backward-word
   { key = 'LeftArrow', mods = 'OPT', action = act.SendString '\x1bb' },
