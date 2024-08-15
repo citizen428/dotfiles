@@ -4,19 +4,19 @@ set realname = "Michael Kohl"
 
 # Fastmail
 set my_user = "me@citizen428.net"
-set my_pass = "`op item get fastmail-neomutt --fields label=password`"
+set my_pass = "`op item get fastmail-neomutt --fields label=password --reveal`"
 
 set smtp_url = "smtp://$my_user:$my_pass@smtp.fastmail.com:587"
 set smtp_pass = $my_pass
 
 set imap_user = $my_user
 set imap_pass = $my_pass
-set folder = "imaps://imap.fastmail.com:993"
-set spoolfile = "="
+set spoolfile = "imaps://imap.fastmail.com:993"
+set folder = $spoolfile
 set record = "=Sent"
 set postponed = "=Drafts"
 set trash = "=Trash"
-mailboxes = "="
+set imap_check_subscribed
 
 # IMAP settings
 set imap_check_subscribed = yes
@@ -57,5 +57,15 @@ set message_cachedir = "~/.neomutt/cache/bodies"
 set edit_headers
 set editor = vim
 
-macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
-macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro index,pager \cu "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cu "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# Sidebar
+set sidebar_format = "%B%<F? [%F]>%* %<N?%N/>%S"
+set mail_check_stats
+bind index,pager \cj sidebar-next
+bind index,pager \ck sidebar-prev
+bind index,pager \co sidebar-open
+bind index,pager \\ noop
+bind index,pager \\ sidebar-toggle-visible
+
