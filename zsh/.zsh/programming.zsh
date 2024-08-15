@@ -52,5 +52,5 @@ fi
 
 # Node (Nix)
 if [[ -d $HOME/.npm-global ]]; then
-        path=($HOME/.npm-global $path)
+        path=($HOME/.npm-global/bin $path)
 fi
