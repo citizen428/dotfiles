@@ -16,12 +16,6 @@ else
   alias ap pp
 end
 
-if defined?(Rails::ConsoleMethods)
-  module Rails::ConsoleMethods
-    alias rr reload!
-  end
-end
-
 # Monkey-patches
 class Object
   def d
