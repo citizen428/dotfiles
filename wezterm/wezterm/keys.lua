@@ -50,7 +50,7 @@ return {
 					window:set_config_overrides({})
 				end)
 			),
-			map("LEADER", "z", act.TogglePaneZoomState),
+			map("CTRL", "`", act.TogglePaneZoomState),
 		}
 
 		config.key_tables = {
