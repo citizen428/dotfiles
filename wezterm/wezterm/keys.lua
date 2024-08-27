@@ -27,6 +27,10 @@ return {
 			map("CTRL", "-", act.PaneSelect({ mode = "SwapWithActive" })),
 			map("ALT", "l", act.ShowLauncherArgs({ flags = "FUZZY|TABS|DOMAINS" })),
 			map("ALT", "w", act.ShowLauncherArgs({ flags = "WORKSPACES" })),
+			map("LEADER", "h", act.ActivatePaneDirection("Left")),
+			map("LEADER", "j", act.ActivatePaneDirection("Down")),
+			map("LEADER", "k", act.ActivatePaneDirection("Up")),
+			map("LEADER", "l", act.ActivatePaneDirection("Right")),
 			map(
 				"LEADER",
 				"r",
