@@ -40,13 +40,17 @@ return {
 				"LEADER",
 				"t",
 				wezterm.action_callback(function(window, _)
-					if window:get_config_overrides()["color_scheme"] ~= nil then
-						window:set_config_overrides({})
-					else
-						window:set_config_overrides({ color_scheme = "iTerm2 Solarized Light" })
-					end
+					window:set_config_overrides({ color_scheme = "Tokyo Night Day" })
 				end)
 			),
+			map(
+				"LEADER",
+				"c",
+				wezterm.action_callback(function(window, _)
+					window:set_config_overrides({})
+				end)
+			),
+			map("LEADER", "z", act.TogglePaneZoomState),
 		}
 
 		config.key_tables = {
