@@ -98,6 +98,7 @@
   b = branch
   co = checkout
   d = diff
+  dc = diff --cached
   ds = !"git -c delta.side-by-side=true diff"
   dnp = !"git --no-pager diff"
   dt = !"GIT_EXTERNAL_DIFF=difft git diff"
