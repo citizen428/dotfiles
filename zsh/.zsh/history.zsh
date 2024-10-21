@@ -23,3 +23,8 @@ setopt HIST_NO_STORE
 
 # Do not record an event starting with a space.
 setopt HIST_IGNORE_SPACE
+
+# Autocomplete based on history
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
