@@ -40,7 +40,7 @@ return {
 				"LEADER",
 				"t",
 				wezterm.action_callback(function(window, _)
-					window:set_config_overrides({ color_scheme = "Tokyo Night Day" })
+					window:set_config_overrides({ color_scheme = "Solarized Light (Gogh)" })
 				end)
 			),
 			map(
