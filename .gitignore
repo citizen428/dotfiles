@@ -1,4 +1,5 @@
 fish/fish/fish_variables
 neomutt/.neomutt/cache
+tmux/tmux/plugins/
 zsh/**/*.zwc
 zsh/.zsh/functions/_poetry
