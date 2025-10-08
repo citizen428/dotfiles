@@ -5,7 +5,6 @@ alias lg='lazygit'
 alias ipy='ipython'
 alias m='git switch main'
 alias mmv='noglob zmv -W'
-alias mux='tmuxinator'
 alias reload='znap restart'
 alias serve='python -m http.server --directory .'
 alias weather='curl wttr.in/samui'
@@ -24,7 +23,7 @@ fi
 
 if (( $+commands[eza] )); then
     alias l='eza -1a'
-    alias la='ls -a'
+    alias la='eza -a'
     alias ll='eza -lh --git'
     alias ls='eza'
     alias tree='eza -T'
