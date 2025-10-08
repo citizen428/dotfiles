@@ -1,0 +1,27 @@
+color normal		default default             # default colours
+color index		brightblue default ~N       # new messages
+color index		red default ~F              # flagged messages
+color index		blue default ~T             # tagged messages
+color index		brightred default ~D        # deleted messages
+color body		brightgreen default         (https?|ftp)://[\-\.+,/%~_:?&=\#a-zA-Z0-9]+  # links
+color body		brightgreen default         [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+          # email-addresses
+color attachment	magenta default             # attachments
+color signature		brightwhite default         # sigs
+color search		brightred black             # highlight results
+
+color indicator		black cyan                  # currently highlighted message
+color error		red default                 # error messages
+color status		white brightblack           # status line
+color tree		white default               # thread tree arrows
+color tilde		cyan default                # blank line padding
+
+color hdrdefault	brightblue default          # default headers
+color header		cyan default "^From:"
+color header	 	cyan default "^Subject:"
+
+color quoted		cyan default                # quote colours
+color quoted1		brightcyan default
+color quoted2		blue default
+color quoted3		green default
+color quoted4		yellow default
+color quoted5		red default

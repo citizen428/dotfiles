@@ -1,0 +1,33 @@
+# OS-specific files
+.DS_Store
+
+# Editors/IDEs
+.idea/
+.ionide/
+.projectile
+.vscode
+.vscode/
+.zed/
+
+# Redis dumps
+dump.rdb
+
+### Rails
+
+# Project-specific irbrc
+.irbrc.local
+.irbrc.local_history
+
+# Project-specific pryrc
+.pryrc
+
+# Secondary Gemfile
+Gemfile.dev
+Gemfile.dev.lock
+
+# Better Solargraph support for Rails
+config/definitions.rb
+
+.envrc
+
+.claude/settings.local.json

@@ -1,0 +1,4 @@
+fish/fish/fish_variables
+neomutt/.neomutt/cache
+zsh/**/*.zwc
+zsh/.zsh/functions/_poetry

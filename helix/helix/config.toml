@@ -1,0 +1,43 @@
+theme = "nord"
+
+[editor]
+color-modes = true
+completion-trigger-len = 1
+idle-timeout = 30 # ms
+line-number = "relative"
+rulers = [100]
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.lsp]
+display-messages = true
+
+[editor.statusline]
+left = ["mode", "file-name", "spinner", "diagnostics"]
+right = ["file-type", "selections", "position-percentage", "position", "file-encoding"]
+
+[editor.whitespace.characters]
+tab = "→"
+
+[editor.whitespace.render]
+tab = "all"
+
+[keys.normal]
+"0" = "goto_line_start"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+"@" = "shell_keep_pipe"
+"G" = "goto_last_line"
+"C-p" = "file_picker_in_current_directory"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.select]
+"0" = "goto_line_start"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+"@" = "shell_keep_pipe"

@@ -1,0 +1,5 @@
+# vim: ft=zsh
+function clone() {
+    git clone $1
+    cd $1:t:r
+}

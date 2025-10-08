@@ -1,0 +1,121 @@
+[user]
+  name = Michael Kohl
+  email = me@citizen428.net
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyJI+7JXGQORxEo1dso9sy1epesfERLGzCBWN1p2I7j
+[core]
+  attributesfile = ~/.gitattributes
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+  pager = delta
+[commit]
+  gpgsign = true
+[push]
+  autoSetupRemote = true
+  default = current
+[pull]
+  default = current
+  rebase = true
+[merge]
+  stat = true
+[rebase]
+  autosquash = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
+[difftool]
+  prompt = false
+  trustExitCode = true
+[interactive]
+  diffFilter = delta --color-only
+[init]
+  defaultBranch = main
+[branch]
+  sort = -committerdate # sort branches by last commit descending
+[delta]
+  features = unobstrusive-line-numbers decorations
+  line-numbers = true
+  navigate = true
+  syntax-theme = Nord
+[help]
+  autocorrect = 10
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
+[alias]
+  pushall = !"git remote|xargs -L 1 git push"
+  # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
+  # update submodules
+  subup = !"git pull --recurse-submodules && git submodule update"
+  # reset rails schema.db to commit we branched off
+  schemareset = !sh -c 'git checkout $(git merge-base ${1:-main} $(git symbolic-ref HEAD)) -- db/schema.rb' -
+  sqlreset = !sh -c 'git checkout $(git merge-base ${1:-main} $(git symbolic-ref HEAD)) -- db/structure.sql' -
+  # delete branches that have already been merged into the current branch
+  rmmerged = !"git branch --merged | grep -v '*' | grep -v \"main\" | xargs -n 1 git branch -d && git remote prune origin"
+  count = shortlog -sn
+  changedfiles = !sh -c 'git diff --name-only HEAD $(git merge-base HEAD main)' -
+  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  track = !"git fetch origin && git branch $1 origin/$1 && git switch $1"
+
+  #  Mostly from http://www.metacircus.com/hacking/2011/02/18/play-git-like-a-violin.html
+  # I like using the interactive mode to make complex commits
+  a = add --all
+  ai = add --interactive
+
+  # All the aliases relate to commits. Note that
+  # they are grouped by common prefixes, so I don't
+  # confuse what I want done by accident.
+  c = commit
+  # commit with a message
+  cm = commit -m
+  cma = commit -a -m
+  # amending the previous commit
+  ca = commit --amend
+  caa = commit -a --amend -C HEAD
+
+  deleted = log --diff-filter=D --summary
+
+  # reset
+  ## soft resets
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  ## hard resets
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh1 = reset HEAD^^ --hard
+
+  # shortcuts for commands
+  b = branch
+  co = checkout
+  d = diff
+  dc = diff --cached
+  ds = !"git -c delta.side-by-side=true diff"
+  dnp = !"git --no-pager diff"
+  dt = !"GIT_EXTERNAL_DIFF=difft git diff"
+  f = fetch
+  l = log
+  l1 = log --oneline
+  lg = log --graph --oneline --decorate --date=relative --all
+  m = merge
+  mt = mergetool
+  p = pull
+  rp = remote prune origin
+  s = status -sb
+  st = status
+  sw = switch
+  conflicts = diff --name-only --diff-filter=U
+  recent = !"GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
+[gpg]
+  format = ssh
+[diff "org"]
+  xfuncname="^\\*+ +(.*)$"

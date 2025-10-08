@@ -1,0 +1,23 @@
+configuration {
+	combi {
+		display-name: "";
+	}
+	combi-hide-mode-prefix: true;
+	combi-modi: [window,drun,ssh];
+	dpi: 227;
+	drun-display-format: "{name}";
+	font: "Fira Code 10";
+	modi: [window,drun,ssh,combi];
+	show-icons: true;
+	terminal: "kitty";
+}
+@theme "Arc-Dark"
+element-icon {
+	size: 2.6ch;
+}
+listview {
+	scrollbar: false;
+}
+textbox-prompt-colon {
+	str: "";
+}

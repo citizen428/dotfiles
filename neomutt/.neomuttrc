@@ -1,0 +1,71 @@
+# Identity
+set from = "me@citizen428.net"
+set realname = "Michael Kohl"
+
+# Fastmail
+set my_user = "me@citizen428.net"
+set my_pass = "`op item get fastmail-neomutt --fields label=password --reveal`"
+
+set smtp_url = "smtp://$my_user:$my_pass@smtp.fastmail.com:587"
+set smtp_pass = $my_pass
+
+set imap_user = $my_user
+set imap_pass = $my_pass
+set spoolfile = "imaps://imap.fastmail.com:993"
+set folder = $spoolfile
+set record = "=Sent"
+set postponed = "=Drafts"
+set trash = "=Trash"
+set imap_check_subscribed
+
+# IMAP settings
+set imap_check_subscribed = yes
+set imap_idle=yes
+unset imap_passive
+set mail_check = 5
+
+# UI
+ignore *
+unignore From Message-ID Date To Cc Bcc Subject
+
+set pager_stop
+unset markers
+
+source ~/.neomutt/colorschemes/nord
+
+# Prefer plain text to html.
+# However, for brain dead clients that bundle attachments inside a
+# multipart/alternative, prefer that alternative.
+alternative_order multipart/mixed multipart/related text/plain
+
+# Consult mime.types for determining types of these attachments
+mime_lookup application/octet-stream
+
+# This requires a ~/.mailcap entry with the copiousoutput flag, such as:
+# text/html; lynx -dump -width ${COLUMNS:-80} %s; nametemplate=%s.html; copiousoutput
+auto_view text/html
+
+# Index settings
+set quit = ask-yes
+set sort = threads
+set sort_aux = reverse-last-date-received
+
+set header_cache = "~/.neomutt/cache/headers"
+set message_cachedir = "~/.neomutt/cache/bodies"
+
+# Message composition settings
+set edit_headers
+set editor = vim
+
+macro index,pager \cu "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cu "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# Sidebar
+set sidebar_format = "%B%<F? [%F]>%* %<N?%N/>%S"
+set mail_check_stats
+bind index,pager \cj sidebar-next
+bind index,pager \ck sidebar-prev
+bind index,pager \co sidebar-open
+bind index,pager \\ noop
+bind index,pager \\ sidebar-toggle-visible
+

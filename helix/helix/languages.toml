@@ -1,0 +1,9 @@
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = true
+
+[[language]]
+name = "elixir"
+auto-format = true
+

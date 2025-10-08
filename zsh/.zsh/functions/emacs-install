@@ -1,0 +1,6 @@
+# vim: ft=zsh
+function emacs-install() {
+  local emacs=emacs-plus@29
+  brew uninstall $emacs
+  brew install $emacs --with-imagemagick --with-native-comp --with-xwidgets --with-nobu417-big-sur-icon
+}

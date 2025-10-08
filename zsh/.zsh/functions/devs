@@ -1,0 +1,4 @@
+# vim:ft=zsh
+devs () {
+  nix flake new -t "github:numtide/devshell" "$1"
+}
