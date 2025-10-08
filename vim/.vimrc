@@ -1,13 +1,14 @@
 "-------------------------------------------------------
 " GENERAL SETTINGS
 "-------------------------------------------------------
+
+" Disable vi compatibility
+set nocompatible
+
 colorscheme nord
 
 " <BckSpc> can delete everything in insert mode
 set backspace=eol,indent,start
-
-" Show (partial) command in last line of screen
-set showcmd
 
 " Show matching parentheses
 set showmatch
@@ -29,6 +30,9 @@ set wildmode=list:longest,full
 
 " Set command history to 50 lines
 set history=50
+
+" Hightlight the line the cursor is on
+set cursorline
 
 " Show cursor position
 set ruler
@@ -83,5 +87,4 @@ set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
 set statusline+=%{&encoding},                " encoding
 set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
-set statusline+=0x%-8B\                      " current char
 set statusline+=%-10.(%l,%c%V%)\ %<%P        " offset
