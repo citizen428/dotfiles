@@ -1,6 +1,8 @@
 # Emacs keybindings
 bindkey -e
 
+WORDCHARS="${WORDCHARS/\/}"
+
 # ESC-. inserts last word from previous command
 bindkey '\e.' insert-last-word
 
