@@ -1,0 +1,23 @@
+[general]
+import = ["~/.config/alacritty/themes/nord.toml"]
+
+[window]
+decorations = "Buttonless"
+padding = { x = 7, y = 7 }
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Retina" }
+size = 14.0
+
+[keyboard]
+bindings = [
+  # Map Option-Left to backward-word
+  { mods = "Option", key = "Left", chars = "\u001bB" },
+  # Map Option-Right to forward-word
+  { mods = "Option", key = "Right", chars = "\u001bF" },
+  # Map Option-. to insert-last-word
+  { mods = "Alt", key = "Period", chars = "\u001b." },
+]
+
+[selection]
+save_to_clipboard = true

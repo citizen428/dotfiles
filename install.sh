@@ -14,6 +14,7 @@ function stow_config {
 }
 
 typeset -A configs=(
+	[alacritty]=~/.config
 	[bin]=/usr/local/bin
 	[fish]=~/.config
 	[git]=~
