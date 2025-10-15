@@ -22,11 +22,6 @@ if [[ -d $HOME/.poetry ]]; then
     path=($HOME/.poetry/bin $HOME/.local/bin $PATH)
 fi
 
-# Ruby
-if (( $+commands[ruby] )); then
-    export DISABLE_SPRING="true"
-fi
-
 # Rust
 if [[ -d $HOME/.cargo ]]; then
     source "$HOME/.cargo/env"
@@ -39,15 +34,15 @@ if (( $+commands[dart] )); then
 fi
 
 # Haskell
-[ -f "/Users/me/.ghcup/env" ] && source "/Users/me/.ghcup/env"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 # Google Cloud
-if [ -f '/Users/me/google-cloud-sdk/path.zsh.inc' ]; then
-    source '/Users/me/google-cloud-sdk/path.zsh.inc'
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+    source "$HOME/google-cloud-sdk/path.zsh.inc"
 fi
 
-if [ -f '/Users/me/google-cloud-sdk/completion.zsh.inc' ]; then
-    source '/Users/me/google-cloud-sdk/completion.zsh.inc'
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+    source "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
 
 # Node (Nix)
@@ -58,4 +53,9 @@ fi
 # PHP
 if (( $+commands[composer] )); then
     path=($HOME/.config/composer/vendor/bin $path)
+fi
+
+# OCaml
+if [ -f "$HOME/.opam/opam-init/init.zsh" ]; then
+    source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
 fi
