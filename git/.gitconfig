@@ -7,7 +7,6 @@
   autocrlf = input
   editor = vim
   excludesfile = ~/.gitignore
-  pager = delta
 [commit]
   gpgsign = true
 [push]
@@ -31,17 +30,10 @@
 [difftool]
   prompt = false
   trustExitCode = true
-[interactive]
-  diffFilter = delta --color-only
 [init]
   defaultBranch = main
 [branch]
   sort = -committerdate # sort branches by last commit descending
-[delta]
-  features = unobstrusive-line-numbers decorations
-  line-numbers = true
-  navigate = true
-  syntax-theme = Nord
 [help]
   autocorrect = 10
 [diff "rspec"]
@@ -49,7 +41,10 @@
 [merge]
   conflictstyle = diff3
 [diff]
-  colorMoved = default
+  external = difft
+  tool = difft
+[pager]
+  difftool = true
 [alias]
   pushall = !"git remote|xargs -L 1 git push"
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
@@ -99,9 +94,8 @@
   co = checkout
   d = diff
   dc = diff --cached
-  ds = !"git -c delta.side-by-side=true diff"
-  dnp = !"git --no-pager diff"
-  dt = !"GIT_EXTERNAL_DIFF=difft git diff"
+  di = !"DFT_DISPLAY=inline git --no-pager diff"
+  dn = diff --no-ext-diff
   f = fetch
   l = log
   l1 = log --oneline
@@ -117,5 +111,3 @@
   recent = !"GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 [gpg]
   format = ssh
-[diff "org"]
-  xfuncname="^\\*+ +(.*)$"
