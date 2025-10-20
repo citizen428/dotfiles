@@ -49,5 +49,4 @@ if [ $OSTYPE = Darwin ]
     abbr -a bservr 'brew services restart'
     abbr -a bservs 'brew services start'
     abbr -a bservx 'brew services stop'
-    abbr -a obs 'fm --start-dir=$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Private/'
 end

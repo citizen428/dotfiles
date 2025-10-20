@@ -69,7 +69,6 @@ if [[ $OS = "Darwin" ]]; then
     alias bservr='brew services restart'
     alias bservs='brew services start'
     alias bservx='brew services stop'
-    alias obs='fm --start-dir=$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Private/ --pretty-markdown=true --theme=nord'
 fi
 
 if [[ $OS = "WSL" ]]; then
