@@ -1,0 +1,6 @@
+[settings]
+idiomatic_version_file_enable_tools = ["java", "ruby", "nodejs"]
+experimental = true
+
+[settings.python]
+compile = false
