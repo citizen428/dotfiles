@@ -17,6 +17,8 @@ bindings = [
   { mods = "Option", key = "Right", chars = "\u001bF" },
   # Map Option-. to insert-last-word
   { mods = "Alt", key = "Period", chars = "\u001b." },
+  # Shift+Return sends ESC+Enter to work in tmux
+  { mods = "Shift", key = "Return",  chars = "\u001b\r" }
 ]
 
 [selection]
