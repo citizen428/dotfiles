@@ -4,67 +4,67 @@
 # bash 3 by default, so ksh it is.
 
 if [[ ! $(command -v stow &> /dev/null) ]]; then
-	echo "stow not available, aborting."
-	exit 1
+  echo "stow not available, aborting."
+  exit 1
 fi
 
 function stow_config {
-	echo "Linking $2 in $1"
-	stow -t $1 $2
+  echo "Linking $2 in $1"
+  stow -t $1 $2
 }
 
 typeset -A configs=(
-	[aerc]=~/.config
-	[alacritty]=~/.config
-	[direnv]=~/.config
-	[elvish]=~/.config
-	[fish]=~/.config
-	[ghostty]=~/.config
-	[git]=~
-	[gitu]=~/.config
-	[haskell]=~
-	[helix]=~/.config
-	[i3]=~/.config
-	[jj]=~/.config
-	[kitty]=~/.config
-	[mise]=~/.config
-	[neomutt]=~
-	[nvim]=~/.config
+  [aerc]=~/.config
+  [alacritty]=~/.config
+  [direnv]=~/.config
+  [elvish]=~/.config
+  [fish]=~/.config
+  [ghostty]=~/.config
+  [git]=~
+  [gitu]=~/.config
+  [haskell]=~
+  [helix]=~/.config
+  [i3]=~/.config
+  [jj]=~/.config
+  [kitty]=~/.config
+  [mise]=~/.config
+  [neomutt]=~
+  [nvim]=~/.config
   [ocaml]=~
-	[python]=~
-	[postgres]=~
-	[rofi]=~/.config
-	[ruby]=~
-	[starship]=~/.config
-	[tmux]=~/.config
-	[topgrade]=~/.config
-	[utop]=~/.config
-	[vim]=~
-	[wezterm]=~/.config
+  [python]=~
+  [postgres]=~
+  [rofi]=~/.config
+  [ruby]=~
+  [starship]=~/.config
+  [tmux]=~/.config
+  [topgrade]=~/.config
+  [utop]=~/.config
+  [vim]=~
+  [wezterm]=~/.config
   [zed]=~/.config
-	[zsh]=~
+  [zsh]=~
 )
 
 if [[ $# -gt 0 ]]; then
-	# We got a list of configs on the command line
-	for config in $@; do
-	  directory=${configs[$config]}
-	  if [[ -n "${directory}" ]] ; then
-	    stow_config $directory $config
-	  else
-	    echo "Unknown config ${config}, check spelling"
-	  fi
-	done
+  # We got a list of configs on the command line
+  for config in $@; do
+    directory=${configs[$config]}
+    if [[ -n "${directory}" ]] ; then
+      stow_config $directory $config
+    else
+      echo "Unknown config ${config}, check spelling"
+    fi
+  done
 else
-	# Interactively confirm each known config
-	for config in "${!configs[@]}"; do
-	  directory=${configs[$config]}
-	  read -n1 confirm?"Install ${config}? [y/n] " 
-	  echo
-	  if [[ "$confirm" = "y" || "$confirm" = "Y" ]]; then
-	    stow_config $directory $config
-	  else
-	    echo "Skipping ${config}"
-	  fi
-	done
+  # Interactively confirm each known config
+  for config in "${!configs[@]}"; do
+    directory=${configs[$config]}
+    read -n1 confirm?"Install ${config}? [y/n] "
+    echo
+    if [[ "$confirm" = "y" || "$confirm" = "Y" ]]; then
+      stow_config $directory $config
+    else
+      echo "Skipping ${config}"
+    fi
+  done
 fi
