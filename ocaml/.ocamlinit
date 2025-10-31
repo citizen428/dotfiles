@@ -1,0 +1,5 @@
+#use "topfind";;
+#require "base";;
+open Base;;
+#require "core_bench";;
+open Core_bench;;

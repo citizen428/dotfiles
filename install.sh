@@ -29,6 +29,7 @@ typeset -A configs=(
 	[mise]=~/.config
 	[neomutt]=~
 	[nvim]=~/.config
+  [ocaml]=~
 	[python]=~
 	[postgres]=~
 	[rofi]=~/.config
