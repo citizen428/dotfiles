@@ -16,7 +16,6 @@ function stow_config {
 typeset -A configs=(
 	[aerc]=~/.config
 	[alacritty]=~/.config
-	[bin]=/usr/local/bin
 	[direnv]=~/.config
 	[elvish]=~/.config
 	[fish]=~/.config
