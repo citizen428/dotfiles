@@ -1,0 +1,23 @@
+! -*- conf-xdefaults -*-
+
+! Copy this file to $XDG_CONFIG_HOME/utop/utoprc (~/.config/utop/utoprc)
+
+! Common resources
+
+profile:                  dark
+identifier.foreground:    none
+module.foreground:        #88C0D0
+comment.foreground:       #616E88
+doc.foreground:           #D8DEE9
+constant.foreground:      #B48EAD
+keyword.foreground:       #81A1C1
+symbol.foreground:        #81A1C1
+string.foreground:        #A3BE8C
+char.foreground:          #A3BE8C
+quotation.foreground:     #B48EAD
+error.foreground:         #BF616A
+directive.foreground:     #5E81AC
+parenthesis.background:   #434C5E
+
+! uncomment the next line to disable autoload files
+! autoload: false

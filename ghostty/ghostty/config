@@ -1,0 +1,25 @@
+# vim: set syntax=dosini:
+copy-on-select = true
+
+font-family = FiraCode Nerd Font
+font-feature = +calt
+font-feature = +liga
+font-size = 14
+font-style = Retina
+
+# Shift+Enter sends ESC+Enter
+keybind = shift+enter=text:\x1b\r
+# Map Option-. to insert-last-word
+keybind = opt+period=text:\x1b.
+
+macos-non-native-fullscreen = true
+
+mouse-hide-while-typing = true
+
+window-decoration = none
+window-padding-balance = true
+window-padding-x = 7
+window-padding-y = 7
+
+theme = Nord
+
