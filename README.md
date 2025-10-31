@@ -23,3 +23,6 @@ However, there is an install script called `install.sh` which uses [GNU Stow](ht
     Linking asdf in /home/user
     Linking ruby in /home/user
     ```
+
+> [!NOTE]
+> Some of the tools in this repo are redundant. I don't actively use them all  at the same time. But I'm still keeping the configs in case I need them again later.
