@@ -1,4 +1,4 @@
-export EDITOR=vim
+export EDITOR=nvim
 
 if (( $+commands[nix] )); then
     source /etc/profiles/per-user/me/etc/profile.d/hm-session-vars.sh
