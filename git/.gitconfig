@@ -5,7 +5,7 @@
 [core]
   attributesfile = ~/.gitattributes
   autocrlf = input
-  editor = nvim
+  editor = "nvim +startinsert!"
   excludesfile = ~/.gitignore
 [commit]
   gpgsign = true
