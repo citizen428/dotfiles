@@ -1,5 +1,7 @@
 export EDITOR=nvim
 
+path=($HOME/.local/bin $path)
+
 if (( $+commands[nix] )); then
     source /etc/profiles/per-user/me/etc/profile.d/hm-session-vars.sh
 fi
