@@ -53,13 +53,14 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.statusline" },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
   { src = "https://github.com/kylechui/nvim-surround" },
+  { src = "https://github.com/chomosuke/typst-preview.nvim" },
   { src = "https://github.com/stevearc/oil.nvim" },
   { src = "https://github.com/folke/which-key.nvim" },
 })
 
 vim.cmd("colorscheme nord")
 
-vim.lsp.enable({ "efm", "lua_ls", "ocaml-lsp", "ts_ls" })
+vim.lsp.enable({ "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls" })
 
 require("marks").setup()
 require("mason").setup()
@@ -70,6 +71,7 @@ require("mason-tool-installer").setup({
     "prettier",
     "stylua",
     "typescript-language-server",
+    "tinymist",
   },
 })
 require("mini.completion").setup()
@@ -83,6 +85,7 @@ require("oil").setup({
   skip_confirm_for_simple_edits = true,
 })
 require("nvim-surround").setup()
+require("typst-preview").setup()
 
 -- Autocommands
 vim.api.nvim_create_autocmd("LspAttach", {

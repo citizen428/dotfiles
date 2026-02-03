@@ -24,6 +24,10 @@
       "rev": "581934b",
       "src": "https://github.com/nvim-mini/mini.completion"
     },
+    "mini.diff": {
+      "rev": "fbb93ea1728e7c9d0944df8bd022a68402bd2e7e",
+      "src": "https://github.com/nvim-mini/mini.diff"
+    },
     "mini.icons": {
       "rev": "ff2e4f1",
       "src": "https://github.com/nvim-mini/mini.icons"
@@ -59,6 +63,10 @@
     "oil.nvim": {
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "typst-preview.nvim": {
+      "rev": "87d0f3a1beedefe6fdd96422c04c3dceb69d1063",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab214",
