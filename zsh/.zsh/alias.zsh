@@ -76,10 +76,6 @@ if [[ $OS = "WSL" ]]; then
     alias pbpaste='w32yank.exe -i'
 fi
 
-if [[ -f $HOME/.claude/local/claude ]]; then
-    alias claude="~/.claude/local/claude"
-fi
-
 if (( $+commands[docker] )); then
     alias docker-compose="docker compose"
 fi
