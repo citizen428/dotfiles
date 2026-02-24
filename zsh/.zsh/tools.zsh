@@ -53,4 +53,8 @@ if [[ ${TERM} = "wezterm" && ${OS} = "Darwin" ]]; then
     path=(/Applications/WezTerm.app/Contents/MacOS/ $path)
 fi
 
+if (( $+commands[zoxide])); then
+  znap eval zoxide "zoxide init zsh"
+fi
+
 export HOMEBREW_NO_ANALYTICS=1

@@ -13,7 +13,5 @@ source ~/.zsh/tools.zsh
 source ~/.zsh/ui.zsh
 source ~/.zsh/completion.zsh
 
-eval "$(zoxide init zsh)"
-
 [[ -z $ZPROF ]] || zprof
 
