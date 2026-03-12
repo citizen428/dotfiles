@@ -60,7 +60,7 @@ vim.pack.add({
 
 vim.cmd("colorscheme nord")
 
-vim.lsp.enable({ "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls" })
+vim.lsp.enable({ "clangd", "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls" })
 
 require("marks").setup()
 require("mason").setup()
