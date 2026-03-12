@@ -9,19 +9,31 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift shift": "file_finder::Toggle",
     },
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      "j k": "vim::NormalBefore",
     },
   },
   {
-    "context": "Editor",
+    "context": "EmptyPane || SharedScreen || vim_operator == none && ! VimWaiting && vim_mode != insert",
     "bindings": {
-      "cmd-g i": "editor::ToggleGitBlameInline"
-    }
-  }
+      "\\": "project_panel::ToggleFocus",
+      "space d": "diagnostics::Deploy",
+      "space e": "project_panel::ToggleFocus",
+      "space g": "git_panel::ToggleFocus",
+      "space i": "editor::ToggleGitBlameInline",
+      "space o": "outline::Toggle",
+      "space O": "outline_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "ProjectPanel || GitPanel || OutlinePanel",
+    "bindings": {
+      "\\": "workspace::ToggleLeftDock",
+    },
+  },
 ]

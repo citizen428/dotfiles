@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "mode": "subtle"
+  },
   "git": {
     "inline_blame": {
       "enabled": false
