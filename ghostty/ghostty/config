@@ -13,6 +13,7 @@ keybind = shift+enter=text:\x1b\r
 keybind = opt+period=text:\x1b.
 
 macos-non-native-fullscreen = true
+macos-applescript = false
 
 mouse-hide-while-typing = true
 
