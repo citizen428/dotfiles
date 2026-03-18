@@ -15,10 +15,20 @@ zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Home, End, Del keys
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
+if [[ -n $TMUX ]]; then
+    bindkey  "^[[1~"  beginning-of-line
+    bindkey  "^[[4~"  end-of-line
+else
+    bindkey  "^[[H"   beginning-of-line
+    bindkey  "^[[F"   end-of-line
+fi
 bindkey  "^[[3~"  delete-char
 
 # Alt/option + left/right arrow for word-wise navigation
-bindkey "^[^[[C" forward-word
-bindkey "^[^[[D" backward-word
+if [[ $OS == "Darwin" ]]; then
+    bindkey "^[^[[C" forward-word
+    bindkey "^[^[[D" backward-word
+else
+    bindkey "^[[1;3C" forward-word
+    bindkey "^[[1;3D" backward-word
+fi
