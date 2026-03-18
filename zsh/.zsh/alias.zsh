@@ -71,6 +71,11 @@ if [[ $OS = "Darwin" ]]; then
     alias bservx='brew services stop'
 fi
 
+if [[ $OS = "Linux" ]]; then
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
+fi
+
 if [[ $OS = "WSL" ]]; then
     alias pbcopy="w32yank.exe -o"
     alias pbpaste='w32yank.exe -i'
