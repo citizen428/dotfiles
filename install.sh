@@ -3,7 +3,7 @@
 # while ksh had them since 1993. macOS still ships with
 # bash 3 by default, so ksh it is.
 
-if [[ ! $(command -v stow &> /dev/null) ]]; then
+if ! command -v stow > /dev/null 2>&1; then
   echo "stow not available, aborting."
   exit 1
 fi
