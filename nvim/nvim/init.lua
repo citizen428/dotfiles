@@ -123,6 +123,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Show diagnostics inline
+vim.diagnostic.config({ virtual_text = true })
+
 -- Key mappings
 vim.g.mapleader = " "
 
@@ -144,6 +147,7 @@ keymap.set("n", "<leader>fg", ":Pick grep_live<CR>")
 keymap.set("n", "<leader>fh", ":Pick help<CR>")
 keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format buffer" })
 keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+keymap.set("n", "<leader>cD", vim.diagnostic.setloclist, { desc = "Show diagnostics" })
 keymap.set("n", "<leader>u", function()
   require("undotree").open({ command = ":rightbelow 30vnew" })
 end)
