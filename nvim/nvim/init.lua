@@ -60,7 +60,7 @@ vim.pack.add({
 
 vim.cmd("colorscheme nord")
 
-vim.lsp.enable({ "clangd", "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls" })
+vim.lsp.enable({ "clangd", "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls", "zls" })
 
 require("marks").setup()
 require("mason").setup()
@@ -72,6 +72,7 @@ require("mason-tool-installer").setup({
     "stylua",
     "typescript-language-server",
     "tinymist",
+    "zls",
   },
 })
 require("mini.completion").setup()
