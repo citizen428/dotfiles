@@ -58,6 +58,9 @@ vim.pack.add({
   { src = "https://github.com/folke/which-key.nvim" },
 })
 
+-- Built-in plugins
+vim.cmd("packadd nvim.undotree")
+
 vim.cmd("colorscheme nord")
 
 vim.lsp.enable({ "clangd", "efm", "gleam", "lua_ls", "ocaml-lsp", "ts_ls", "zls" })
@@ -141,6 +144,9 @@ keymap.set("n", "<leader>fg", ":Pick grep_live<CR>")
 keymap.set("n", "<leader>fh", ":Pick help<CR>")
 keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format buffer" })
 keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+keymap.set("n", "<leader>u", function()
+  require("undotree").open({ command = ":rightbelow 30vnew" })
+end)
 
 -- Confirm completion with Enter
 keymap.set("i", "<CR>", function()
