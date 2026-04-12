@@ -4,3 +4,6 @@ experimental = true
 
 [settings.python]
 compile = false
+
+[settings.ruby]
+compile = false
