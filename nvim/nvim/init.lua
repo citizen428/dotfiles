@@ -73,6 +73,7 @@ require("marks").setup()
 require("mason").setup()
 require("mason-tool-installer").setup({
   ensure_installed = {
+    "clangd",
     "efm",
     "lua-language-server",
     "prettier",
