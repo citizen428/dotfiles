@@ -38,6 +38,10 @@ o.mouse = "a"
 o.swapfile = false
 o.wildmode = "list:longest,full"
 
+o.autocomplete = true
+o.pumborder = "rounded"
+o.completeopt = "menu,menuone,noselect,popup"
+
 -- Plugins and plugin config
 vim.pack.add({
   { src = "https://github.com/gbprod/nord.nvim" },
@@ -45,7 +49,6 @@ vim.pack.add({
   { src = "https://github.com/chentoast/marks.nvim" },
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
-  { src = "https://github.com/nvim-mini/mini.completion" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/nvim-mini/mini.pairs" },
   { src = "https://github.com/nvim-mini/mini.pick" },
@@ -78,7 +81,6 @@ require("mason-tool-installer").setup({
     "zls",
   },
 })
-require("mini.completion").setup()
 require("mini.icons").setup()
 require("mini.pairs").setup()
 require("mini.pick").setup()
@@ -168,7 +170,7 @@ keymap.set("i", "<S-Tab>", function()
 end, { expr = true })
 
 -- Trigger mini.completion with C-x C-o
-keymap.set("i", "<C-x><C-o>", [[<Cmd>lua MiniCompletion.complete_twostage()<CR>]])
+-- keymap.set("i", "<C-x><C-o>", [[<Cmd>lua MiniCompletion.complete_twostage()<CR>]])
 
 -- Fix common typo
 vim.cmd("cabbrev Wq wq")
