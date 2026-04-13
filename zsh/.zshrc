@@ -13,5 +13,8 @@ source ~/.zsh/tools.zsh
 source ~/.zsh/ui.zsh
 source ~/.zsh/completion.zsh
 
-[[ -z $ZPROF ]] || zprof
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 
+[[ -z $ZPROF ]] || zprof
