@@ -1,18 +1,22 @@
+local gh = function(x)
+  return "https://github.com/" .. x
+end
+
 vim.pack.add({
-  { src = "https://github.com/gbprod/nord.nvim" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/chentoast/marks.nvim" },
-  { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
-  { src = "https://github.com/nvim-mini/mini.icons" },
-  { src = "https://github.com/nvim-mini/mini.pairs" },
-  { src = "https://github.com/nvim-mini/mini.pick" },
-  { src = "https://github.com/nvim-mini/mini.snippets" },
-  { src = "https://github.com/rafamadriz/friendly-snippets" },
-  { src = "https://github.com/kylechui/nvim-surround" },
-  { src = "https://github.com/chomosuke/typst-preview.nvim" },
-  { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/folke/which-key.nvim" },
+  gh("gbprod/nord.nvim"),
+  gh("neovim/nvim-lspconfig"),
+  gh("chentoast/marks.nvim"),
+  gh("mason-org/mason.nvim"),
+  gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
+  gh("nvim-mini/mini.icons"),
+  gh("nvim-mini/mini.pairs"),
+  gh("nvim-mini/mini.pick"),
+  gh("nvim-mini/mini.snippets"),
+  gh("rafamadriz/friendly-snippets"),
+  gh("kylechui/nvim-surround"),
+  gh("chomosuke/typst-preview.nvim"),
+  gh("stevearc/oil.nvim"),
+  gh("folke/which-key.nvim"),
 })
 
 -- Built-in plugins
