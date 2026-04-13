@@ -12,6 +12,17 @@
       "type": "registry",
     },
   },
+  "languages": {
+    "Ruby": {
+      "tab_size": 2,
+      "language_servers": [
+        "ruby-lsp",
+        "!solargraph",
+        "!rubocop"
+      ],
+      "formatter": "language_server",
+    },
+  },
   "edit_predictions": {
     "mode": "subtle",
   },
@@ -44,13 +55,17 @@
     "enabled": false,
   },
   "format_on_save": "on",
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme",
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
     "dark": "Nord Dark",
   },
@@ -63,7 +78,10 @@
   },
   "relative_line_numbers": "enabled",
   "cursor_blink": false,
-  "wrap_guides": [80, 100],
+  "wrap_guides": [
+    80,
+    100
+  ],
   "indent_guides": {
     "coloring": "fixed",
     "enabled": false,
