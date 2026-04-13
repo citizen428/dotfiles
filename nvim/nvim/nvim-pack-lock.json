@@ -1,11 +1,7 @@
 {
   "plugins": {
-    "Comment.nvim": {
-      "rev": "e30b7f2",
-      "src": "https://github.com/numToStr/Comment.nvim"
-    },
     "friendly-snippets": {
-      "rev": "572f566",
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "marks.nvim": {
@@ -13,39 +9,35 @@
       "src": "https://github.com/chentoast/marks.nvim"
     },
     "mason-tool-installer.nvim": {
-      "rev": "517ef59",
+      "rev": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc",
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
-      "rev": "ad7146a",
+      "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.completion": {
-      "rev": "581934b",
+      "rev": "09884c629cac1a8c999ffb6c57dc8424450aea5e",
       "src": "https://github.com/nvim-mini/mini.completion"
     },
-    "mini.diff": {
-      "rev": "fbb93ea1728e7c9d0944df8bd022a68402bd2e7e",
-      "src": "https://github.com/nvim-mini/mini.diff"
-    },
     "mini.icons": {
-      "rev": "ff2e4f1",
+      "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.pairs": {
-      "rev": "b316e68",
+      "rev": "42387c7fe68fc0b6e95eaf37f1bb76e7bffaa0d9",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.pick": {
-      "rev": "fe1c25e",
+      "rev": "437d44eb57312f23e6b931704694fc294922cd88",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.snippets": {
-      "rev": "66c041f",
+      "rev": "8e3acd41bd7ee8f89967c83bacc93871b98a14aa",
       "src": "https://github.com/nvim-mini/mini.snippets"
     },
     "mini.statusline": {
-      "rev": "1491990",
+      "rev": "b456bfe845e475e9cec065b7a9a1ef657ad2f41b",
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "nord.nvim": {
@@ -53,19 +45,19 @@
       "src": "https://github.com/gbprod/nord.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "2010fc6",
+      "rev": "8a9378a822719346a0288fa004dab302ca3c0a8f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
-      "rev": "fcfa7e0",
+      "rev": "9291040de8cd8a4439eb64c441e8d5d2bf884a5a",
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "oil.nvim": {
-      "rev": "7e1cd77",
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "typst-preview.nvim": {
-      "rev": "87d0f3a1beedefe6fdd96422c04c3dceb69d1063",
+      "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
     "which-key.nvim": {
