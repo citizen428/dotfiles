@@ -32,10 +32,6 @@
       "rev": "8e3acd41bd7ee8f89967c83bacc93871b98a14aa",
       "src": "https://github.com/nvim-mini/mini.snippets"
     },
-    "mini.statusline": {
-      "rev": "b456bfe845e475e9cec065b7a9a1ef657ad2f41b",
-      "src": "https://github.com/nvim-mini/mini.statusline"
-    },
     "nord.nvim": {
       "rev": "07647ad",
       "src": "https://github.com/gbprod/nord.nvim"

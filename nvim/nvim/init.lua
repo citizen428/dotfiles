@@ -1,6 +1,7 @@
 local o = vim.opt
 
 -- Display
+require("vim._core.ui2").enable()
 o.cursorline = true
 o.number = true
 o.relativenumber = true
@@ -32,15 +33,16 @@ o.foldlevel = 1
 o.foldlevelstart = 99
 o.foldcolumn = "1"
 
+-- Autocomplete
+o.autocomplete = true
+o.pumborder = "rounded"
+o.completeopt = "menu,menuone,noselect,popup"
+
 -- Misc
 o.clipboard = "unnamedplus"
 o.mouse = "a"
 o.swapfile = false
 o.wildmode = "list:longest,full"
-
-o.autocomplete = true
-o.pumborder = "rounded"
-o.completeopt = "menu,menuone,noselect,popup"
 
 -- Plugins and plugin config
 vim.pack.add({
@@ -53,7 +55,6 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.pairs" },
   { src = "https://github.com/nvim-mini/mini.pick" },
   { src = "https://github.com/nvim-mini/mini.snippets" },
-  { src = "https://github.com/nvim-mini/mini.statusline" },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
   { src = "https://github.com/kylechui/nvim-surround" },
   { src = "https://github.com/chomosuke/typst-preview.nvim" },
@@ -84,7 +85,6 @@ require("mason-tool-installer").setup({
 require("mini.icons").setup()
 require("mini.pairs").setup()
 require("mini.pick").setup()
-require("mini.statusline").setup()
 require("oil").setup({
   delete_to_trash = true,
   view_options = { show_hidden = true },
