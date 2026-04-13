@@ -170,8 +170,5 @@ keymap.set("i", "<S-Tab>", function()
   return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
 end, { expr = true })
 
--- Trigger mini.completion with C-x C-o
--- keymap.set("i", "<C-x><C-o>", [[<Cmd>lua MiniCompletion.complete_twostage()<CR>]])
-
 -- Fix common typo
 vim.cmd("cabbrev Wq wq")
