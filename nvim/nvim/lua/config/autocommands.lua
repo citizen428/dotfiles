@@ -1,5 +1,8 @@
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("LspConfig", { clear = true }),
+local create_autocmd = vim.api.nvim_create_autocmd
+local create_augroup = vim.api.nvim_create_augroup
+
+create_autocmd("LspAttach", {
+  group = create_augroup("LspConfig", { clear = true }),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
@@ -10,8 +13,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if
         client:supports_method("textDocument/formatting") or client:supports_method("textDocument/rangeFormatting")
     then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("FormatOnSave", {}),
+      create_autocmd("BufWritePre", {
+        group = create_augroup("FormatOnSave", {}),
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ async = false })
@@ -22,10 +25,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Highlight yanked text
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+create_autocmd("TextYankPost", {
+  group = create_augroup("HighlightYank", { clear = true }),
   callback = function()
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
+  end,
+})
+
+-- Conceal markup in markdown files
+create_autocmd("FileType", {
+  group = create_augroup("MarkdownConceal", { clear = true }),
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.conceallevel = 2
   end,
 })
 
