@@ -17,6 +17,7 @@ vim.pack.add({
   gh("chomosuke/typst-preview.nvim"),
   gh("stevearc/oil.nvim"),
   gh("folke/which-key.nvim"),
+  gh("obsidian-nvim/obsidian.nvim"),
 })
 
 -- Built-in plugins
@@ -51,3 +52,9 @@ require("oil").setup({
 })
 require("nvim-surround").setup()
 require("typst-preview").setup()
+require("obsidian").setup({
+  legacy_commands = false,
+  workspaces = {
+    { name = "defaut", path = "~/Documents/Obsidian Vault" },
+  },
+})
