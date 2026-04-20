@@ -43,8 +43,6 @@
 [diff]
   external = difft
   tool = difft
-[pager]
-  difftool = true
 [alias]
   pushall = !"git remote|xargs -L 1 git push"
   # http://gitready.com/intermediate/2009/02/12/easily-fetching-upstream-changes.html
@@ -96,6 +94,7 @@
   dc = diff --cached
   di = !"DFT_DISPLAY=inline git --no-pager diff"
   dn = diff --no-ext-diff
+  dt = difftool
   f = fetch
   l = log
   l1 = log --oneline
@@ -111,3 +110,7 @@
   recent = !"GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 [gpg]
   format = ssh
+[diff]
+  tool = nvim_difftool
+[difftool "nvim_difftool"]
+  cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
