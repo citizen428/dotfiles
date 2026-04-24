@@ -9,6 +9,7 @@ vim.pack.add({
   gh("mason-org/mason.nvim"),
   gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
   gh("nvim-mini/mini.icons"),
+  gh("nvim-mini/mini.extra"),
   gh("nvim-mini/mini.pairs"),
   gh("nvim-mini/mini.pick"),
   gh("nvim-mini/mini.snippets"),
@@ -42,6 +43,7 @@ require("mason-tool-installer").setup({
     "zls",
   },
 })
+require("mini.extra").setup()
 require("mini.icons").setup()
 require("mini.pairs").setup()
 require("mini.pick").setup()
