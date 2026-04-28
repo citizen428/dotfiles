@@ -1,0 +1,6 @@
+# Display nvim startup time
+time:
+  @nvim --startuptime startup.log -cquit
+  @printf "Startup time: "
+  @tail -n2 startup.log | cut -d' ' -f1
+  @rm -f startup.log
