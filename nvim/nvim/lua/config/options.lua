@@ -2,6 +2,7 @@ local o = vim.opt
 
 -- Display
 require("vim._core.ui2").enable()
+o.colorcolumn = "100"
 o.cursorline = true
 o.number = true
 o.relativenumber = true
