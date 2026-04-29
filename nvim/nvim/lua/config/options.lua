@@ -43,4 +43,4 @@ o.completeopt = "menu,menuone,noselect,popup"
 o.clipboard = "unnamedplus"
 o.mouse = "a"
 o.swapfile = false
-o.wildmode = "list:longest,full"
+o.wildmode = "noselect:full"

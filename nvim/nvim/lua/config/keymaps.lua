@@ -40,5 +40,10 @@ keymap.set("i", "<S-Tab>", function()
   return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
 end, { expr = true })
 
+-- Accept command-line completion menu with Enter
+keymap.set("c", "<CR>", function()
+  return vim.fn.wildmenumode() == 1 and "<C-y>" or "<CR>"
+end, { expr = true })
+
 -- Fix common typo
 vim.cmd("cabbrev Wq wq")
