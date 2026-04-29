@@ -43,8 +43,8 @@ require("mason-tool-installer").setup({
     "zls",
   },
 })
-require("mini.extra").setup()
 require("mini.icons").setup()
+require("mini.extra").setup()
 require("mini.pairs").setup()
 require("mini.pick").setup()
 require("oil").setup({
