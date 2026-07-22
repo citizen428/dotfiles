@@ -1,0 +1,114 @@
+# References
+#   - https://github.com/gpakosz/.tmux/blob/master/.tmux.conf
+#   - http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+#   - https://github.com/hendrikmi/dotfiles/blob/main/tmux/tmux.conf
+
+### General
+
+# Enable 256-color and true-color (24-bit) support
+set -g default-terminal "xterm-256color"          # set terminal type for 256-color support
+set -as terminal-overrides ",xterm-256color:RGB"  # override to enable true-color for Alacritty
+
+set -g allow-passthrough on     # allow programs in the pane to bypass tmux (e.g. for image preview)
+set -g history-limit 100000     # boost history
+set -g mouse on                 # enable mouse support
+set -g set-clipboard external   # use system clipboard
+set -s escape-time 5            # faster command sequences
+set -s focus-events on          # pass focus events to applications
+set -sg repeat-time 600         # increase repeat timeout
+
+# Activity
+set -g monitor-activity on      # monitor activity in panes
+set -g visual-activity on       # visual indicator for activity
+
+### Key bindings
+
+# Change prefix key to Ctrl-a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+# Edit tmux configuration
+bind e new-window -n 'tmux.conf' "sh -c 'nvim ~/.config/tmux/tmux.conf && tmux source ~/.config/tmux/tmux.conf && tmux display \"reloaded config\"'"
+
+# Reload tmux configuration
+bind r source-file ~/.config/tmux/tmux.conf \; display 'reloaded config'
+
+# Open a gitu popup for the current directory
+bind g display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "gitu"
+
+# Open a jjui popup for the current directory
+bind j display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "jjui"
+
+# Better split commands
+unbind %
+bind \\ split-window -h -c "#{pane_current_path}"
+unbind '"'
+bind ] split-window -v -c "#{pane_current_path}"
+
+# Switch back to last window easily
+bind Tab last-window
+
+# Toggle mouse mode
+unbind m
+bind m set-option -g mouse
+
+# Don't enter copy mode on  mouse scroll
+unbind -T root WheelUpStatus
+
+# Pane resizing
+unbind M-Up
+bind -r S-Up resize-pane -U 5
+unbind M-Down
+bind -r S-Down resize-pane -D 5
+unbind M-Left
+bind -r S-Left resize-pane -L 5
+unbind M-Right
+bind -r S-Right resize-pane -R 5
+
+# Session listing/switching
+unbind s # handled by kristijan/tmux-fzf-pane-switch
+bind S choose-session
+
+### UI
+
+# Theme
+source-file ~/.config/tmux/nord-theme.conf
+
+set -g display-panes-time 800   # slightly longer pane indicators display time
+set -g display-time 1000        # slightly longer status messages display time
+set -g status-interval 1        # redraw status line every second
+set -g status-position top      # move status line to top
+
+# Window and pane numbering
+set -g base-index 1         # start windows numbering at 1
+setw -g pane-base-index 1   # make pane numbering consistent with windows
+set -g renumber-windows on  # renumber windows when a window is closed
+
+# Show basename of cwd in window title if it's a shell, otherwise show command name
+set -g automatic-rename on
+set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}}"
+
+{{- if eq .chezmoi.os "linux" -}}
+### Hooks
+
+# After last session closes, remove empty resurrect saves so 'last' always
+# points to a valid snapshot (prevents Ctrl-r from exiting tmux on restore)
+set-hook -g session-closed 'run-shell "~/.config/tmux/scripts/fix-resurrect-last.sh"'
+{{- end}}
+
+### Plugins
+
+# tpm plugin manager
+set -g @plugin 'tmux-plugins/tpm'               # tmux plugin manager
+set -g @plugin 'tmux-plugins/tmux-resurrect'    # persist tmux sessions after computer restart
+set -g @plugin 'tmux-plugins/tmux-continuum'    # automatically saves sessions every 15 minutes
+set -g @plugin 'kristijan/tmux-fzf-pane-switch' # A tmux plugin that uses fzf to switch to a pane in any session.
+
+# Resurrect
+set -g @resurrect-capture-pane-contents 'on'
+set -g @continuum-boot 'on'
+set -g @continuum-restore 'on'
+
+# Initialize tmux plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

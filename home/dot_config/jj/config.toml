@@ -1,0 +1,49 @@
+[user]
+email = "me@citizen428.net"
+name = "Michael Kohl"
+
+[ui]
+default-command = "st"
+diff-editor = ":builtin"
+diff-formatter = ["difft", "--color=always", "--display=inline", "$left", "$right"]
+editor = "vim"
+paginate = "never"
+
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
+[templates]
+log_node = '''
+if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
+  "◇",
+  builtin_log_node
+)
+'''
+
+[template-aliases]
+"in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'
+
+[aliases]
+b = ["log", "-r", "bookmarks() & tracked_remote_bookmarks()"]
+d = ["diff"]
+evolve = ["rebase", "--skip-empty", "-d", "main"]
+init = ["git", "init"]
+l = ["log"]
+pnb = ["git", "push", "-c", "@-"]
+pr = ["util", "exec", "--", "bash", "-c", """
+gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
+"""]
+setup = ["util", "exec", "--", "bash", "-c", """
+git init
+jj git init --colocate
+"""]
+sync = ["git", "fetch", "--all-remotes"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+
+[git]
+push-new-bookmarks = true
+
+[signing]
+backend = "ssh"
+behavior = "own"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyJI+7JXGQORxEo1dso9sy1epesfERLGzCBWN1p2I7j"

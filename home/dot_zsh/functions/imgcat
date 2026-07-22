@@ -1,0 +1,19 @@
+# vim:ft=zsh
+function imgcat() {
+  if [[ -n "$KITTY_OS" ]]; then
+    # https://sw.kovidgoyal.net/kitty/kittens/icat/
+    kitten icat "$1"
+  elif [[ -n "$WEZTERM_PANE" ]]; then
+    # https://wezterm.org/imgcat.html
+    wezterm imgcat "$1"
+  elif [[ -n "$ITERM_SESSION_ID" ]]; then
+    # https://iterm2.com/documentation-images.html, through timg
+    timg -pi "$1"
+  elif [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+    # Ghostty uses Kitty's protocol, which timg can output
+    timg -pk "$1"
+  else
+    # If all else fails, try sixel
+    timg -ps "$1"
+  fi
+}

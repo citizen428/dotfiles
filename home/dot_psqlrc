@@ -1,0 +1,9 @@
+\set PROMPT1 '%~%x%# '
+\set PROMPT2 '[more] %R > '
+\set ON_ERROR_STOP on
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\x auto
+
+\pset null '(null)'
+set intervalstyle to 'postgres_verbose';

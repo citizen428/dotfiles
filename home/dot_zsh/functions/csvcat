@@ -1,0 +1,4 @@
+# vim:ft=zsh
+function csvcat() {
+  column -s, -t "$1"|less -F -S -X -K
+}
