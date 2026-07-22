@@ -6,7 +6,7 @@ name = "Michael Kohl"
 default-command = "st"
 diff-editor = ":builtin"
 diff-formatter = ["difft", "--color=always", "--display=inline", "$left", "$right"]
-editor = "vim"
+editor = "nvim"
 paginate = "never"
 
 [revset-aliases]
