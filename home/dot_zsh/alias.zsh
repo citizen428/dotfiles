@@ -1,3 +1,4 @@
+alias cm='chezmoi'
 alias down='http --download'
 alias ducks='du -cks * | sort -rn | head'
 alias g='git'
