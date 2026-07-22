@@ -40,10 +40,10 @@ jj git init --colocate
 sync = ["git", "fetch", "--all-remotes"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 
-[git]
-push-new-bookmarks = true
-
 [signing]
 backend = "ssh"
 behavior = "own"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyJI+7JXGQORxEo1dso9sy1epesfERLGzCBWN1p2I7j"
+
+[remotes.origin]
+auto-track-bookmarks = "*"
