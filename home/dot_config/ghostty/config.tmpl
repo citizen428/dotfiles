@@ -1,0 +1,38 @@
+# vim: set syntax=dosini:
+copy-on-select = true
+
+cursor-style-blink = false
+
+font-family = FiraCode Nerd Font
+font-feature = +calt
+font-feature = +liga
+{{- if eq .chezmoi.hostname "aurora" }}
+font-size = 12
+{{- else }}
+font-size = 14
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+font-style = Retina
+{{- end }}
+
+# Shift+Enter sends ESC+Enter
+keybind = shift+enter=text:\x1b\r
+# Map Option-. to insert-last-word
+keybind = opt+period=text:\x1b.
+
+{{- if eq .chezmoi.os "darwin" }}
+macos-applescript = false
+macos-non-native-fullscreen = true
+macos-option-as-alt = true
+{{- end }}
+
+mouse-hide-while-typing = true
+
+{{- if eq .chezmoi.os "darwin" }}
+window-decoration = none
+{{- end }}
+window-padding-balance = true
+window-padding-x = 7
+window-padding-y = 7
+
+theme = Nord
