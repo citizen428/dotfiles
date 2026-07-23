@@ -1,3 +1,4 @@
 {{- if ne .chezmoi.os "darwin" }}
+symlink_Dropbox
 private_Library/private_LaunchAgents/
 {{- end }}
