@@ -1,0 +1,20 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+brew bundle --file=/dev/stdin <<EOF
+{{ range .brew.darwin.taps -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range .brew.shared.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .brew.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .brew.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range $name, $id := .brew.darwin.mas -}}
+mas "{{ $name }}", id: {{ $id }}
+{{ end -}}
+EOF
+{{ end -}}

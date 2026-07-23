@@ -1,6 +1,9 @@
 {{ if and (eq .chezmoi.os "linux") (lookPath "brew") -}}
 #!/bin/bash
 brew bundle --file=/dev/stdin <<EOF
+{{ range .brew.shared.brews -}}
+brew {{ . | quote }}
+{{ end -}}
 {{ range .brew.linux.brews -}}
 brew {{ . | quote }}
 {{ end -}}
