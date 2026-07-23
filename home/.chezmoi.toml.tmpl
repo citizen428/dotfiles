@@ -1,5 +1,9 @@
-{{- if lookPath "difft" }}
+encryption = "age"
+
+[age]
+identity = "~/.ssh/private"
+symmetric = true
+
 [diff]
-    command = "difft"
-    args = ["--color=always"]
-{{- end }}
+command = "difft"
+args = ["--color=always"]

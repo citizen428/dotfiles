@@ -1,6 +1,7 @@
 brew:
   shared:
     brews:
+      - 'age'
       - 'ascii'
       - 'bat'
       - 'btop'
