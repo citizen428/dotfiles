@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>net.citizen428.mbsync</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>mbsync</string>
+		<string>--all</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/mbsync.error.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/mbsync.out.log</string>
+	<key>StartInterval</key>
+	<integer>3600</integer>
+</dict>
+</plist>

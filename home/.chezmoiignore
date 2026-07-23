@@ -1,1 +1,3 @@
-.config/tmux/plugins/
+{{- if ne .chezmoi.os "darwin" }}
+private_Library/private_LaunchAgents/
+{{- end }}
