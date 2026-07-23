@@ -19,6 +19,7 @@ fi
 
 # Python
 if [[ -d $HOME/.poetry ]]; then
+    export PYTHONSTARTUP="${HOME}/.pythonstartup.py"
     path=($HOME/.poetry/bin $HOME/.local/bin $PATH)
 fi
 
