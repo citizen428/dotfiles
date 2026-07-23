@@ -1,0 +1,11 @@
+{{ if and (eq .chezmoi.os "linux") (lookPath "brew") -}}
+#!/bin/bash
+brew bundle --file=/dev/stdin <<EOF
+{{ range .brew.linux.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+EOF
+{{ range .brew.linux.flatpaks -}}
+flatpak install -y flathub {{ . | quote }}
+{{ end -}}
+{{ end -}}
