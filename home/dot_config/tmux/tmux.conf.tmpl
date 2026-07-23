@@ -89,7 +89,7 @@ set -g renumber-windows on  # renumber windows when a window is closed
 set -g automatic-rename on
 set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}}"
 
-{{- if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.os "linux" -}}
 ### Hooks
 
 # After last session closes, remove empty resurrect saves so 'last' always

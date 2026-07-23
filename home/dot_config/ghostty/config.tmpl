@@ -20,17 +20,17 @@ keybind = shift+enter=text:\x1b\r
 # Map Option-. to insert-last-word
 keybind = opt+period=text:\x1b.
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 macos-applescript = false
 macos-non-native-fullscreen = true
 macos-option-as-alt = true
-{{- end }}
+{{ end -}}
 
 mouse-hide-while-typing = true
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 window-decoration = none
-{{- end }}
+{{ end -}}
 window-padding-balance = true
 window-padding-x = 7
 window-padding-y = 7
