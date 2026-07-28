@@ -57,6 +57,6 @@ require("typst-preview").setup()
 require("obsidian").setup({
   legacy_commands = false,
   workspaces = {
-    { name = "defaut", path = "~/Obsidian" },
+    { name = "default", path = "~/Obsidian" },
   },
 })
