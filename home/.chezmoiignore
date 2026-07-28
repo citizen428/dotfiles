@@ -3,4 +3,7 @@
 Library/
 Dropbox
 {{- end }}
+{{- if ne .chezmoi.hostname "aurora" }}
+Obsidian
+{{- end }}
 zed
