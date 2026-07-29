@@ -1,0 +1,261 @@
+# vim: ft=sh
+[[ -z $ZPROF ]] || zmodload zsh/zprof
+
+#
+# Plugins
+#
+[[ -f ~/.znap/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.znap/zsh-snap
+
+source ~/.znap/zsh-snap/znap.zsh
+
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+
+#
+# Aliases
+#
+alias cma='chezmoi apply'
+alias cm='chezmoi'
+alias cmd='chezmoi diff'
+alias cme='chezmoi edit'
+alias cmu='chezmoi update'
+alias down='http --download'
+alias ducks='du -cks * | sort -rn | head'
+alias g='git'
+alias hdw='hunk diff --watch'
+alias m='git switch main'
+alias mmv='noglob zmv -W' # bulk rename via wildcards, e.g. `mmv '*.txt' '*.md'`
+alias serve='python -m http.server --directory .'
+alias weather='curl wttr.in/samui'
+
+# Global aliases
+alias -g C='|wc -l'
+alias -g G='|grep'
+alias -g H='|head'
+alias -g L='|less'
+alias -g SL='|sort|less'
+alias -g S='|sort'
+alias -g T='|tail'
+
+# Standard tool replacements
+alias cat='bat --paging=never --style=plain'
+alias l='eza -1a'
+alias la='eza -a'
+alias ll='eza -lh --git'
+alias ls='eza'
+alias tree='eza -T'
+
+{{ if lookPath "brew" }}
+alias brewu='brew update && brew upgrade'
+alias brewc='brew cleanup'
+alias bservl='brew services list'
+alias bservr='brew services restart'
+alias bservs='brew services start'
+alias bservx='brew services stop'
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+alias pbcopy='wl-copy'
+alias pbpaste='wl-paste'
+{{- end }}
+
+#
+# Bindings
+#
+bindkey -e
+
+WORDCHARS="${WORDCHARS/\/}"
+
+bindkey '\e.' insert-last-word
+
+bindkey "\e[3~" delete-char
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+if [[ -n $TMUX ]]; then
+    bindkey  "^[[1~"  beginning-of-line
+    bindkey  "^[[4~"  end-of-line
+else
+    bindkey  "^[[H"   beginning-of-line
+    bindkey  "^[[F"   end-of-line
+fi
+bindkey  "^[[3~"  delete-char
+
+{{ if eq .chezmoi.os "darwin" }}
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+{{ else }}
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+{{ end }}
+
+#
+# Functions
+#
+autoload -U zmv
+
+fpath=($fpath ~/.zsh/functions)
+autoload -U brew-deps
+autoload -U clone
+autoload -U csvcat
+autoload -U devs
+autoload -U imgcat
+autoload -U mcd
+autoload -U prof
+autoload -U timezsh
+
+#
+# History
+#
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zhistory
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_NO_STORE
+setopt HIST_IGNORE_SPACE
+
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
+#
+# Navigation
+#
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt PUSHD_TO_HOME
+setopt CDABLE_VARS
+setopt EXTENDED_GLOB
+unsetopt CLOBBER
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+#
+# Programming
+#
+if (( $+commands[go] )); then
+    export GOPATH="$HOME/go"
+    path=($GOPATH/bin $path)
+    export GOPROXY="direct"
+fi
+
+if (( $+commands[dotnet] )); then
+    export DOTNET_CLI_TELEMETRY_OPTOUT=true
+    export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=true
+    path=($HOME/.dotnet/tools $path)
+fi
+
+if (( $+commands[python] )); then
+    export PYTHONSTARTUP="${HOME}/.pythonstartup.py"
+fi
+
+if [[ -d $HOME/.cargo ]]; then
+    path=($HOME/.cargo/bin $path)
+fi
+
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+    source "$HOME/google-cloud-sdk/path.zsh.inc"
+fi
+
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+    source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
+
+if [[ -d $HOME/.npm-global ]]; then
+    path=($HOME/.npm-global/bin $path)
+fi
+
+if [ -f "$HOME/.opam/opam-init/init.zsh" ]; then
+    source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+fi
+
+if [[ -d $HOME/.vite-plus ]]; then
+    source "$HOME/.vite-plus/env"
+fi
+
+#
+# Tools
+#
+export EDITOR=nvim
+
+path=($HOME/.local/bin $path)
+
+eval "$(mise activate zsh)"
+
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export BAT_THEME='Nord'
+# Use bat as man pager
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+{{ if eq .chezmoi.os "darwin" }}
+OP_AGENT_SOCK=~/.config/1password/agent.sock
+if [[ -r $OP_AGENT_SOCK ]]; then
+    export SSH_AUTH_SOCK=$OP_AGENT_SOCK
+fi
+
+private op_plugins=$HOME/.config/op/plugins.sh
+[[ -f $op_plugins ]] && source $op_plugins
+{{- end }}
+
+znap eval direnv "direnv hook zsh"
+
+private fzf_config=$HOME/.fzf.zsh
+[[ -f $fzf_config ]] && source $fzf_config
+
+znap eval zoxide "zoxide init zsh"
+
+export HOMEBREW_NO_ANALYTICS=1
+
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt
+
+#
+# UI
+#
+autoload -U colors && colors
+
+export LC_ALL='en_US.UTF-8'
+
+znap eval dircolors "$(whence -a dircolors gdircolors ) ~/.dir_colors"
+
+#
+# Completion
+#
+fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
+
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+
+zstyle ':completion:*' completer _complete _correct _approximate
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+{{ if eq .chezmoi.hostname "aurora" }}
+eval $(keychain --eval git_signing_key --quiet --systemd)
+
+alias code='code --ozone-platform=wayland'
+{{ end }}
+
+[[ -z $ZPROF ]] || zprof

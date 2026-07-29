@@ -49,12 +49,14 @@ brew:
       - 'w3m'
       - 'yazi'
       - 'zoxide'
+      - 'zsh-completions'
   darwin:
     taps:
       - 'homebrew/services'
     brews:
       - 'aerc'
       - 'aspell'
+      - 'coreutils'
       - 'imagemagick'
       - 'isync'
       - 'mas'
@@ -65,7 +67,6 @@ brew:
       - 'watchexec'
       - 'wget'
       - 'zsh'
-      - 'zsh-completions'
     casks:
       - '1password'
       - '1password-cli'
