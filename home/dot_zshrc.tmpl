@@ -190,6 +190,10 @@ fi
 export EDITOR=nvim
 
 path=($HOME/.local/bin $path)
+{{ if eq .chezmoi.os "darwin" }}
+homebrew_prefix="/opt/homebrew"
+znap eval homebrew "${homebrew_prefix}/bin/brew shellenv"
+{{- end }}
 
 eval "$(mise activate zsh)"
 
@@ -203,18 +207,18 @@ export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 {{ if eq .chezmoi.os "darwin" }}
-OP_AGENT_SOCK=~/.config/1password/agent.sock
-if [[ -r $OP_AGENT_SOCK ]]; then
-    export SSH_AUTH_SOCK=$OP_AGENT_SOCK
+op_agent_sock=~/.config/1password/agent.sock
+if [[ -r $op_agent_sock ]]; then
+    export SSH_AUTH_SOCK=$op_agent_sock
 fi
 
-private op_plugins=$HOME/.config/op/plugins.sh
+op_plugins=$HOME/.config/op/plugins.sh
 [[ -f $op_plugins ]] && source $op_plugins
 {{- end }}
 
 znap eval direnv "direnv hook zsh"
 
-private fzf_config=$HOME/.fzf.zsh
+fzf_config=$HOME/.fzf.zsh
 [[ -f $fzf_config ]] && source $fzf_config
 
 znap eval zoxide "zoxide init zsh"
