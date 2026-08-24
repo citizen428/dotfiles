@@ -79,3 +79,4 @@
   :config
   (global-whitespace-mode))
 
+(use-package zig-mode)
