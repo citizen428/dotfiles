@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(default-frame-alist
-   '((fullscreen . maximized) (left-fringe . 5) (right-fringe . 5)))
+   '((fullscreen . maximized) (left-fringe . 5) (right-fringe . 5)
+     (font . "FiraCode Nerd Font-14")))
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)

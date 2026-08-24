@@ -16,9 +16,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Default font
-(add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-14"))
-
 ;; Automatically reload files changed outside Emacs
 (global-auto-revert-mode)
 
