@@ -46,6 +46,29 @@
       (add-to-list 'exec-path-from-shell-variables var))
     (exec-path-from-shell-initialize)))
 
+(use-package ghostel
+  :bind
+  ("C-`" . my/toggle-ghostel-panel)
+  :init
+  (defun my/toggle-ghostel-panel ()
+    "Toggle a ghostel terminal in a side window along the bottom of the frame."
+    (interactive)
+    (if-let* ((win (seq-find
+                    (lambda (w)
+                      (and (eq (window-parameter w 'window-side) 'bottom)
+                           (with-current-buffer (window-buffer w)
+                             (derived-mode-p 'ghostel-mode))))
+                    (window-list))))
+        (delete-window win)
+      (let ((display-buffer-overriding-action
+             '((display-buffer-in-side-window)
+               (side . bottom)
+               (slot . 0)
+               (window-height . 0.33)
+               (dedicated . t)
+               (preserve-size . (nil . t)))))
+        (ghostel-project)))))
+
 (use-package magit
   :bind
   (:map my-prefix-map

@@ -12,8 +12,8 @@
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(auto-dark diminish exec-path-from-shell magit magit-section obsidian
-	       transient with-editor zig-mode))
+   '(auto-dark diminish exec-path-from-shell ghostel magit magit-section
+	       obsidian transient with-editor zig-mode))
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
