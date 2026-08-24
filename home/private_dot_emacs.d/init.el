@@ -103,3 +103,5 @@
   (global-whitespace-mode))
 
 (use-package zig-mode)
+
+(message "Emacs loaded in: %s" (emacs-init-time))

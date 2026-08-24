@@ -8,12 +8,15 @@
  '(default-frame-alist
    '((fullscreen . maximized) (left-fringe . 5) (right-fringe . 5)
      (font . "FiraCode Nerd Font-14")))
+ '(gc-cons-percentage 0.6)
+ '(gc-cons-threshold 128000000)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
    '(auto-dark diminish exec-path-from-shell ghostel magit magit-section
 	       obsidian transient with-editor zig-mode))
+ '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
