@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Leave my init.el alone
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file 'noerror)
