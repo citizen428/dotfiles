@@ -19,6 +19,7 @@
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
+ '(server-client-instructions nil)
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
 (custom-set-faces

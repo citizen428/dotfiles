@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 ;;; Keys
+
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
@@ -24,7 +25,12 @@
   :custom
   (auto-dark-themes '((modus-vivendi-tinted) (modus-operandi-tinted)))
   :config
-  (auto-dark-mode))
+  (defun my/server-auto-dark (frame)
+    (with-selected-frame frame
+      (when (display-graphic-p)
+        (auto-dark-mode 1)
+        (remove-hook 'after-make-frame-functions #'my/server-auto-dark))))
+  (add-hook 'after-make-frame-functions #'my/server-auto-dark))
 
 (use-package completion-preview
   :diminish
