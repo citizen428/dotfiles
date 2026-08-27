@@ -29,7 +29,6 @@ brew:
       - 'lefthook'
       - 'mise'
       - 'mosh'
-      - 'neovim'
       - 'nmap'
       - 'nushell'
       - 'procs'
@@ -46,12 +45,12 @@ brew:
       - 'topgrade'
       - 'typst'
       - 'uni'
-      - 'w3m'
       - 'yazi'
       - 'zoxide'
       - 'zsh-completions'
   darwin:
     taps:
+      - 'd12frosted/emacs-plus'
       - 'homebrew/services'
     brews:
       - 'aerc'
@@ -74,6 +73,7 @@ brew:
       - 'discord'
       - 'docker-desktop'
       - 'dropbox'
+      - 'emacs-plus-app'
       - 'font-fira-code'
       - 'font-fira-code-nerd-font'
       - 'ghostty'
