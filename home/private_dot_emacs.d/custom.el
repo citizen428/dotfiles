@@ -15,7 +15,10 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    '(auto-dark diminish exec-path-from-shell ghostel magit magit-section
-	       obsidian transient with-editor zig-mode))
+	       obsidian tramp-rpc transient with-editor zig-mode))
+ '(package-vc-selected-packages
+   '((tramp-rpc :url "https://github.com/ArthurHeymans/emacs-tramp-rpc"
+		:lisp-dir "lisp")))
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)

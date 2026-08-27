@@ -102,6 +102,13 @@
         ("s" . obsidian-jump)
         ("b" . obsidian-backlink-jump)))
 
+;; TODO: Update to Non-GNU ELPA once it releases there.
+(use-package tramp-rpc
+  :after tramp
+  :vc (:url "https://github.com/ArthurHeymans/emacs-tramp-rpc"
+       :rev :newest
+       :lisp-dir "lisp"))
+
 (use-package whitespace
   :ensure nil
   :diminish
