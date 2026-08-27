@@ -1,4 +1,5 @@
-# vim: ft=sh
+# -*- mode: sh; -*-
+
 [[ -z $ZPROF ]] || zmodload zsh/zprof
 
 #
@@ -22,9 +23,11 @@ alias cme='chezmoi edit'
 alias cmu='chezmoi update'
 alias down='http --download'
 alias ducks='du -cks * | sort -rn | head'
+alias ec='emacsclient -n'
 alias g='git'
 alias hdw='hunk diff --watch'
 alias m='git switch main'
+alias magit="emacsclient -e '(magit-status)'"
 alias mmv='noglob zmv -W' # bulk rename via wildcards, e.g. `mmv '*.txt' '*.md'`
 alias serve='python -m http.server --directory .'
 alias weather='curl wttr.in/samui'
