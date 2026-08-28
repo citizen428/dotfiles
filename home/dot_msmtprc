@@ -1,0 +1,18 @@
+defaults
+logfile /tmp/msmtp.log
+auth on
+tls on
+
+# =====================================================================
+
+account fastmail
+host smtp.fastmail.com
+port 465
+tls_starttls off
+from me@citizen428.net
+user me@citizen428.net
+passwordeval op item get fastmail-mu4e --fields label=password --reveal
+
+# =====================================================================
+
+account default : fastmail
