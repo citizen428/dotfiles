@@ -6,7 +6,7 @@
 	<string>net.citizen428.mbsync</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>mbsync</string>
+		<string>/opt/homebrew/bin/mbsync</string>
 		<string>--all</string>
 	</array>
 	<key>StandardErrorPath</key>
