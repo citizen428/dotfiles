@@ -1,8 +1,18 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Leave my init.el alone
-(setq custom-file (locate-user-emacs-file "custom.el"))
-(load custom-file 'noerror)
+;; Unclutter UI
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(tooltip-mode -1)
+
+(setq default-frame-alist
+      '((fullscreen . maximized) (left-fringe . 5) (right-fringe . 5)
+        (font . "FiraCode Nerd Font-14")))
+
+;; Raise GC threshold during startup
+(setq gc-cons-threshold 128000000
+      gc-cons-percentage 0.6)
 
 ;; Set up packages
 (setq package-archives
@@ -17,16 +27,3 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
-
-;; Automatically reload files changed outside Emacs
-(global-auto-revert-mode)
-
-;; Move backup/auto-save files out of the way
-(let ((backup-dir (locate-user-emacs-file "backups/"))
-      (auto-save-dir (locate-user-emacs-file "auto-save/")))
-  (make-directory backup-dir t)
-  (make-directory auto-save-dir t)
-  (setq backup-directory-alist `(("." . ,backup-dir)))
-  (setq auto-save-file-name-transforms `((".*" ,auto-save-dir t)))
-  (setq create-lockfiles nil))
-

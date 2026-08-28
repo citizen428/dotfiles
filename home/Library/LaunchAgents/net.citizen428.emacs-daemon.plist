@@ -7,7 +7,7 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/opt/homebrew/bin/emacs</string>
-		<string>--daemon</string>
+		<string>--fg-daemon</string>
 	</array>
 	<key>EnvironmentVariables</key>
 	<dict>
