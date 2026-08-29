@@ -3,7 +3,7 @@ IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993
 User me@citizen428.net
-PassCmd "op item get fastmail-mu4e --fields label=password --reveal"
+PassCmd "OP_SERVICE_ACCOUNT_TOKEN=$(cat ~/.op-fastmail-token) op read op://ServiceAccount/fastmail/password"
 Tlstype IMAPS
 AuthMechs LOGIN
 

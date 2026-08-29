@@ -11,7 +11,7 @@ port 465
 tls_starttls off
 from me@citizen428.net
 user me@citizen428.net
-passwordeval op item get fastmail-mu4e --fields label=password --reveal
+passwordeval OP_SERVICE_ACCOUNT_TOKEN=$(cat ~/.op-fastmail-token) op read op://ServiceAccount/fastmail/password
 
 # =====================================================================
 
