@@ -46,12 +46,7 @@
  whitespace-line-column 100
  whitespace-style '(face lines-tail))
 (global-whitespace-mode)
-
-;;; Hooks
-
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
-
-(add-hook 'prog-mode-hook #'eglot-ensure)
 
 ;;; Keys
 
@@ -87,6 +82,13 @@
         (auto-dark-mode 1)
         (remove-hook 'after-make-frame-functions #'my/server-auto-dark))))
   (add-hook 'after-make-frame-functions #'my/server-auto-dark))
+
+(use-package eglot
+  :ensure nil
+  :custom
+  (eglot-autoshutdown t)
+  (eglot-sync-connect nil)
+  (eglot-events-buffer-config '(:size 0)))
 
 (use-package exec-path-from-shell
   :config
