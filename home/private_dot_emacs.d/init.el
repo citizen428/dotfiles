@@ -83,6 +83,14 @@
         (remove-hook 'after-make-frame-functions #'my/server-auto-dark))))
   (add-hook 'after-make-frame-functions #'my/server-auto-dark))
 
+(use-package buffer-terminator
+  :custom
+  (buffer-terminator-verbose nil)
+  (buffer-terminator-inactivity-timeout (* 2 60 60)) ; 2 hours
+  (buffer-terminator-interval (* 30 60)) ; 30 minutes
+  :init
+  (buffer-terminator-mode 1))
+
 (use-package eglot
   :ensure nil
   :custom
