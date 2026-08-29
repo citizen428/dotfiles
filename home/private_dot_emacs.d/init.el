@@ -143,8 +143,10 @@
   (mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
   (mu4e-update-interval 300)
   ;; sending
+  (user-full-name "Michael Kohl")
+  (user-mail-address "me@citizen428.net")
   (sendmail-program (executable-find "msmtp"))
-  (send-mail-function #'smtpmail-send-it)
+  (send-mail-function #'message-send-mail-with-sendmail)
   (message-sendmail-f-is-evil t)
   (message-sendmail-extra-arguments '("--read-envelope-from"))
   (message-send-mail-function #'message-send-mail-with-sendmail)
