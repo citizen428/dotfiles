@@ -68,6 +68,7 @@
 
 (use-package diminish
   :config
+  (diminish 'buffer-terminator-mode)
   (diminish 'completion-preview-mode)
   (diminish 'whitespace-mode))
 
