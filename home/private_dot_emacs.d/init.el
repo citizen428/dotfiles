@@ -60,6 +60,7 @@
 (define-prefix-command 'my-prefix-map)
 (global-set-key (kbd "C-z") 'my-prefix-map)
 (define-key my-prefix-map (kbd "b") #'browse-url-at-point)
+(define-key my-prefix-map (kbd "m") #'mu4e)
 (define-key my-prefix-map (kbd "f f") #'project-find-file)
 (define-key my-prefix-map (kbd "f r") #'recentf-open)
 (define-key my-prefix-map (kbd "t n") #'display-line-numbers-mode)
@@ -136,34 +137,7 @@
    my-prefix-map
    ("g" . magit-status)))
 
-(use-package mu4e
-  :ensure nil
-  :load-path
-  (lambda ()
-    (concat (file-name-directory
-             (directory-file-name
-              (file-name-directory (file-truename (executable-find "mu")))))
-            "share/emacs/site-lisp/mu/mu4e"))
-  :custom
-  (mu4e-mu-binary (executable-find "mu"))
-  ;; folders
-  (mu4e-refile-folder "/Archive")
-  (mu4e-sent-folder "/Sent")
-  (mu4e-drafts-folder "/Drafts")
-  (mu4e-trash-folder "/Trash")
-  ;; Retrieving
-  (mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
-  (mu4e-update-interval 300)
-  ;; sending
-  (user-full-name "Michael Kohl")
-  (user-mail-address "me@citizen428.net")
-  (sendmail-program (executable-find "msmtp"))
-  (send-mail-function #'message-send-mail-with-sendmail)
-  (message-sendmail-f-is-evil t)
-  (message-sendmail-extra-arguments '("--read-envelope-from"))
-  (message-send-mail-function #'message-send-mail-with-sendmail)
-  ;; Rename files when moving. Needed for mbsync.
-  (setq mu4e-change-filenames-when-moving t))
+(load-file (locate-user-emacs-file "mu4e.el"))
 
 (use-package obsidian
   :init
