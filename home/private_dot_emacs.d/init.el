@@ -59,6 +59,7 @@
 
 (define-prefix-command 'my-prefix-map)
 (global-set-key (kbd "C-z") 'my-prefix-map)
+(define-key my-prefix-map (kbd "b") #'browse-url-at-point)
 (define-key my-prefix-map (kbd "f f") #'project-find-file)
 (define-key my-prefix-map (kbd "f r") #'recentf-open)
 (define-key my-prefix-map (kbd "t n") #'display-line-numbers-mode)
