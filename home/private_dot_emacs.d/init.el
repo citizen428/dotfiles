@@ -21,12 +21,12 @@
   (setq mac-option-modifier 'super))
 
 (global-set-key (kbd "<escape>") #'keyboard-escape-quit)
+(global-set-key (kbd "C-<tab>") #'previous-buffer)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 (global-set-key (kbd "M-`") #'other-frame)
 
 ;; My prefix keys (C-z)
 (define-prefix-command 'my-prefix-map)
-(global-set-key (kbd "C-<tab>") #'previous-buffer)
 (global-set-key (kbd "C-z") 'my-prefix-map)
 (define-key my-prefix-map (kbd "b") #'browse-url-at-point)
 (define-key my-prefix-map (kbd "m") #'mu4e)
@@ -39,6 +39,9 @@
 (define-key my-prefix-toggle-map (kbd "n") #'display-line-numbers-mode)
 (define-key my-prefix-toggle-map (kbd "h") #'hl-line-mode)
 (define-key my-prefix-toggle-map (kbd "w") #'which-key-mode)
+(define-prefix-command 'my-prefix-project-map)
+(define-key my-prefix-map (kbd "p") 'my-prefix-project-map)
+(define-key my-prefix-project-map (kbd "b") #'consult-project-buffer)
 
 ;;; Internal packages (part of Emacs)
 
@@ -67,6 +70,7 @@
   ;; Misc
   (dired-auto-revert-buffer t)
   (dired-mouse-drag-files t) ; C-left: copy, S-left: move, M-left: link
+  (enable-recursive-minibuffers t)
   (global-auto-revert-mode t) ; Reload files when changed externally
   (imenu-auto-rescan t) ; Update imenu based on current buffer
   (require-final-newline t)

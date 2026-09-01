@@ -26,6 +26,18 @@
   :init
   (buffer-terminator-mode 1))
 
+(use-package consult
+  :bind
+  ("C-z M-x" . #'consult-mode-command)
+  ("C-x 4 b" . consult-buffer-other-window)
+  ("C-x b" . #'consult-buffer)
+  ("M-g g" . #'consult-goto-line)
+  ("M-g i" . #'consult-imenu)
+  ("M-s l" . #'consult-line)
+  ("M-s g" . #'consult-grep)
+  ("M-s G" . #'consult-git-grep)
+    ("M-y" . #'consult-yank-pop))
+
 (use-package exec-path-from-shell
   :config
   (when (daemonp)
