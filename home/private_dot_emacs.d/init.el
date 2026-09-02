@@ -73,6 +73,7 @@
   (enable-recursive-minibuffers t)
   (global-auto-revert-mode t) ; Reload files when changed externally
   (imenu-auto-rescan t) ; Update imenu based on current buffer
+  (quit-window-kill-buffer '(special-mode))
   (require-final-newline t)
   (ring-bell-function 'ignore)
   (shell-command-prompt-show-cwd t)
