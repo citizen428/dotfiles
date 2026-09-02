@@ -14,6 +14,11 @@
 (setq gc-cons-threshold 128000000
       gc-cons-percentage 0.6)
 
+;; Stricter TLS settings
+(setq gnutls-verify-error t)
+(setq tls-checktrust t)
+(setq gnutls-min-prime-bits 3072)
+
 ;; Set up packages
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
