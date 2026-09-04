@@ -63,6 +63,7 @@
   (pixel-scroll-mode t) ; Smoother scrolling
   (repeat-mode t) ; Skip prefix on repeat invocations for certain commands
   (savehist-mode t)
+  (which-key-mode t)
   ;; Mouse
   (mouse-drag-and-drop-region t)
   (mouse-drag-and-drop-region-cross-program t)
