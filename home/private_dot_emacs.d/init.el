@@ -20,28 +20,29 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
 
-(global-set-key (kbd "<escape>") #'keyboard-escape-quit)
-(global-set-key (kbd "C-<tab>") #'previous-buffer)
-(global-set-key (kbd "C-x C-b") #'ibuffer)
-(global-set-key (kbd "M-`") #'other-frame)
+(keymap-global-set "<escape>" #'keyboard-escape-quit)
+(keymap-global-set "C-<tab>" #'previous-buffer)
+(keymap-global-set "C-x C-b" #'ibuffer)
+(keymap-global-set "M-`" #'other-frame)
 
 ;; My prefix keys (C-z)
-(define-prefix-command 'my-prefix-map)
-(global-set-key (kbd "C-z") 'my-prefix-map)
-(define-key my-prefix-map (kbd "b") #'browse-url-at-point)
-(define-key my-prefix-map (kbd "m") #'mu4e)
-(define-prefix-command 'my-prefix-file-map)
-(define-key my-prefix-map (kbd "f") 'my-prefix-file-map)
-(define-key my-prefix-file-map (kbd "f") #'project-find-file)
-(define-key my-prefix-file-map (kbd "r") #'recentf-open)
-(define-prefix-command 'my-prefix-toggle-map)
-(define-key my-prefix-map (kbd "t") 'my-prefix-toggle-map)
-(define-key my-prefix-toggle-map (kbd "n") #'display-line-numbers-mode)
-(define-key my-prefix-toggle-map (kbd "h") #'hl-line-mode)
-(define-key my-prefix-toggle-map (kbd "w") #'which-key-mode)
-(define-prefix-command 'my-prefix-project-map)
-(define-key my-prefix-map (kbd "p") 'my-prefix-project-map)
-(define-key my-prefix-project-map (kbd "b") #'consult-project-buffer)
+(define-keymap :prefix 'my-prefix-file-map
+  "f" #'project-find-file
+  "r" #'recentf-open)
+(define-keymap :prefix 'my-prefix-toggle-map
+  "n" #'display-line-numbers-mode
+  "h" #'hl-line-mode)
+(define-keymap :prefix 'my-prefix-project-map
+  "b" #'consult-project-buffer
+  "f" #'project-find-file)
+(define-keymap :prefix 'my-prefix-map
+  "b" #'browse-url-at-point
+  "f" 'my-prefix-file-map
+  "m" #'mu4e
+  "t" 'my-prefix-toggle-map
+  "p" 'my-prefix-project-map
+  "\\" #'project-dired)
+(keymap-global-set "C-z" 'my-prefix-map)
 
 ;;; Internal packages (part of Emacs)
 
