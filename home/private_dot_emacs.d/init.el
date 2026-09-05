@@ -74,12 +74,14 @@
   (dired-mouse-drag-files t) ; C-left: copy, S-left: move, M-left: link
   (enable-recursive-minibuffers t)
   (global-auto-revert-mode t) ; Reload files when changed externally
+  (help-window-select t)
   (imenu-auto-rescan t) ; Update imenu based on current buffer
   (quit-window-kill-buffer t)
   (require-final-newline t)
   (ring-bell-function 'ignore)
   (select-active-regions nil)
   (shell-command-prompt-show-cwd t)
+  (switch-to-buffer-obey-display-actions t)
   (view-read-only t))
 
 (use-package completion-preview
@@ -97,8 +99,7 @@
   (completion-preview-minimum-symbol-length 2)
   (completion-show-help nil)
   (completion-styles '(basic flex))
-  :config
-  (global-completion-preview-mode 1))
+  (global-completion-preview-mode t))
 
 (use-package eglot
   :ensure nil
@@ -130,9 +131,9 @@
   :custom
   (whitespace-line-column 100)
   (whitespace-style '(face lines-tail))
-  :config
-  (add-hook 'before-save-hook #'delete-trailing-whitespace)
-  (add-hook 'prog-mode #'whitespace-mode))
+  :hook
+  (before-save . delete-trailing-whitespace)
+  (prog-mode . whitespace-mode))
 
 ;;; External packages
 
