@@ -26,6 +26,7 @@
         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
+(setq package-quickstart t)
 
 (unless package-archive-contents
  (package-refresh-contents))
