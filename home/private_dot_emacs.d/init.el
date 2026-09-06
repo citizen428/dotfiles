@@ -76,6 +76,7 @@
   (global-auto-revert-mode t) ; Reload files when changed externally
   (help-window-select t)
   (imenu-auto-rescan t) ; Update imenu based on current buffer
+  (mode-line-collapse-minor-modes t)
   (quit-window-kill-buffer t)
   (require-final-newline t)
   (ring-bell-function 'ignore)

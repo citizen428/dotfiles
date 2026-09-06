@@ -1,12 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package diminish
-  :config
-  (diminish #'whitespace-mode)
-  (diminish #'which-key-mode))
-
 (use-package auto-dark
-  :diminish
   :custom
   (auto-dark-themes '((modus-vivendi-tinted) (modus-operandi-tinted)))
   :config
@@ -18,7 +12,6 @@
   (add-hook 'after-make-frame-functions #'my/server-auto-dark))
 
 (use-package buffer-terminator
-  :diminish
   :custom
   (buffer-terminator-verbose nil)
   (buffer-terminator-inactivity-timeout (* 2 60 60)) ; 2 hours
