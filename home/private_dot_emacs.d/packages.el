@@ -16,8 +16,7 @@
   (buffer-terminator-verbose nil)
   (buffer-terminator-inactivity-timeout (* 2 60 60)) ; 2 hours
   (buffer-terminator-interval (* 30 60)) ; 30 minutes
-  :init
-  (buffer-terminator-mode 1))
+  (buffer-terminator-mode t))
 
 (use-package consult
   :bind
@@ -29,7 +28,7 @@
   ("M-s l" . #'consult-line)
   ("M-s g" . #'consult-grep)
   ("M-s G" . #'consult-git-grep)
-    ("M-y" . #'consult-yank-pop))
+  ("M-y" . #'consult-yank-pop))
 
 (use-package exec-path-from-shell
   :config

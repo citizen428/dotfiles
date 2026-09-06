@@ -83,6 +83,7 @@
   (select-active-regions nil)
   (shell-command-prompt-show-cwd t)
   (switch-to-buffer-obey-display-actions t)
+  (use-package-enable-imenu-support t)
   (view-read-only t))
 
 (use-package completion-preview
