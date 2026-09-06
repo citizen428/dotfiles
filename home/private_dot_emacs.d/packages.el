@@ -13,9 +13,8 @@
 
 (use-package buffer-terminator
   :custom
-  (buffer-terminator-verbose nil)
-  (buffer-terminator-inactivity-timeout (* 2 60 60)) ; 2 hours
-  (buffer-terminator-interval (* 30 60)) ; 30 minutes
+  (buffer-terminator-verbose 'inhibit-message)
+  (buffer-terminator-inactivity-timeout (* 60 60)) ; 1 hour
   (buffer-terminator-mode t))
 
 (use-package consult
