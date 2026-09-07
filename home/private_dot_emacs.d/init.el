@@ -114,7 +114,9 @@
   :ensure nil
   :custom
   (eshell-command-aliases-list
-   '(("ll" "ls -l $@*"))))
+   '(("d" "dired $1")
+     ("ff" "find-file $1")
+     ("ll" "ls -l $@*"))))
 
 (use-package minibuffer
   :ensure nil
