@@ -59,6 +59,8 @@
                (preserve-size . (nil . t)))))
         (ghostel-project)))))
 
+(use-package geiser-guile)
+
 (use-package magit
   :bind
   (:map my-prefix-map
