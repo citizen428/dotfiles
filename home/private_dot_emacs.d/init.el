@@ -110,6 +110,12 @@
   (eglot-sync-connect nil)
   (eglot-events-buffer-config '(:size 0)))
 
+(use-package eshell
+  :ensure nil
+  :custom
+  (eshell-command-aliases-list
+   '(("ll" "ls -l $@*"))))
+
 (use-package minibuffer
   :ensure nil
   :demand t
