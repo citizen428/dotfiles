@@ -118,6 +118,14 @@
      ("ff" "find-file $1")
      ("ll" "ls -l $@*"))))
 
+(use-package flyspell
+  :ensure nil
+  :custom
+  (flyspell-delay-use-timer t)
+  :hook
+  (prog-mode . flyspell-prog-mode)
+  (text-mode . flyspell-mode))
+
 (use-package minibuffer
   :ensure nil
   :demand t
