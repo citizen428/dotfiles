@@ -20,7 +20,6 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
 
-(keymap-global-set "<escape>" #'keyboard-escape-quit)
 (keymap-global-set "C-<tab>" #'previous-buffer)
 (keymap-global-set "C-x C-b" #'ibuffer)
 (keymap-global-set "M-`" #'other-frame)
