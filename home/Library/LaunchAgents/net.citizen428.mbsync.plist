@@ -9,6 +9,13 @@
 		<string>/opt/homebrew/bin/mbsync</string>
 		<string>--all</string>
 	</array>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin</string>
+		<key>SSH_AUTH_SOCK</key>
+		<string>/Users/me/.config/1password/agent.sock</string>
+	</dict>
 	<key>StandardErrorPath</key>
 	<string>/tmp/mbsync.error.log</string>
 	<key>StandardOutPath</key>
