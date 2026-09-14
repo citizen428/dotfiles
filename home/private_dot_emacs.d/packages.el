@@ -20,15 +20,15 @@
 
 (use-package consult
   :bind
-  ("C-z M-x" . #'consult-mode-command)
+  ("C-z M-x" . consult-mode-command)
   ("C-x 4 b" . consult-buffer-other-window)
-  ("C-x b" . #'consult-buffer)
-  ("M-g g" . #'consult-goto-line)
-  ("M-g i" . #'consult-imenu)
-  ("M-s l" . #'consult-line)
-  ("M-s g" . #'consult-grep)
-  ("M-s G" . #'consult-git-grep)
-  ("M-y" . #'consult-yank-pop))
+  ("C-x b" . consult-buffer)
+  ("M-g g" . consult-goto-line)
+  ("M-g i" . consult-imenu)
+  ("M-s l" . consult-line)
+  ("M-s g" . consult-grep)
+  ("M-s G" . consult-git-grep)
+  ("M-y" . consult-yank-pop))
 
 (use-package exec-path-from-shell
   :config
@@ -38,8 +38,7 @@
     (exec-path-from-shell-initialize)))
 
 (use-package ghostel
-  :bind
-  ("C-`" . my/toggle-ghostel-panel)
+  :bind ("C-`" . my/toggle-ghostel-panel)
   :init
   (defun my/toggle-ghostel-panel ()
     "Toggle a ghostel terminal in a side window along the bottom of the frame."
