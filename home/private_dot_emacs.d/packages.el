@@ -62,6 +62,9 @@
 
 (use-package geiser-guile)
 
+(use-package helpful
+  :bind ("C-h h" . helpful-at-point))
+
 (use-package magit
   :bind
   (:map my-prefix-map
