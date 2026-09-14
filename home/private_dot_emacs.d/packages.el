@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package auto-dark
+  :when (eq system-type 'gnu/linux)
   :custom
   (auto-dark-themes '((modus-vivendi-tinted) (modus-operandi-tinted)))
   :config

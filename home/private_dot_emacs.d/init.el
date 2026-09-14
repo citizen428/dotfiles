@@ -142,6 +142,19 @@
   (completions-sort 'historical)
   (minibuffer-visible-completions t))
 
+(use-package theme
+  :ensure nil
+  :no-require t
+  :when (eq system-type 'darwin)
+  :config
+  (defun my/apply-theme (appearance)
+    "Load theme, taking current system APPEARANCE into consideration."
+    (mapc #'disable-theme custom-enabled-themes)
+    (pcase appearance
+      ('light (load-theme 'modus-operandi-tinted t))
+      ('dark (load-theme 'modus-vivendi-tinted t))))
+  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme))
+
 (use-package whitespace
   :ensure nil
   :demand t
