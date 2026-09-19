@@ -26,8 +26,8 @@
   ("M-g g" . consult-goto-line)
   ("M-g i" . consult-imenu)
   ("M-s l" . consult-line)
-  ("M-s g" . consult-grep)
-  ("M-s G" . consult-git-grep)
+  ("M-s L" . consult-line-multi)
+  ("M-s g" . consult-ripgrep)
   ("M-y" . consult-yank-pop))
 
 (use-package exec-path-from-shell
