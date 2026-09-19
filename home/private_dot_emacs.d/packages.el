@@ -30,6 +30,15 @@
   ("M-s g" . consult-ripgrep)
   ("M-y" . consult-yank-pop))
 
+(use-package elpher
+  :bind
+  (:map elpher-mode-map
+        ("RET" . elpher-follow-current-link)
+        ("l" . elpher-back)
+        ("n" . elpher-next-link)
+        ("p" . elpher-prev-link)
+        ("b" . elpher-bookmark-current)))
+
 (use-package exec-path-from-shell
   :config
   (when (daemonp)
