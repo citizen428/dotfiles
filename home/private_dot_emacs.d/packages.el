@@ -62,7 +62,13 @@
 (use-package geiser-guile)
 
 (use-package helpful
-  :bind ("C-h h" . helpful-at-point))
+  :bind
+  (:map help-map
+	("f" . helpful-callable)
+	("h" . helpful-at-point)
+	("k" . helpful-key)
+	("v" . helpful-variable)
+	("x" . helpful-command)))
 
 (use-package magit
   :bind
