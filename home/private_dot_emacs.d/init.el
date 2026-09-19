@@ -23,6 +23,8 @@
 (keymap-global-set "C-<tab>" #'previous-buffer)
 (keymap-global-set "C-x C-b" #'ibuffer)
 (keymap-global-set "M-`" #'other-frame)
+;; match M-z, zap-to-char
+(keymap-global-set "M-Z" #'zap-up-to-char)
 
 ;; My prefix keys (C-z)
 (define-keymap :prefix 'my-prefix-file-map
@@ -30,7 +32,8 @@
   "r" #'recentf-open)
 (define-keymap :prefix 'my-prefix-toggle-map
   "n" #'display-line-numbers-mode
-  "h" #'hl-line-mode)
+  "h" #'hl-line-mode
+  "m" #'mode-line-invisible-mode)
 (define-keymap :prefix 'my-prefix-project-map
   "b" #'consult-project-buffer
   "f" #'project-find-file)
@@ -43,6 +46,8 @@
   "\\" #'project-dired)
 (keymap-global-set "C-z" 'my-prefix-map)
 
+(windmove-default-keybindings 'super)
+
 ;;; Internal packages (part of Emacs)
 
 (use-package emacs
@@ -54,11 +59,12 @@
   (inhibit-startup-screen t)
   (server-client-instructions nil)
   ;; Modes
-  (context-menu-mode t)
   (column-number-mode t)
+  (context-menu-mode t)
   (delete-selection-mode t) ; Typing replaces current selection
   (editorconfig-mode t)
   (electric-pair-mode t)
+  (global-auto-revert-mode t) ; Reload files when changed externally
   (global-xref-mouse-mode t)
   (pixel-scroll-mode t) ; Smoother scrolling
   (repeat-mode t) ; Skip prefix on repeat invocations for certain commands
@@ -71,8 +77,8 @@
   ;; Misc
   (dired-auto-revert-buffer t)
   (dired-mouse-drag-files t) ; C-left: copy, S-left: move, M-left: link
+  (elisp-fontify-semantically t)
   (enable-recursive-minibuffers t)
-  (global-auto-revert-mode t) ; Reload files when changed externally
   (help-window-select t)
   (imenu-auto-rescan t) ; Update imenu based on current buffer
   (mode-line-collapse-minor-modes t)
@@ -145,7 +151,7 @@
 (use-package theme
   :ensure nil
   :no-require t
-  :when (eq system-type 'darwin)
+  :when (bound-and-true-p ns-emacs-plus-version)
   :config
   (defun my/apply-theme (appearance)
     "Load theme, taking current system APPEARANCE into consideration."
