@@ -81,11 +81,8 @@
   (define-key my-prefix-map "o" 'my-obsidian-map)
   :config
   (global-obsidian-mode t)
-  (obsidian-backlinks-mode t)
   :custom
   (obsidian-directory "~/Obsidian")
-  ;; Default location for new notes from `obsidian-capture'
-  (obsidian-inbox-directory "Inbox")
   :bind
   (:map my-obsidian-map
         ("n" . obsidian-capture)
