@@ -47,6 +47,7 @@
 (keymap-global-set "C-z" 'my-prefix-map)
 
 (windmove-default-keybindings 'super)
+(windmove-display-default-keybindings '(shift super))
 
 ;;; Internal packages (part of Emacs)
 
