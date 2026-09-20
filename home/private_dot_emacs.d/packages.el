@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package auto-dark
+  :ensure t
   :when (eq system-type 'gnu/linux)
   :custom
   (auto-dark-themes '((modus-vivendi-tinted) (modus-operandi-tinted)))
@@ -13,12 +14,14 @@
   (add-hook 'after-make-frame-functions #'my/server-auto-dark))
 
 (use-package buffer-terminator
+  :ensure t
   :custom
   (buffer-terminator-verbose 'inhibit-message)
   (buffer-terminator-inactivity-timeout (* 60 60)) ; 1 hour
   (buffer-terminator-mode t))
 
 (use-package consult
+  :ensure t
   :bind
   ("C-z M-x" . consult-mode-command)
   ("C-x 4 b" . consult-buffer-other-window)
@@ -31,6 +34,7 @@
   ("M-y" . consult-yank-pop))
 
 (use-package elpher
+  :ensure t
   :bind
   (:map elpher-mode-map
         ("RET" . elpher-follow-current-link)
@@ -40,6 +44,7 @@
         ("b" . elpher-bookmark-current)))
 
 (use-package exec-path-from-shell
+  :ensure t
   :config
   (when (daemonp)
     (dolist (var '("SSH_AUTH_SOCK"))
@@ -47,6 +52,7 @@
     (exec-path-from-shell-initialize)))
 
 (use-package ghostel
+  :ensure t
   :bind ("C-`" . my/toggle-ghostel-panel)
   :init
   (defun my/toggle-ghostel-panel ()
@@ -68,29 +74,40 @@
                (preserve-size . (nil . t)))))
         (ghostel-project)))))
 
-(use-package geiser-guile)
+(use-package geiser-guile
+  :ensure t)
 
 (use-package helpful
+  :ensure t
   :bind
   (:map help-map
 	("f" . helpful-callable)
 	("h" . helpful-at-point)
 	("k" . helpful-key)
 	("v" . helpful-variable)
-	("x" . helpful-command)))
+	("x" . helpful-command))
+  :config
+  (add-to-list 'display-buffer-alist
+               `((derived-mode . helpful-mode)
+		 (display-buffer-reuse-window
+		  display-buffer-in-side-window)
+		 (side . right)
+		 (slot . 0)
+		 (window-width . 0.5))))
 
 (use-package magit
+  :ensure t
   :bind
   (:map my-prefix-map
 	("g" . magit-status)))
 
 (use-package obsidian
+  :ensure t
   :init
   (define-prefix-command 'my-obsidian-map)
   (define-key my-prefix-map "o" 'my-obsidian-map)
-  :config
-  (global-obsidian-mode t)
   :custom
+  (global-obsidian-mode t)
   (obsidian-directory "~/Obsidian")
   :bind
   (:map my-obsidian-map
@@ -100,11 +117,22 @@
         ("s" . obsidian-jump)
         ("b" . obsidian-backlink-jump)))
 
+(use-package project-x
+  :ensure t
+  :after project
+  :custom
+  (project-x-auto-save-delay 5)
+  (project-prompter #'project-x--project-prompt)
+  (project-x-mode t)
+  (project-x-tabs-mode t))
+
 ;; TODO: Update to Non-GNU ELPA once it releases there.
 (use-package tramp-rpc
+  :ensure t
   :after tramp
   :vc (:url "https://github.com/ArthurHeymans/emacs-tramp-rpc"
        :rev :newest
        :lisp-dir "lisp"))
 
-(use-package zig-mode)
+(use-package zig-mode
+  :ensure t)

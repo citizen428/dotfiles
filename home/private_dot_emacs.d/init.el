@@ -52,7 +52,6 @@
 ;;; Internal packages (part of Emacs)
 
 (use-package emacs
-  :ensure nil
   :demand t
   :custom
   ;; Be less verbose
@@ -103,7 +102,6 @@
 	  ("Asia/Manila" "Philippines"))))
 
 (use-package completion-preview
-  :ensure nil
   :demand t
   :diminish
   :bind
@@ -120,7 +118,6 @@
   (global-completion-preview-mode t))
 
 (use-package dired
-  :ensure nil
   :config
   (defun my/dired-copy-project-filename-as-kill ()
     "Copy the filename relative to the project root to the kill ring."
@@ -131,14 +128,12 @@
 	("W" . my/dired-copy-project-filename-as-kill)))
 
 (use-package eglot
-  :ensure nil
   :custom
   (eglot-autoshutdown t)
   (eglot-sync-connect nil)
   (eglot-events-buffer-config '(:size 0)))
 
 (use-package eshell
-  :ensure nil
   :custom
   (eshell-command-aliases-list
    '(("d" "dired $1")
@@ -146,7 +141,6 @@
      ("ll" "ls -l $@*"))))
 
 (use-package flyspell
-  :ensure nil
   :custom
   (flyspell-delay-use-timer t)
   :hook
@@ -154,7 +148,6 @@
   (text-mode . flyspell-mode))
 
 (use-package minibuffer
-  :ensure nil
   :demand t
   :bind
   (:map completion-in-region-mode-map
@@ -171,7 +164,6 @@
   (minibuffer-visible-completions t))
 
 (use-package theme
-  :ensure nil
   :no-require t
   :when (bound-and-true-p ns-emacs-plus-version)
   :config
@@ -184,7 +176,6 @@
   (add-hook 'ns-system-appearance-change-functions #'my/apply-theme))
 
 (use-package whitespace
-  :ensure nil
   :demand t
   :custom
   (whitespace-line-column 100)
