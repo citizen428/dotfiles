@@ -119,6 +119,17 @@
   (completion-styles '(basic flex))
   (global-completion-preview-mode t))
 
+(use-package dired
+  :ensure nil
+  :config
+  (defun my/dired-copy-project-filename-as-kill ()
+    "Copy the filename relative to the project root to the kill ring."
+    (interactive)
+    (dired-copy-filename-as-kill 1))
+  :bind
+  (:map dired-mode-map
+	("W" . my/dired-copy-project-filename-as-kill)))
+
 (use-package eglot
   :ensure nil
   :custom
