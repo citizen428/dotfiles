@@ -90,7 +90,17 @@
   (shell-command-prompt-show-cwd t)
   (switch-to-buffer-obey-display-actions t)
   (use-package-enable-imenu-support t)
-  (view-read-only t))
+  (view-read-only t)
+  (world-clock-list
+	'(("US/Pacific" "US Pacific")
+	  ("US/Central" "US Central")
+	  ("US/Eastern" "US Eastern")
+	  ("Etc/UTC" "UTC")
+	  ("Europe/Vienna" "Austria")
+	  ("Asia/Karachi" "Pakistan")
+	  ("Asia/Kolkata" "India")
+	  ("Asia/Bangkok" "Thailand")
+	  ("Asia/Manila" "Philippines"))))
 
 (use-package completion-preview
   :ensure nil
