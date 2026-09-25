@@ -24,20 +24,17 @@
   (mu4e-maildir-shortcuts
    '((:maildir "/INBOX"   :key ?i)
      (:maildir "/Sent"    :key ?s)
-     (:maildir "/Archive" :key ?a)))
+     (:maildir "/Archive" :key ?a)
+     (:maildir "/Spam"    :key ?x)))
   (mu4e-bookmarks
-   '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed"
-	    :key ?u :type bookmarks :count 0 :unread 0 :delta-count 0
-	    :delta-unread 0 :maildir nil :effective-query
-	    "flag:unread AND NOT flag:trashed")
-     (:name "Today's messages" :query "date:today..now" :key ?t :type
-	    bookmarks :count 0 :unread 0 :delta-count 0 :delta-unread 0
-	    :maildir nil :effective-query "date:today..now")
-     (:name "Last 7 days" :query "date:7d..now" :hide-unread t :key 119
-	    :type bookmarks :count 0 :unread 0 :delta-count 0
-	    :delta-unread 0 :maildir nil :effective-query "date:7d..now")
-     (:name "Lists" :query "list:/.*/ AND NOT flag:trashed" :key ?l
-	    :type bookmarks)))
+   '((:name "Unread messages" :query
+	    "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam"
+	    :key ?u)
+     (:name "Today's messages" :query "date:today..now AND NOT maildir:/Spam"
+	    :key ?t)
+     (:name "Last 7 days" :query "date:7d..now AND NOT maildir:/Spam" :hide-unread t
+	    :key ?w)
+     (:name "Lists" :query "list:/.*/ AND NOT flag:trashed" :key ?l)))
   ;; Retrieving
   (mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
   (mu4e-update-interval 300)
