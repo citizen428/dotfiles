@@ -101,22 +101,6 @@
   (:map my-prefix-map
 	("g" . magit-status)))
 
-(use-package obsidian
-  :ensure t
-  :init
-  (define-prefix-command 'my-obsidian-map)
-  (define-key my-prefix-map "o" 'my-obsidian-map)
-  :custom
-  (global-obsidian-mode t)
-  (obsidian-directory "~/Obsidian")
-  :bind
-  (:map my-obsidian-map
-        ("n" . obsidian-capture)
-        ("l" . obsidian-insert-link)
-        ("o" . obsidian-follow-link-at-point)
-        ("s" . obsidian-jump)
-        ("b" . obsidian-backlink-jump)))
-
 (use-package project-x
   :ensure t
   :after project
