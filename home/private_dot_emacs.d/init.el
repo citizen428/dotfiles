@@ -187,6 +187,7 @@
 ;;; External packages
 
 (load-file (locate-user-emacs-file "packages.el"))
+(load-file (locate-user-emacs-file "elfeed.el"))
 (load-file (locate-user-emacs-file "mu4e.el"))
 
 (message "Emacs loaded in: %s" (emacs-init-time))

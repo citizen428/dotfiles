@@ -33,6 +33,9 @@
   ("M-s g" . consult-ripgrep)
   ("M-y" . consult-yank-pop))
 
+(use-package elfeed
+  :ensure t)
+
 (use-package elpher
   :ensure t
   :bind
