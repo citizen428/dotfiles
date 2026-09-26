@@ -23,6 +23,7 @@
 (keymap-global-set "C-<tab>" #'previous-buffer)
 (keymap-global-set "C-x C-b" #'ibuffer)
 (keymap-global-set "M-`" #'other-frame)
+(keymap-global-set "M-i" #'imenu)
 ;; match M-z, zap-to-char
 (keymap-global-set "M-Z" #'zap-up-to-char)
 
@@ -81,10 +82,11 @@
   (enable-recursive-minibuffers t)
   (help-window-select t)
   (imenu-auto-rescan t) ; Update imenu based on current buffer
+  (isearch-allow-motion t)
   (mode-line-collapse-minor-modes t)
   (quit-window-kill-buffer t)
   (require-final-newline t)
-  (ring-bell-function 'ignore)
+  (ring-bell-function 'flash-face-bell-function)
   (select-active-regions nil)
   (shell-command-prompt-show-cwd t)
   (switch-to-buffer-obey-display-actions t)
