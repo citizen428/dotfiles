@@ -163,6 +163,13 @@
   (completions-sort 'historical)
   (minibuffer-visible-completions t))
 
+(use-package tab-bar
+  :demand t
+  :custom
+  (tab-bar-mode t)
+  (tab-bar-select-tab-modifiers '(super))
+  (tab-bar-tab-hints t))
+
 (use-package theme
   :no-require t
   :when (bound-and-true-p ns-emacs-plus-version)
