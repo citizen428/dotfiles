@@ -99,10 +99,7 @@
 		 (window-width . 0.5))))
 
 (use-package magit
-  :ensure t
-  :bind
-  (:map my-prefix-map
-	("g" . magit-status)))
+  :ensure t)
 
 (use-package project-x
   :ensure t

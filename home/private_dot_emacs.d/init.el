@@ -14,31 +14,11 @@
   (setq auto-save-file-name-transforms `((".*" ,auto-save-dir t)))
   (setq create-lockfiles nil))
 
-;;; Keys
+;;; Key bindings
 
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
-
-;; My prefix keys (C-z)
-(define-keymap :prefix 'my-prefix-file-map
-  "f" #'project-find-file
-  "r" #'recentf-open)
-(define-keymap :prefix 'my-prefix-toggle-map
-  "n" #'display-line-numbers-mode
-  "h" #'hl-line-mode
-  "m" #'mode-line-invisible-mode)
-(define-keymap :prefix 'my-prefix-project-map
-  "b" #'consult-project-buffer
-  "f" #'project-find-file)
-(define-keymap :prefix 'my-prefix-map
-  "b" #'browse-url-at-point
-  "f" 'my-prefix-file-map
-  "m" #'mu4e
-  "t" 'my-prefix-toggle-map
-  "p" 'my-prefix-project-map
-  "\\" #'project-dired)
-(keymap-global-set "C-z" 'my-prefix-map)
 
 (windmove-default-keybindings 'super)
 (windmove-display-default-keybindings '(shift super))
@@ -183,6 +163,52 @@
       ('light (load-theme 'modus-operandi-tinted t))
       ('dark (load-theme 'modus-vivendi-tinted t))))
   (add-hook 'ns-system-appearance-change-functions #'my/apply-theme))
+
+(use-package transient
+  :bind ("C-z" . my-transient-menu)
+  :config
+  (defun my/toggle-status (desc mode)
+    (lambda ()
+      (format (concat desc " %s") (if (symbol-value mode) "●" "○"))))
+
+  (transient-define-prefix my-transient-menu ()
+    "Personal command menu."
+    :display-action
+    '(display-buffer-below-selected
+      (dedicated . t)
+      (inhibit-same-window . t))
+    [["Project"
+      ("pb" "Buffer" consult-project-buffer)
+      ("pd" "Dired" project-dired)
+      ("pe" "Eshell" project-eshell)
+      ("pf" "File" project-find-file)
+      ("pg" "Ghostel" ghostel-project)
+      ("ps" "Switch" project-switch-project)]
+     ["LSP"
+      ("ll" "Start eglot" eglot)
+      ("la" "Code actions" eglot-code-actions)
+      ("lr" "Rename" eglot-rename)
+      ("lf" "Format buffer" eglot-format-buffer)
+      ("li" "Implementation" eglot-find-implementation)
+      ("lu" "References" xref-find-references)
+      ("ld" "Diagnostics" flymake-show-buffer-diagnostics)
+      ("lq" "Shutdown" eglot-shutdown)]
+     ["Toggle"
+      ("tn" display-line-numbers-mode
+       :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
+       :transient t)
+      ("th" hl-line-mode
+       :description ,(my/toggle-status "Highlight line" 'hl-line-mode)
+       :transient t)
+      ("tm" mode-line-invisible-mode
+       :description ,(my/toggle-status "Hide mode line" 'mode-line-invisible-mode)
+       :transient t)]
+     ["Other"
+      ("b" "Browse URL" browse-url-at-point)
+      ("f" "Elfeed" elfeed-search)
+      ("g" "Magit" magit-status)
+      ("m" "Mu4e" mu4e)
+      ("q" "Quit" transient-quit-one)]]))
 
 (use-package whitespace
   :demand t
