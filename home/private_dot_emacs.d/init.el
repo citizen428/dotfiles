@@ -20,13 +20,6 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
 
-(keymap-global-set "C-<tab>" #'previous-buffer)
-(keymap-global-set "C-x C-b" #'ibuffer)
-(keymap-global-set "M-`" #'other-frame)
-(keymap-global-set "M-i" #'imenu)
-;; match M-z, zap-to-char
-(keymap-global-set "M-Z" #'zap-up-to-char)
-
 ;; My prefix keys (C-z)
 (define-keymap :prefix 'my-prefix-file-map
   "f" #'project-find-file
@@ -101,7 +94,14 @@
 	  ("Asia/Karachi" "Pakistan")
 	  ("Asia/Kolkata" "India")
 	  ("Asia/Bangkok" "Thailand")
-	  ("Asia/Manila" "Philippines"))))
+	  ("Asia/Manila" "Philippines")))
+  :bind
+  (("C-<tab>" . previous-buffer)
+   ("C-x C-b" . ibuffer)
+   ("M-`" . other-frame)
+   ("M-i" . imenu)
+   ;; match M-z, zap-to-char
+   ("M-Z" . zap-up-to-char)))
 
 (use-package completion-preview
   :demand t
