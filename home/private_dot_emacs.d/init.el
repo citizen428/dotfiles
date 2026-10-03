@@ -211,14 +211,18 @@
       ("of" "Find" my/org-finder)
       ("op" "Project file" my/org-open-project-file)]
      ["Toggle"
-      ("tn" display-line-numbers-mode
-       :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
-       :transient t)
       ("th" hl-line-mode
        :description ,(my/toggle-status "Highlight line" 'hl-line-mode)
        :transient t)
-      ("tm" mode-line-invisible-mode
+      ("tM" mode-line-invisible-mode
        :description ,(my/toggle-status "Hide mode line" 'mode-line-invisible-mode)
+       :transient t)
+      ("tm" markdown-toggle-markup-hiding
+       :if (lambda () (derived-mode-p 'markdown-mode))
+       :description ,(my/toggle-status "Markdown markup hiding" 'markdown-hide-markup)
+       :transient t)
+      ("tn" display-line-numbers-mode
+       :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
        :transient t)]
      ["Other"
       ("b" "Browse URL" browse-url-at-point)
