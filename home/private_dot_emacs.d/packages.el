@@ -23,7 +23,6 @@
 (use-package consult
   :ensure t
   :bind
-  ("C-z M-x" . consult-mode-command)
   ("C-x 4 b" . consult-buffer-other-window)
   ("C-x b" . consult-buffer)
   ("M-g g" . consult-goto-line)

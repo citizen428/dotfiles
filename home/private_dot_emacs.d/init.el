@@ -171,6 +171,18 @@
     (lambda ()
       (format (concat desc " %s") (if (symbol-value mode) "●" "○"))))
 
+  (defun my/org-finder ()
+    (interactive)
+    (ido-find-file-in-dir org-directory))
+
+  (defun my/org-open-project-file ()
+    "Open <project-name>.org in `org-directory' for the current project."
+    (interactive)
+    (if-let ((project (project-current)))
+	(find-file (expand-file-name (concat (project-name project) ".org")
+                                   org-directory))
+      (user-error "Not in a project")))
+
   (transient-define-prefix my-transient-menu ()
     "Personal command menu."
     :display-action
@@ -193,6 +205,11 @@
       ("lu" "References" xref-find-references)
       ("ld" "Diagnostics" flymake-show-buffer-diagnostics)
       ("lq" "Shutdown" eglot-shutdown)]
+     ["Org"
+      ("oa" "Agenda" org-agenda)
+      ("oc" "Capture" org-capture)
+      ("of" "Find" my/org-finder)
+      ("op" "Project file" my/org-open-project-file)]
      ["Toggle"
       ("tn" display-line-numbers-mode
        :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
