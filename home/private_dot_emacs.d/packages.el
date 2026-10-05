@@ -33,7 +33,24 @@
   ("M-y" . consult-yank-pop))
 
 (use-package elfeed
-  :ensure t)
+  :ensure t
+  :config
+  (defun my/elfeed-quit ()
+    (interactive)
+    (quit-window)
+    (elfeed-db-unload))
+  :hook
+  (elfeed-show-mode . (lambda () (text-scale-set 1)))
+  :bind
+  (:map elfeed-search-mode-map
+	("q" . my/elfeed-quit)))
+
+(use-package elfeed-org
+  :ensure t
+  :custom
+  (rmh-elfeed-org-files (list (concat my-org-directory "/elfeed.org")))
+  :config
+  (elfeed-org))
 
 (use-package elpher
   :ensure t
