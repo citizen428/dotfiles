@@ -1,2 +1,0 @@
-text/html;      w3m -v -F -T text/html -dump %s;        copiousoutput
-

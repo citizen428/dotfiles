@@ -1,3 +1,0 @@
-#!/bin/bash
-
-rm Brewfile && brew bundle dump --tap --brew --cask --flatpak
