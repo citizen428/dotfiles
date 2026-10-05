@@ -240,6 +240,10 @@
   (before-save . delete-trailing-whitespace)
   (prog-mode . whitespace-mode))
 
+;;; Global variables
+
+(defvar my-org-directory "~/Dropbox/Documents/org")
+
 ;;; External packages
 
 (load-file (locate-user-emacs-file "packages.el"))
