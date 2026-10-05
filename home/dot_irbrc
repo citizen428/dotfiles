@@ -1,6 +1,11 @@
+# ;;; -*- mode: ruby; -*-
+
 # Optional extra gems
 %w[active_support/all amazing_print methodfinder].each do |gem|
-  require gem rescue nil
+  begin
+    require gem rescue nil
+  rescue LoadError
+  end
 end
 
 if defined?(AmazingPrint) && ENV["SKIP_AP"] != "true"
