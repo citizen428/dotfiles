@@ -11,5 +11,8 @@
 
 (use-package org-modern
   :ensure t
+  :custom
+  (org-modern-star 'replace)
+  (org-modern-hide-stars ?\s)
   :hook
   (org-mode . org-modern-mode))
