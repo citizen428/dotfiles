@@ -183,6 +183,37 @@
                                    org-directory))
       (user-error "Not in a project")))
 
+  (transient-define-prefix my-toggle-menu ()
+    "Toggle menu."
+    ["Toggle" :class transient-row
+     ("h" hl-line-mode
+      :description ,(my/toggle-status "Highlight line" 'hl-line-mode)
+      :transient t)
+     ("M" mode-line-invisible-mode
+      :description ,(my/toggle-status "Hide mode line" 'mode-line-invisible-mode)
+      :transient t)
+     ("m" markdown-toggle-markup-hiding
+      :if (lambda () (derived-mode-p 'markdown-mode))
+      :description ,(my/toggle-status "Markdown markup hiding" 'markdown-hide-markup)
+      :transient t)
+     ("n" display-line-numbers-mode
+      :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
+      :transient t)]
+    [("q" "Quit" transient-quit-all)])
+
+  (transient-define-prefix my-lsp-menu ()
+    "LSP menu."
+    ["LSP"
+     [("l" "Start eglot" eglot)
+      ("a" "Code actions" eglot-code-actions)
+      ("r" "Rename" eglot-rename)
+      ("f" "Format buffer" eglot-format-buffer)]
+     [("i" "Implementation" eglot-find-implementation)
+      ("u" "References" xref-find-references)
+      ("d" "Diagnostics" flymake-show-buffer-diagnostics)
+      ("s" "Shutdown" eglot-shutdown)]]
+    [("q" "Quit" transient-quit-all)])
+
   (transient-define-prefix my-transient-menu ()
     "Personal command menu."
     :display-action
@@ -196,39 +227,18 @@
       ("pf" "File" project-find-file)
       ("pg" "Ghostel" ghostel-project)
       ("ps" "Switch" project-switch-project)]
-     ["LSP"
-      ("ll" "Start eglot" eglot)
-      ("la" "Code actions" eglot-code-actions)
-      ("lr" "Rename" eglot-rename)
-      ("lf" "Format buffer" eglot-format-buffer)
-      ("li" "Implementation" eglot-find-implementation)
-      ("lu" "References" xref-find-references)
-      ("ld" "Diagnostics" flymake-show-buffer-diagnostics)
-      ("lq" "Shutdown" eglot-shutdown)]
      ["Org"
       ("oa" "Agenda" org-agenda)
       ("oc" "Capture" org-capture)
       ("of" "Find" my/org-finder)
       ("op" "Project file" my/org-open-project-file)]
-     ["Toggle"
-      ("th" hl-line-mode
-       :description ,(my/toggle-status "Highlight line" 'hl-line-mode)
-       :transient t)
-      ("tM" mode-line-invisible-mode
-       :description ,(my/toggle-status "Hide mode line" 'mode-line-invisible-mode)
-       :transient t)
-      ("tm" markdown-toggle-markup-hiding
-       :if (lambda () (derived-mode-p 'markdown-mode))
-       :description ,(my/toggle-status "Markdown markup hiding" 'markdown-hide-markup)
-       :transient t)
-      ("tn" display-line-numbers-mode
-       :description ,(my/toggle-status "Line numbers" 'display-line-numbers-mode)
-       :transient t)]
      ["Other"
-      ("b" "Browse URL" browse-url-at-point)
       ("f" "Elfeed" elfeed-search)
       ("g" "Magit" magit-status)
-      ("m" "Mu4e" mu4e)
+      ("m" "Mu4e" mu4e)]
+     [""
+      ("l" "LSP" my-lsp-menu)
+      ("t" "Toggle" my-toggle-menu)
       ("q" "Quit" transient-quit-one)]]))
 
 (use-package whitespace
