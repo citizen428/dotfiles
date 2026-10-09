@@ -117,6 +117,10 @@
 (use-package magit
   :ensure t)
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode))
+
 (use-package project-x
   :ensure t
   :after project
