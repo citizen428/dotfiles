@@ -233,6 +233,7 @@
       ("of" "Find" my/org-finder)
       ("op" "Project file" my/org-open-project-file)]
      ["Other"
+      ("e" "Emoji" emoji-insert)
       ("f" "Elfeed" elfeed-search)
       ("g" "Magit" magit-status)
       ("m" "Mu4e" mu4e)]
