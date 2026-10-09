@@ -78,6 +78,7 @@
   :bind
   (("C-<tab>" . previous-buffer)
    ("C-x C-b" . ibuffer)
+   ("C-x K" . kill-buffer-and-window)
    ("M-`" . other-frame)
    ("M-i" . imenu)
    ;; match M-z, zap-to-char
