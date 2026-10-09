@@ -114,6 +114,11 @@
 		 (slot . 0)
 		 (window-width . 0.5))))
 
+(use-package inf-ruby
+  :ensure t
+  :bind (:map inf-ruby-minor-mode-map
+              ("C-c C-s" . inf-ruby-console-auto)))
+
 (use-package magit
   :ensure t)
 
