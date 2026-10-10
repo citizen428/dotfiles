@@ -74,3 +74,8 @@ this again once the refile is done."
   (org-modern-hide-stars ?\s)
   :hook
   (org-mode . org-modern-mode))
+
+(use-package ox-hugo
+  :ensure t
+  :pin melpa
+  :after ox)
