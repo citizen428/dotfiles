@@ -50,6 +50,8 @@ this again once the refile is done."
   (org-capture-templates
    '(("t" "Task" entry (file+headline "inbox.org" "Tasks")
       "* TODO %?")
+     ("j" "Journal" entry (file+olp+datetree "journal.org")
+      "* %?\nEntered on %U\n  %i\n  %a" :tree-type (year day) :prepend t)
      ("l" "Link" entry (file+headline "inbox.org" "Links")
       "* %?[[%:link][%:description]]\nCaptured On: %U" :prepend t)
      ("p" "Link with body" entry (file+headline "inbox.org" "Links")
