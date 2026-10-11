@@ -32,8 +32,6 @@ allows using the function as :around advice for `org-protocol-capture'."
          (when (frame-live-p frame)
            (delete-frame frame))
          (message "%s" (or (cadr err) "Quit"))
-         ;; org-protocol must not get a string back, emacsclient would
-         ;; treat it as a file name.
          nil))))
 
   (defun my/delete-frame-after-capture ()
@@ -47,14 +45,17 @@ this again once the refile is done."
   (org-directory my-org-directory)
   (org-agenda-files (list my-org-directory))
   (org-refile-targets '((org-agenda-files . t)))
+  (org-refile-use-outline-path 'file)
   (org-capture-templates
-   '(("t" "Task" entry (file+headline "inbox.org" "Tasks")
+   '(("t" "Task" entry (file+headline "todo.org" "Tasks")
       "* TODO %?")
      ("j" "Journal" entry (file+olp+datetree "journal.org")
-      "* %?\nEntered on %U\n  %i\n  %a" :tree-type (year day) :prepend t)
-     ("l" "Link" entry (file+headline "inbox.org" "Links")
+      "* %U\n  %?\n  %i\n" :tree-type (year) :prepend t)
+     ("n" "Note" entry (file "notes.org") "* %?"
+      :prepend t :empty-lines 1)
+     ("l" "Link" entry (file "notes.org")
       "* %?[[%:link][%:description]]\nCaptured On: %U" :prepend t)
-     ("p" "Link with body" entry (file+headline "inbox.org" "Links")
+     ("p" "Link with body" entry (file "notes.org")
       "* %?[[%:link][%:description]]\nCaptured On: %U\n#+BEGIN_QUOTE\n%i\n#+END_QUOTE" :prepend t)))
   (org-startup-indented t)
   (org-todo-keywords

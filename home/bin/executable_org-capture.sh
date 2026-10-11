@@ -14,4 +14,4 @@
 # @raycast.author Michael Kohl
 # @raycast.authorURL https://citizen428.net
 
-emacsclient --eval '(my/global-org-capture nil nil "t")'
+emacsclient --eval '(my/global-org-capture)'
