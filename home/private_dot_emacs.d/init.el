@@ -53,6 +53,7 @@
   (dired-mouse-drag-files t) ; C-left: copy, S-left: move, M-left: link
   (elisp-fontify-semantically t)
   (enable-recursive-minibuffers t)
+  (fill-column 78)
   (help-window-select t)
   (imenu-auto-rescan t) ; Update imenu based on current buffer
   (isearch-allow-motion t)
