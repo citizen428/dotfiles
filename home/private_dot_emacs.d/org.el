@@ -78,6 +78,18 @@ this again once the refile is done."
   :hook
   (org-mode . org-modern-mode))
 
+;; Related packages
+
+(use-package denote
+  :ensure t
+  :hook
+  (dired-mode . denote-dired-mode)
+  :custom
+  (denote-directory
+   (expand-file-name "zettelkasten/" my-org-directory))
+  :config
+  (denote-rename-buffer-mode 1))
+
 (use-package ox-hugo
   :ensure t
   :pin melpa

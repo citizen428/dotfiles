@@ -203,6 +203,18 @@
       :transient t)]
     [("q" "Quit" transient-quit-all)])
 
+  (transient-define-prefix my-denote-menu ()
+    "Denote menu."
+    ["Denote"
+     [("n" "New note" denote)
+      ("o" "Open or create" denote-open-or-create)
+      ("r" "Rename file" denote-rename-file)
+      ("l" "Insert link" denote-link)]
+     [("b" "Backlinks" denote-backlinks)
+      ("d" "Dired" denote-dired)
+      ("g" "Grep" denote-grep)]]
+    [("q" "Quit" transient-quit-all)])
+
   (transient-define-prefix my-lsp-menu ()
     "LSP menu."
     ["LSP"
@@ -240,6 +252,7 @@
       ("g" "Magit" magit-status)
       ("m" "Mu4e" mu4e)]
      [""
+      ("d" "Denote" my-denote-menu)
       ("l" "LSP" my-lsp-menu)
       ("t" "Toggle" my-toggle-menu)
       ("q" "Quit" transient-quit-one)]]))
