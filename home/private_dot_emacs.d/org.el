@@ -49,14 +49,15 @@ this again once the refile is done."
   (org-capture-templates
    '(("t" "Task" entry (file+headline "todo.org" "Tasks")
       "* TODO %?")
+     ("n" "Note" entry (file "notes.org")
+      "* %?" :prepend t :empty-lines 1)
      ("j" "Journal" entry (file+olp+datetree "journal.org")
-      "* %U\n  %?\n  %i\n" :tree-type (year) :prepend t)
-     ("n" "Note" entry (file "notes.org") "* %?"
-      :prepend t :empty-lines 1)
+      "* %U\n%?\n  %i\n" :tree-type (year) :prepend t)
      ("l" "Link" entry (file "notes.org")
-      "* %?[[%:link][%:description]]\nCaptured On: %U" :prepend t)
+      "* %?[[%:link][%:description]]\nCaptured On: %U" :prepend t :empty-lines 1)
      ("p" "Link with body" entry (file "notes.org")
-      "* %?[[%:link][%:description]]\nCaptured On: %U\n#+BEGIN_QUOTE\n%i\n#+END_QUOTE" :prepend t)))
+      "* %?[[%:link][%:description]]\nCaptured On: %U\n#+BEGIN_QUOTE\n%i\n#+END_QUOTE"
+      :prepend t :empty-lines 1)))
   (org-startup-indented t)
   (org-todo-keywords
    '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
