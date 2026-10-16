@@ -49,6 +49,7 @@
   (mouse-drag-and-drop-region-cross-program t)
   (mouse-yank-at-point t)
   ;; Misc
+  (calendar-week-start-day 1)
   (dired-auto-revert-buffer t)
   (dired-mouse-drag-files t) ; C-left: copy, S-left: move, M-left: link
   (elisp-fontify-semantically t)
