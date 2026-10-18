@@ -135,6 +135,17 @@
   (project-x-mode t)
   (project-x-tabs-mode t))
 
+(use-package nael
+  :ensure t
+  :hook
+  (nael-mode . abbrev-mode)
+  (nael-mode . eglot-ensure))
+
+(use-package super-save
+  :ensure t
+  :custom
+  (super-save-mode t))
+
 ;; TODO: Update to Non-GNU ELPA once it releases there.
 (use-package tramp-rpc
   :ensure t
