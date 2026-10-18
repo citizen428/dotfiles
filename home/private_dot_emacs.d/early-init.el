@@ -27,7 +27,4 @@
 
 (setq package-quickstart t)
 
-(unless package-archive-contents
- (package-refresh-contents))
-
 (require 'use-package)
