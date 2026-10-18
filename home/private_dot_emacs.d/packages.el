@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(use-package alabaster-themes :ensure t)
+
 (use-package auto-dark
   :ensure t
   :when (eq system-type 'gnu/linux)
