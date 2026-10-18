@@ -6,25 +6,25 @@
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 
-(setq default-frame-alist
+(setopt default-frame-alist
       '((fullscreen . maximized) (left-fringe . 5) (right-fringe . 5)
         (font . "FiraCode Nerd Font-14")))
 
 ;; Raise GC threshold during startup
-(setq gc-cons-threshold 128000000
+(setopt gc-cons-threshold 128000000
       gc-cons-percentage 0.6)
 
 ;; Stricter TLS settings
-(setq gnutls-verify-error t)
-(setq tls-checktrust t)
-(setq gnutls-min-prime-bits 3072)
+(setopt gnutls-verify-error t)
+(setopt tls-checktrust t)
+(setopt gnutls-min-prime-bits 3072)
 
 ;; Set up packages
-(setq package-archives
+(setopt package-archives
       '(("melpa" . "https://melpa.org/packages/")
         ("org" . "https://orgmode.org/elpa/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(setq package-quickstart t)
+(setopt package-quickstart t)
 
 (require 'use-package)

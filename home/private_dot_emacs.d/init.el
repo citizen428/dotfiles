@@ -2,7 +2,7 @@
 
 ;;; Emacs internals
 
-(setq custom-file (locate-user-emacs-file "custom.el"))
+(setopt custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file 'noerror)
 
 ;; Move backup/auto-save files out of the way
@@ -10,15 +10,15 @@
       (auto-save-dir (locate-user-emacs-file "auto-save/")))
   (make-directory backup-dir t)
   (make-directory auto-save-dir t)
-  (setq backup-directory-alist `(("." . ,backup-dir)))
-  (setq auto-save-file-name-transforms `((".*" ,auto-save-dir t)))
-  (setq create-lockfiles nil))
+  (setopt backup-directory-alist `(("." . ,backup-dir)))
+  (setopt auto-save-file-name-transforms `((".*" ,auto-save-dir t)))
+  (setopt create-lockfiles nil))
 
 ;;; Key bindings
 
 (when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'super))
+  (setopt mac-command-modifier 'meta)
+  (setopt mac-option-modifier 'super))
 
 (windmove-default-keybindings 'super)
 (windmove-display-default-keybindings '(shift super))
