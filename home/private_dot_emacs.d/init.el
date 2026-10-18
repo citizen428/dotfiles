@@ -152,6 +152,8 @@
   :demand t
   :custom
   (tab-bar-mode t)
+  (tab-bar-close-button-show nil)
+  (tab-bar-new-button-show nil)
   (tab-bar-select-tab-modifiers '(super))
   (tab-bar-tab-hints t))
 
