@@ -51,6 +51,8 @@ this again once the refile is done."
       "* TODO %?")
      ("n" "Note" entry (file "notes.org")
       "* %?" :prepend t :empty-lines 1)
+     ("m" "Mail" entry (file+headline "todo.org" "Tasks")
+      "* TODO %a from %:fromnameoraddress\n")
      ("j" "Journal" entry (file+olp+datetree "journal.org")
       "* %U\n%?\n  %i\n" :tree-type (year) :prepend t)
      ("l" "Link" entry (file "notes.org")
