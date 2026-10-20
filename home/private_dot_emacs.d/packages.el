@@ -34,6 +34,11 @@
   ("M-s g" . consult-ripgrep)
   ("M-y" . consult-yank-pop))
 
+(use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode t))
+
 (use-package elfeed
   :ensure t
   :config
@@ -128,6 +133,23 @@
   :ensure t
   :mode ("\\.md\\'" . gfm-mode))
 
+(use-package nael
+  :ensure t
+  :hook
+  (nael-mode . abbrev-mode)
+  (nael-mode . eglot-ensure))
+
+(use-package nerd-icons :ensure t)
+
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 (use-package project-x
   :ensure t
   :after project
@@ -136,12 +158,6 @@
   (project-prompter #'project-x--project-prompt)
   (project-x-mode t)
   (project-x-tabs-mode t))
-
-(use-package nael
-  :ensure t
-  :hook
-  (nael-mode . abbrev-mode)
-  (nael-mode . eglot-ensure))
 
 (use-package super-save
   :ensure t
